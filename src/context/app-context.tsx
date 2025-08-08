@@ -6,27 +6,17 @@ import { handleCourseBreakdown, handleExplanation } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
 import { id } from '@/lib/utils';
 
-interface ChatSession {
-  id: string;
-  title: string;
-  messages: Message[];
-  timestamp: number;
-}
-
 interface AppContextType {
   settings: Settings;
   messages: Message[];
   isConfigured: boolean;
   isLoading: boolean;
-  history: ChatSession[];
-  currentSessionId: string | null;
+  name: string;
   saveSettings: (settings: Settings) => void;
   sendMessage: (content: string, mode: LearningMode) => Promise<void>;
   refineExplanation: (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources', exampleDifficulty?: ExampleDifficulty) => Promise<void>;
   startTopicFromCourse: (topic: string) => Promise<void>;
-  startNewChat: (fromSettings?: Settings) => void;
-  loadChat: (sessionId: string) => void;
-  clearHistory: () => void;
+  startNewChat: () => void;
 }
 
 export const AppContext = createContext<AppContextType>({} as AppContextType);
@@ -42,76 +32,40 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isConfigured, setIsConfigured] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [history, setHistory] = useState<ChatSession[]>([]);
-  const [currentSessionId, setCurrentSessionId] = useState<string | null>(null);
+  const [name, setName] = useState('');
 
   useEffect(() => {
     try {
-      const storedHistory = localStorage.getItem('bello-history');
-      if (storedHistory) {
-        setHistory(JSON.parse(storedHistory));
-      }
       const storedSettings = localStorage.getItem('bello-settings');
       if (storedSettings) {
         const parsedSettings = JSON.parse(storedSettings);
         setSettings(parsedSettings);
+        setName(parsedSettings.name);
         setIsConfigured(true);
+        setMessages([
+            { id: id(), role: 'bot', content: `Hello ${parsedSettings.name}! I'm Mr. Bello. How can I help you learn today? You can ask me to explain a topic or break down a course.` }
+        ]);
       }
     } catch (error) {
       console.error("Failed to load from local storage", error);
     }
   }, []);
 
-  useEffect(() => {
-    if(isConfigured && messages.length > 0) {
-      if(currentSessionId) {
-        const updatedHistory = history.map(session => 
-          session.id === currentSessionId ? { ...session, messages, timestamp: Date.now() } : session
-        );
-        const sessionExists = updatedHistory.some(s => s.id === currentSessionId);
-        if(!sessionExists) {
-            updatedHistory.push({
-              id: currentSessionId,
-              title: messages.find(m => m.role === 'user')?.content.substring(0, 30) || 'New Chat',
-              messages,
-              timestamp: Date.now(),
-            })
-        }
-        setHistory(updatedHistory);
-        localStorage.setItem('bello-history', JSON.stringify(updatedHistory));
-      }
-    }
-  }, [messages, currentSessionId, history, isConfigured]);
-  
-  const startNewChat = useCallback((fromSettings?: Settings) => {
-    const newId = `session-${Date.now()}`;
-    const newName = fromSettings?.name || settings.name;
-    setCurrentSessionId(newId);
+  const startNewChat = useCallback(() => {
     setMessages([
-        { id: id(), role: 'bot', content: `Hello ${newName}! I'm Mr. Bello. How can I help you learn today? You can ask me to explain a topic or break down a course.` }
+        { id: id(), role: 'bot', content: `Hello ${settings.name}! I'm Mr. Bello. How can I help you learn today? You can ask me to explain a topic or break down a course.` }
     ]);
   }, [settings.name]);
 
   const saveSettings = (newSettings: Settings) => {
     setSettings(newSettings);
+    setName(newSettings.name);
     setIsConfigured(true);
     localStorage.setItem('bello-settings', JSON.stringify(newSettings));
-    startNewChat(newSettings);
+    setMessages([
+        { id: id(), role: 'bot', content: `Hello ${newSettings.name}! I'm Mr. Bello. How can I help you learn today? You can ask me to explain a topic or break down a course.` }
+    ]);
   };
-
-  const loadChat = (sessionId: string) => {
-    const session = history.find(s => s.id === sessionId);
-    if(session) {
-      setCurrentSessionId(sessionId);
-      setMessages(session.messages);
-    }
-  };
-
-  const clearHistory = useCallback(() => {
-    setHistory([]);
-    localStorage.removeItem('bello-history');
-    startNewChat();
-  }, [startNewChat]);
 
   const handleError = (errorMessage: string) => {
     toast({
@@ -159,10 +113,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   const sendMessage = async (content: string, mode: LearningMode) => {
     if (isLoading || !content.trim()) return;
-
-    if (!currentSessionId) {
-      startNewChat();
-    }
 
     const userMessage: Message = { id: id(), role: 'user', content };
     setMessages(prev => [...prev, userMessage]);
@@ -234,10 +184,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   const startTopicFromCourse = async (topic: string) => {
     if (isLoading) return;
-
-    if (!currentSessionId) {
-      startNewChat();
-    }
     
     const userMessage: Message = { id: id(), role: 'user', content: `Please explain: ${topic}` };
     setMessages(prev => [...prev, userMessage]);
@@ -276,15 +222,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     messages,
     isConfigured,
     isLoading,
-    history,
-    currentSessionId,
+    name,
     saveSettings,
     sendMessage,
     refineExplanation,
     startTopicFromCourse,
     startNewChat,
-    loadChat,
-    clearHistory
   };
 
   return (

@@ -1,5 +1,4 @@
 import { AppProvider } from '@/context/app-context';
-import { SidebarProvider } from '@/components/ui/sidebar';
 
 export default function ChatLayout({
   children,
@@ -8,9 +7,7 @@ export default function ChatLayout({
 }>) {
   return (
     <AppProvider>
-      <SidebarProvider>
-        {children}
-      </SidebarProvider>
+      {children}
     </AppProvider>
   );
 }
