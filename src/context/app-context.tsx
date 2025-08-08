@@ -24,7 +24,7 @@ interface AppContextType {
   sendMessage: (content: string, mode: LearningMode) => Promise<void>;
   refineExplanation: (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources', exampleDifficulty?: ExampleDifficulty) => Promise<void>;
   startTopicFromCourse: (topic: string) => Promise<void>;
-  startNewChat: () => void;
+  startNewChat: (fromSettings?: Settings) => void;
   loadChat: (sessionId: string) => void;
   clearHistory: () => void;
 }
@@ -83,21 +83,21 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [messages, currentSessionId, history, isConfigured]);
   
-  const saveSettings = (newSettings: Settings) => {
-    setSettings(newSettings);
-    setIsConfigured(true);
-    localStorage.setItem('bello-settings', JSON.stringify(newSettings));
-    startNewChat(newSettings);
-  };
-
-  const startNewChat = (fromSettings?: Settings) => {
+  const startNewChat = useCallback((fromSettings?: Settings) => {
     const newId = `session-${Date.now()}`;
     const newName = fromSettings?.name || settings.name;
     setCurrentSessionId(newId);
     setMessages([
         { id: id(), role: 'bot', content: `Hello ${newName}! I'm Mr. Bello. How can I help you learn today? You can ask me to explain a topic or break down a course.` }
     ]);
-  }
+  }, [settings.name]);
+
+  const saveSettings = (newSettings: Settings) => {
+    setSettings(newSettings);
+    setIsConfigured(true);
+    localStorage.setItem('bello-settings', JSON.stringify(newSettings));
+    startNewChat(newSettings);
+  };
 
   const loadChat = (sessionId: string) => {
     const session = history.find(s => s.id === sessionId);
@@ -107,11 +107,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const clearHistory = () => {
+  const clearHistory = useCallback(() => {
     setHistory([]);
     localStorage.removeItem('bello-history');
     startNewChat();
-  }
+  }, [startNewChat]);
 
   const handleError = (errorMessage: string) => {
     toast({
