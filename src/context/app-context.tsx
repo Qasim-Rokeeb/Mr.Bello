@@ -13,14 +13,12 @@ interface AppContextType {
   isLoading: boolean;
   saveSettings: (settings: Settings) => void;
   sendMessage: (content: string, mode: LearningMode) => Promise<void>;
-  refineExplanation: (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources') => Promise<void>;
+  refineExplanation: (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources', exampleDifficulty?: ExampleDifficulty) => Promise<void>;
   startTopicFromCourse: (topic: string) => Promise<void>;
-  getNextExampleDifficulty: () => ExampleDifficulty;
 }
 
 export const AppContext = createContext<AppContextType>({} as AppContextType);
 
-const exampleDifficulties: ExampleDifficulty[] = ['beginner', 'intermediate', 'advanced'];
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const { toast } = useToast();
@@ -32,12 +30,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isConfigured, setIsConfigured] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentExampleDifficultyIndex, setCurrentExampleDifficultyIndex] = useState(0);
-
-  const getNextExampleDifficulty = () => {
-    return exampleDifficulties[currentExampleDifficultyIndex];
-  };
-
+  
   const saveSettings = (newSettings: Settings) => {
     setSettings(newSettings);
     setIsConfigured(true);
@@ -106,12 +99,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const refineExplanation = async (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources') => {
+  const refineExplanation = async (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources', exampleDifficulty?: ExampleDifficulty) => {
     if (isLoading) return;
     
     let complexity: Complexity = 'simplified';
     let refinementType: 'resources' | undefined = undefined;
-    let exampleDifficulty: ExampleDifficulty | undefined = undefined;
+    let finalExampleDifficulty: ExampleDifficulty | undefined = exampleDifficulty;
     let userMessageContent = '';
     
     if (refinement === 'simplify') {
@@ -124,9 +117,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         refinementType = 'resources';
         userMessageContent = `Can you give me some resources for "${topic}"?`;
     } else if (refinement === 'examples') {
-        exampleDifficulty = getNextExampleDifficulty();
-        userMessageContent = `Can you give me some ${exampleDifficulty} examples for "${topic}"?`;
-        setCurrentExampleDifficultyIndex((prevIndex) => (prevIndex + 1) % exampleDifficulties.length);
+        userMessageContent = `Can you give me some ${finalExampleDifficulty} examples for "${topic}"?`;
     }
 
     const userMessage: Message = { id: id(), role: 'user', content: userMessageContent };
@@ -140,7 +131,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         complexity: complexity,
         humorEnabled: settings.humor,
         refinement: refinementType,
-        exampleDifficulty: exampleDifficulty,
+        exampleDifficulty: finalExampleDifficulty,
       });
 
       if (response.success) {
@@ -155,15 +146,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         }]);
       } else {
         handleError(response.error || 'Unknown error');
-         if (refinement === 'examples') {
-          setCurrentExampleDifficultyIndex((prevIndex) => (prevIndex - 1 + exampleDifficulties.length) % exampleDifficulties.length);
-        }
       }
     } catch(e) {
         handleError('An unexpected error occurred during refinement.');
-         if (refinement === 'examples') {
-          setCurrentExampleDifficultyIndex((prevIndex) => (prevIndex - 1 + exampleDifficulties.length) % exampleDifficulties.length);
-        }
     } finally {
         setIsLoading(false);
     }
@@ -171,7 +156,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   const startTopicFromCourse = async (topic: string) => {
     if (isLoading) return;
-    setCurrentExampleDifficultyIndex(0);
     const userMessage: Message = { id: id(), role: 'user', content: `Please explain: ${topic}` };
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
@@ -205,7 +189,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <AppContext.Provider value={{ settings, messages, isConfigured, isLoading, saveSettings, sendMessage, refineExplanation, startTopicFromCourse, getNextExampleDifficulty }}>
+    <AppContext.Provider value={{ settings, messages, isConfigured, isLoading, saveSettings, sendMessage, refineExplanation, startTopicFromCourse }}>
       {children}
     </AppContext.Provider>
   );

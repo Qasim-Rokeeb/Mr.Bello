@@ -9,8 +9,49 @@ import CourseTopics from './course-topics';
 import { Sparkles, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import mermaid from 'mermaid';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
 
 mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
+
+const TableRenderer = ({ markdown }: { markdown: string }) => {
+  const tableData = markdown
+    .split('\n')
+    .filter(row => row.trim() && !row.includes('---'))
+    .map(row => row.split('|').map(cell => cell.trim()).filter(Boolean));
+
+  if (tableData.length < 2) return <ReactMarkdown>{markdown}</ReactMarkdown>;
+
+  const header = tableData[0];
+  const rows = tableData.slice(1);
+
+  return (
+    <div className="my-4 rounded-lg border">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            {header.map((head, index) => <TableHead key={index}>{head}</TableHead>)}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {rows.map((row, rowIndex) => (
+            <TableRow key={rowIndex}>
+              {row.map((cell, cellIndex) => <TableCell key={cellIndex}>{cell}</TableCell>)}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+};
+
 
 export default function ChatMessage({ message }: { message: Message }) {
   const isUser = message.role === 'user';
@@ -38,8 +79,9 @@ export default function ChatMessage({ message }: { message: Message }) {
       )}>
         <div className="prose prose-p:leading-relaxed prose-p:m-0 prose-headings:m-0 prose-ul:m-0 prose-ol:m-0 prose-li:m-0 max-w-none">
           <ReactMarkdown>{message.content}</ReactMarkdown>
-          {message.table && <ReactMarkdown>{message.table}</ReactMarkdown>}
         </div>
+
+        {message.table && <TableRenderer markdown={message.table} />}
 
         {message.diagram && (
             <div className="mt-4 p-4 bg-gray-100 rounded">

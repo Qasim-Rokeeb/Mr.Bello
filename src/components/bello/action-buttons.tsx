@@ -3,7 +3,9 @@
 import { useContext } from 'react';
 import { AppContext } from '@/context/app-context';
 import { Button } from '@/components/ui/button';
-import { FileDown, Lightbulb, Microscope, BookOpen, Quote, ChevronRight } from 'lucide-react';
+import { FileDown, Lightbulb, Microscope, BookOpen } from 'lucide-react';
+import ExampleSelector from './example-selector';
+
 
 interface ActionButtonsProps {
   topic: string;
@@ -11,7 +13,7 @@ interface ActionButtonsProps {
 }
 
 export default function ActionButtons({ topic, messageId }: ActionButtonsProps) {
-  const { refineExplanation, isLoading, getNextExampleDifficulty } = useContext(AppContext);
+  const { refineExplanation, isLoading } = useContext(AppContext);
 
   const handleDownload = () => {
     const messageElement = document.getElementById(messageId);
@@ -48,13 +50,9 @@ export default function ActionButtons({ topic, messageId }: ActionButtonsProps) 
     }
   };
 
-  const currentExampleDifficulty = getNextExampleDifficulty();
-  const exampleButtonLabel = `Examples (${currentExampleDifficulty.charAt(0).toUpperCase() + currentExampleDifficulty.slice(1)})`;
-
   const actions = [
     { label: 'Simplify', icon: Lightbulb, refinement: 'simplify' as const },
     { label: 'Technical', icon: Microscope, refinement: 'technical' as const },
-    { label: exampleButtonLabel, icon: Quote, refinement: 'examples' as const },
     { label: 'Resources', icon: BookOpen, refinement: 'resources' as const },
   ];
 
@@ -70,9 +68,9 @@ export default function ActionButtons({ topic, messageId }: ActionButtonsProps) 
         >
             <action.icon className="mr-2 h-4 w-4" />
             {action.label}
-            {action.refinement === 'examples' && <ChevronRight className="ml-1 h-4 w-4" />}
         </Button>
       ))}
+      <ExampleSelector topic={topic} />
       <Button variant="outline" size="sm" onClick={handleDownload}>
         <FileDown className="mr-2 h-4 w-4" />
         Download PDF
