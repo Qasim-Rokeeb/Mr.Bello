@@ -40,7 +40,7 @@ export default function WelcomeScreen() {
   }
 
   return (
-    <div className="h-full flex items-center justify-center">
+    <div className=" flex items-center justify-center">
         <Card className="w-full max-w-lg shadow-2xl mt-20 border-2 border-primary/10 animate-in fade-in-0 zoom-in-95 duration-500">
         <CardHeader className="text-center">
             <div className="mx-auto bg-primary text-primary-foreground rounded-full p-3 w-fit mb-4">
