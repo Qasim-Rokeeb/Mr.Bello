@@ -27,7 +27,7 @@ export default function ChatInterface() {
           <div className="bg-primary text-primary-foreground rounded-full p-2">
             <BrainCircuit className="h-6 w-6" />
           </div>
-          <h1 className="text-xl font-bold text-primary">Mr.Bello</h1>
+          <h1 className="text-xl font-bold text-accent">Mr.Bello</h1>
         </div>
       </header>
       <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>

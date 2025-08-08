@@ -69,7 +69,7 @@ export default function ChatMessage({ message }: { message: Message }) {
     <div className={cn('flex items-start gap-4', isUser ? 'justify-end' : 'justify-start')}>
       {!isUser && (
         <Avatar className="h-10 w-10 border-2 border-primary">
-          <AvatarImage src="https://placehold.co/100x100/3B5998/FFFFFF" data-ai-hint="robot face" alt="Mr. Bello" />
+          <AvatarImage src="https://placehold.co/100x100/8F72D4/FFFFFF" data-ai-hint="friendly robot" alt="Mr. Bello" />
           <AvatarFallback>MB</AvatarFallback>
         </Avatar>
       )}
