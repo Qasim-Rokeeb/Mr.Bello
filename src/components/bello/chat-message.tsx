@@ -38,7 +38,7 @@ export default function ChatMessage({ message }: { message: Message }) {
             <CourseTopics topics={message.courseTopics} />
         )}
 
-        {message.topic && !message.isRefined && (
+        {message.topic && (
             <ActionButtons topic={message.topic} messageId={message.id}/>
         )}
       </div>

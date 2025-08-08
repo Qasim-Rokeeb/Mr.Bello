@@ -107,7 +107,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     if(refinement === 'examples') refinementType = 'examples';
     if(refinement === 'resources') refinementType = 'resources';
 
-    const userMessage: Message = { id: id(), role: 'user', content: `Can you provide a ${refinement} explanation for "${topic}"?` };
+    const userMessageContent = refinement === 'technical' || refinement === 'simplify' 
+      ? `Can you give me a ${refinement} explanation for "${topic}"?`
+      : `Can you give me ${refinement} for "${topic}"?`;
+
+    const userMessage: Message = { id: id(), role: 'user', content: userMessageContent };
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
 
@@ -127,7 +131,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
           topic: topic,
           content: response.data.explanation,
           funnyGesture: response.data.funnyGesture,
-          isRefined: true,
         }]);
       } else {
         handleError(response.error || 'Unknown error');

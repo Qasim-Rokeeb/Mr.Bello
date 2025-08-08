@@ -17,5 +17,4 @@ export interface Message {
   topic?: string;
   funnyGesture?: string;
   courseTopics?: string[];
-  isRefined?: boolean;
 }
