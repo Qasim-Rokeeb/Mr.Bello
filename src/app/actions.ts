@@ -33,7 +33,7 @@ export async function handleExplanation({ topic, tone, complexity, humorEnabled,
   try {
     let finalTopic = topic;
     if (refinement === 'resources') {
-      finalTopic = `Provide a list of credible external online resources for: ${topic}`;
+      finalTopic = `Provide a list of credible external online resources, including YouTube videos and PDFs, for: ${topic}`;
     }
     
     const result = await generateExplanation({ 
