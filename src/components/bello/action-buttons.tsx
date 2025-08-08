@@ -1,0 +1,78 @@
+'use client';
+
+import { useContext } from 'react';
+import { AppContext } from '@/context/app-context';
+import { Button } from '@/components/ui/button';
+import { FileDown, Lightbulb, Microscope, BookOpen, Quote } from 'lucide-react';
+
+interface ActionButtonsProps {
+  topic: string;
+  messageId: string;
+}
+
+export default function ActionButtons({ topic, messageId }: ActionButtonsProps) {
+  const { refineExplanation, isLoading } = useContext(AppContext);
+
+  const handleDownload = () => {
+    const messageElement = document.getElementById(messageId);
+    if (messageElement) {
+        const printableContent = messageElement.innerHTML;
+        const printWindow = window.open('', '_blank');
+        if (printWindow) {
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>BelloBrain Explanation</title>
+                        <script src="https://cdn.tailwindcss.com"></script>
+                        <style>
+                            @media print {
+                                body { font-family: sans-serif; }
+                                .no-print { display: none; }
+                            }
+                        </style>
+                    </head>
+                    <body class="p-8">
+                        <h1 class="text-2xl font-bold mb-4">Topic: ${topic}</h1>
+                        <div>${printableContent}</div>
+                    </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.focus();
+            // Timeout to allow content to load before printing
+            setTimeout(() => {
+                printWindow.print();
+                printWindow.close();
+            }, 500);
+        }
+    }
+  };
+
+  const actions = [
+    { label: 'Simplify', icon: Lightbulb, refinement: 'simplify' as const },
+    { label: 'Technical', icon: Microscope, refinement: 'technical' as const },
+    { label: 'Examples', icon: Quote, refinement: 'examples' as const },
+    { label: 'Resources', icon: BookOpen, refinement: 'resources' as const },
+  ];
+
+  return (
+    <div id={messageId} className="mt-4 flex flex-wrap gap-2 border-t pt-3">
+      {actions.map(action => (
+        <Button 
+            key={action.label} 
+            variant="outline" 
+            size="sm" 
+            onClick={() => refineExplanation(topic, action.refinement)}
+            disabled={isLoading}
+        >
+            <action.icon className="mr-2 h-4 w-4" />
+            {action.label}
+        </Button>
+      ))}
+      <Button variant="outline" size="sm" onClick={handleDownload}>
+        <FileDown className="mr-2 h-4 w-4" />
+        Download PDF
+      </Button>
+    </div>
+  );
+}
