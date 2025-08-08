@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useState, useCallback, ReactNode } from 'react';
-import type { Settings, Message, Tone, Complexity, LearningMode } from '@/lib/types';
+import type { Settings, Message, Tone, Complexity, LearningMode, ExampleDifficulty } from '@/lib/types';
 import { handleCourseBreakdown, handleExplanation } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
 import { id } from '@/lib/utils';
@@ -15,9 +15,12 @@ interface AppContextType {
   sendMessage: (content: string, mode: LearningMode) => Promise<void>;
   refineExplanation: (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources') => Promise<void>;
   startTopicFromCourse: (topic: string) => Promise<void>;
+  getNextExampleDifficulty: () => ExampleDifficulty;
 }
 
 export const AppContext = createContext<AppContextType>({} as AppContextType);
+
+const exampleDifficulties: ExampleDifficulty[] = ['beginner', 'intermediate', 'advanced'];
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const { toast } = useToast();
@@ -29,6 +32,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isConfigured, setIsConfigured] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentExampleDifficultyIndex, setCurrentExampleDifficultyIndex] = useState(0);
+
+  const getNextExampleDifficulty = () => {
+    return exampleDifficulties[currentExampleDifficultyIndex];
+  };
 
   const saveSettings = (newSettings: Settings) => {
     setSettings(newSettings);
@@ -73,6 +81,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
           topic: content,
           content: response.data.explanation,
           funnyGesture: response.data.funnyGesture,
+          diagram: response.data.diagram,
+          table: response.data.table,
         }]);
       } else {
         handleError(response.error || 'Unknown error');
@@ -100,16 +110,24 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     if (isLoading) return;
     
     let complexity: Complexity = 'simplified';
-    let refinementType: 'examples' | 'resources' | undefined = undefined;
-
-    if(refinement === 'simplify') complexity = 'simplified';
-    if(refinement === 'technical') complexity = 'technical';
-    if(refinement === 'examples') refinementType = 'examples';
-    if(refinement === 'resources') refinementType = 'resources';
-
-    const userMessageContent = refinement === 'technical' || refinement === 'simplify' 
-      ? `Can you give me a ${refinement} explanation for "${topic}"?`
-      : `Can you give me ${refinement} for "${topic}"?`;
+    let refinementType: 'resources' | undefined = undefined;
+    let exampleDifficulty: ExampleDifficulty | undefined = undefined;
+    let userMessageContent = '';
+    
+    if (refinement === 'simplify') {
+        complexity = 'simplified';
+        userMessageContent = `Can you give me a simplified explanation for "${topic}"?`;
+    } else if (refinement === 'technical') {
+        complexity = 'technical';
+        userMessageContent = `Can you give me a more technical explanation for "${topic}"?`;
+    } else if (refinement === 'resources') {
+        refinementType = 'resources';
+        userMessageContent = `Can you give me some resources for "${topic}"?`;
+    } else if (refinement === 'examples') {
+        exampleDifficulty = getNextExampleDifficulty();
+        userMessageContent = `Can you give me some ${exampleDifficulty} examples for "${topic}"?`;
+        setCurrentExampleDifficultyIndex((prevIndex) => (prevIndex + 1) % exampleDifficulties.length);
+    }
 
     const userMessage: Message = { id: id(), role: 'user', content: userMessageContent };
     setMessages(prev => [...prev, userMessage]);
@@ -121,7 +139,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         tone: settings.tone,
         complexity: complexity,
         humorEnabled: settings.humor,
-        refinement: refinementType
+        refinement: refinementType,
+        exampleDifficulty: exampleDifficulty,
       });
 
       if (response.success) {
@@ -131,12 +150,20 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
           topic: topic,
           content: response.data.explanation,
           funnyGesture: response.data.funnyGesture,
+          diagram: response.data.diagram,
+          table: response.data.table,
         }]);
       } else {
         handleError(response.error || 'Unknown error');
+         if (refinement === 'examples') {
+          setCurrentExampleDifficultyIndex((prevIndex) => (prevIndex - 1 + exampleDifficulties.length) % exampleDifficulties.length);
+        }
       }
     } catch(e) {
         handleError('An unexpected error occurred during refinement.');
+         if (refinement === 'examples') {
+          setCurrentExampleDifficultyIndex((prevIndex) => (prevIndex - 1 + exampleDifficulties.length) % exampleDifficulties.length);
+        }
     } finally {
         setIsLoading(false);
     }
@@ -144,7 +171,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
 
   const startTopicFromCourse = async (topic: string) => {
     if (isLoading) return;
-
+    setCurrentExampleDifficultyIndex(0);
     const userMessage: Message = { id: id(), role: 'user', content: `Please explain: ${topic}` };
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
@@ -164,6 +191,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
           topic: topic,
           content: response.data.explanation,
           funnyGesture: response.data.funnyGesture,
+          diagram: response.data.diagram,
+          table: response.data.table,
         }]);
       } else {
         handleError(response.error || 'Unknown error');
@@ -175,9 +204,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-
   return (
-    <AppContext.Provider value={{ settings, messages, isConfigured, isLoading, saveSettings, sendMessage, refineExplanation, startTopicFromCourse }}>
+    <AppContext.Provider value={{ settings, messages, isConfigured, isLoading, saveSettings, sendMessage, refineExplanation, startTopicFromCourse, getNextExampleDifficulty }}>
       {children}
     </AppContext.Provider>
   );

@@ -20,6 +20,7 @@ const GenerateExplanationInputSchema = z.object({
   complexity:
     z.enum(['simplified', 'technical']).describe('The complexity level.'),
   humorEnabled: z.boolean().describe('Whether funny gestures are enabled.'),
+  exampleDifficulty: z.enum(['beginner', 'intermediate', 'advanced']).optional().describe('The difficulty of examples to provide.'),
 });
 export type GenerateExplanationInput = z.infer<
   typeof GenerateExplanationInputSchema
@@ -28,6 +29,8 @@ export type GenerateExplanationInput = z.infer<
 const GenerateExplanationOutputSchema = z.object({
   explanation: z.string().describe('The tailored explanation.'),
   funnyGesture: z.string().optional().describe('A humorous remark or emoji.'),
+  diagram: z.string().optional().describe('A Mermaid syntax diagram, if applicable.'),
+  table: z.string().optional().describe('A Markdown table, if applicable.'),
 });
 export type GenerateExplanationOutput = z.infer<
   typeof GenerateExplanationOutputSchema
@@ -52,7 +55,16 @@ User Preferences:
 
 Topic: {{{topic}}}
 
+{{#if exampleDifficulty}}
+Please provide examples for the topic with a difficulty level of: {{{exampleDifficulty}}}.
+The explanation should consist only of the examples.
+{{else}}
 Explanation:  Provide a tailored explanation of the topic, considering the user's tone and complexity preferences.  The complexity must affect the level of detail, vocabulary, and depth of the explanation. For simplified, use very basic language.  For technical, assume the user has high level knowledge.
+
+Diagram: If the topic can be visualized with a flowchart, sequence, or relationship diagram, provide a Mermaid syntax diagram for it. Otherwise, leave it empty.
+Table: If the topic involves data that can be presented in a table (e.g., comparisons, classifications), provide a Markdown table for it. Otherwise, leave it empty.
+{{/if}}
+
 
 {{#if humorEnabled}}
 Funny Gesture: Generate a humorous remark or emoji gesture related to the topic.

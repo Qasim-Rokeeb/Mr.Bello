@@ -1,6 +1,7 @@
 export type Tone = 'Gentle' | 'Encouraging' | 'Formal' | 'Fun' | 'Sarcastic' | 'Creative';
 export type Complexity = 'simplified' | 'technical';
 export type LearningMode = 'topic' | 'course';
+export type ExampleDifficulty = 'beginner' | 'intermediate' | 'advanced';
 
 export interface Settings {
   name: string;
@@ -17,4 +18,6 @@ export interface Message {
   topic?: string;
   funnyGesture?: string;
   courseTopics?: string[];
+  diagram?: string;
+  table?: string;
 }

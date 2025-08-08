@@ -2,7 +2,7 @@
 
 import { courseTopicBreakdown } from '@/ai/flows/breakdown-course';
 import { generateExplanation } from '@/ai/flows/generate-explanation';
-import type { Complexity, Tone, LearningMode } from '@/lib/types';
+import type { Complexity, Tone, ExampleDifficulty } from '@/lib/types';
 
 interface ActionResponse {
   success: boolean;
@@ -25,15 +25,14 @@ interface ExplanationParams {
   tone: Tone;
   complexity: Complexity;
   humorEnabled: boolean;
-  refinement?: 'examples' | 'resources';
+  refinement?: 'resources';
+  exampleDifficulty?: ExampleDifficulty;
 }
 
-export async function handleExplanation({ topic, tone, complexity, humorEnabled, refinement }: ExplanationParams): Promise<ActionResponse> {
+export async function handleExplanation({ topic, tone, complexity, humorEnabled, refinement, exampleDifficulty }: ExplanationParams): Promise<ActionResponse> {
   try {
     let finalTopic = topic;
-    if (refinement === 'examples') {
-      finalTopic = `Provide practical and relatable examples for: ${topic}`;
-    } else if (refinement === 'resources') {
+    if (refinement === 'resources') {
       finalTopic = `Provide a list of credible external online resources for: ${topic}`;
     }
     
@@ -41,7 +40,8 @@ export async function handleExplanation({ topic, tone, complexity, humorEnabled,
       topic: finalTopic, 
       tone, 
       complexity, 
-      humorEnabled 
+      humorEnabled,
+      exampleDifficulty,
     });
     
     return { success: true, data: result };

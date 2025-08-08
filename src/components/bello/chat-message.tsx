@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { Message } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -7,9 +8,21 @@ import ActionButtons from './action-buttons';
 import CourseTopics from './course-topics';
 import { Sparkles, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import mermaid from 'mermaid';
+
+mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
 
 export default function ChatMessage({ message }: { message: Message }) {
   const isUser = message.role === 'user';
+  const diagramRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (message.diagram && diagramRef.current) {
+        mermaid.run({
+            nodes: [diagramRef.current],
+        });
+    }
+  }, [message.diagram]);
 
   return (
     <div className={cn('flex items-start gap-4', isUser ? 'justify-end' : 'justify-start')}>
@@ -25,7 +38,16 @@ export default function ChatMessage({ message }: { message: Message }) {
       )}>
         <div className="prose prose-p:leading-relaxed prose-p:m-0 prose-headings:m-0 prose-ul:m-0 prose-ol:m-0 prose-li:m-0 max-w-none">
           <ReactMarkdown>{message.content}</ReactMarkdown>
+          {message.table && <ReactMarkdown>{message.table}</ReactMarkdown>}
         </div>
+
+        {message.diagram && (
+            <div className="mt-4 p-4 bg-gray-100 rounded">
+                <div ref={diagramRef} className="mermaid">
+                    {message.diagram}
+                </div>
+            </div>
+        )}
 
         {message.funnyGesture && (
             <div className="mt-3 flex items-center gap-2 rounded-lg bg-blue-100 p-2 text-sm text-blue-800">
