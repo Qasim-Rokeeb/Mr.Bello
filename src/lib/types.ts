@@ -1,4 +1,4 @@
-export type Tone = 'Gentle' | 'Encouraging' | 'Formal' | 'Fun';
+export type Tone = 'Gentle' | 'Encouraging' | 'Formal' | 'Fun' | 'Sarcastic' | 'Creative';
 export type Complexity = 'simplified' | 'technical';
 export type LearningMode = 'topic' | 'course';
 

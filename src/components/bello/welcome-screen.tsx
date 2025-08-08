@@ -15,7 +15,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { BrainCircuit } from 'lucide-react';
 
-const tones: Tone[] = ['Gentle', 'Encouraging', 'Formal', 'Fun'];
+const tones: Tone[] = ['Gentle', 'Encouraging', 'Formal', 'Fun', 'Sarcastic', 'Creative'];
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }).max(50),
@@ -81,10 +81,8 @@ export default function WelcomeScreen() {
                     >
                       {tones.map((tone) => (
                         <FormItem key={tone} className="flex-1">
-                          <FormControl>
-                             <RadioGroupItem value={tone} className="sr-only" id={`tone-${tone}`} />
-                          </FormControl>
-                          <Label htmlFor={`tone-${tone}`} className="block w-full cursor-pointer rounded-lg border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary peer-data-[state=checked]:shadow-lg [&:has([data-state=checked])]:border-primary [&:has([data-state=checked])]:shadow-md transition-all text-center text-md font-medium">
+                          <RadioGroupItem value={tone} className="sr-only peer" id={`tone-${tone}`} />
+                          <Label htmlFor={`tone-${tone}`} className="block w-full cursor-pointer rounded-lg border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary peer-data-[state=checked]:shadow-lg transition-all text-center text-md font-medium">
                             {tone}
                           </Label>
                         </FormItem>
