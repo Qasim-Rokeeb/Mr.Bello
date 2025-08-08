@@ -59,7 +59,9 @@ Topic: {{{topic}}}
 Please provide examples for the topic with a difficulty level of: {{{exampleDifficulty}}}.
 The explanation should consist only of the examples.
 {{else}}
-Explanation:  Provide a tailored explanation of the topic, considering the user's tone and complexity preferences.  The complexity must affect the level of detail, vocabulary, and depth of the explanation. For simplified, use very basic language.  For technical, assume the user has high level knowledge.
+Explanation:  Provide a tailored explanation of the topic.
+- For a 'simplified' complexity, use very basic language and analogies.
+- For a 'technical' complexity, provide a detailed, in-depth explanation. Use accurate technical terms, but ensure you break them down and explain them in a simple, understandable way the first time they are introduced. The goal is to make a complex topic accessible without sacrificing technical accuracy.
 
 Diagram: If the topic can be visualized with a flowchart, sequence, or relationship diagram, provide a Mermaid syntax diagram for it. Otherwise, leave it empty.
 Table: If the topic involves data that can be presented in a table (e.g., comparisons, classifications), provide a Markdown table for it. Otherwise, leave it empty.
