@@ -10,7 +10,6 @@ import { SidebarTrigger } from '../ui/sidebar';
 
 export default function ChatInterface() {
   const { messages } = useContext(AppContext);
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
