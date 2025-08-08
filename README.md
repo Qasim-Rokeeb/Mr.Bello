@@ -67,25 +67,24 @@ With Mr. Bello, you can:
    ```bash
    git clone https://github.com/yourusername/mr-bello.git
    cd mr-bello
-````
 
 2. **Install dependencies**
 
    ```bash
    npm install
-   ```
+   
 
 3. **Set up environment variables**
 
    ```env
    GEMINI_API_KEY=your_api_key_here
-   ```
+   
 
 4. **Run the development server**
 
    ```bash
    npm run dev
-   ```
+   
 
 5. **Open in your browser**
 
