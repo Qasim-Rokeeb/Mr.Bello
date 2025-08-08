@@ -7,7 +7,7 @@ import { AppProvider } from '@/context/app-context';
 const inter = Inter({subsets: ['latin'], variable: '--font-sans'});
 
 export const metadata: Metadata = {
-  title: 'BelloBrain',
+  title: 'Mr.Bello',
   description: 'An AI-powered, gentle teacher chatbot that explains complex topics in a comprehensible, user-friendly manner.',
 };
 

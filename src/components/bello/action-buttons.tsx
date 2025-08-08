@@ -22,7 +22,7 @@ export default function ActionButtons({ topic, messageId }: ActionButtonsProps) 
             printWindow.document.write(`
                 <html>
                     <head>
-                        <title>BelloBrain Explanation</title>
+                        <title>Mr.Bello Explanation</title>
                         <script src="https://cdn.tailwindcss.com"></script>
                         <style>
                             @media print {
