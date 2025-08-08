@@ -11,11 +11,12 @@ import { SidebarTrigger } from '../ui/sidebar';
 export default function ChatInterface() {
   const { messages } = useContext(AppContext);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollTo({
-        top: scrollAreaRef.current.scrollHeight,
+    if (viewportRef.current) {
+        viewportRef.current.scrollTo({
+        top: viewportRef.current.scrollHeight,
         behavior: 'smooth',
       });
     }
@@ -32,7 +33,7 @@ export default function ChatInterface() {
           <h1 className="text-lg sm:text-xl font-bold text-accent">Mr.Bello</h1>
         </div>
       </header>
-      <ScrollArea className="flex-1 p-3 sm:p-4" ref={scrollAreaRef}>
+      <ScrollArea className="flex-1 p-3 sm:p-4" viewportRef={viewportRef}>
         <div className="flex flex-col gap-4">
           {messages.map((message) => (
             <ChatMessage key={message.id} message={message} />
