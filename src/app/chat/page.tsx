@@ -9,8 +9,10 @@ export default function Home() {
   const { isConfigured } = useContext(AppContext);
 
   return (
-    <main className="h-screen w-screen flex flex-col items-center justify-center bg-background">
-      {isConfigured ? <ChatInterface /> : <WelcomeScreen />}
-    </main>
+    <div className="flex h-screen w-screen items-center justify-center bg-background p-2 sm:p-4">
+      <main className="h-full w-full max-w-4xl">
+         {isConfigured ? <ChatInterface /> : <WelcomeScreen />}
+      </main>
+    </div>
   );
 }
