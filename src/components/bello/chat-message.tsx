@@ -67,7 +67,10 @@ export default function ChatMessage({ message }: { message: Message }) {
   }, [message.diagram]);
 
   return (
-    <div className={cn('flex items-start gap-4', isUser ? 'justify-end' : 'justify-start')}>
+    <div className={cn(
+      'flex items-start gap-4 animate-in fade-in-0', 
+      isUser ? 'justify-end slide-in-from-right-8' : 'justify-start slide-in-from-left-8'
+    )}>
       {!isUser && (
         <Avatar className="h-10 w-10 border-2 border-primary">
           <AvatarImage src="https://placehold.co/100x100/8F72D4/FFFFFF" data-ai-hint="friendly robot" alt="Mr. Bello" />

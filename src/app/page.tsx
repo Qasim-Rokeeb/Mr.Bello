@@ -6,14 +6,14 @@ import Link from 'next/link';
 export default function LandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-100 to-indigo-200">
-      <header className="p-4 flex justify-between items-center">
+      <header className="p-4 flex justify-between items-center animate-in fade-in duration-500">
         <div className="flex items-center gap-2">
           <BrainCircuit className="h-8 w-8 text-primary" />
           <h1 className="text-2xl font-bold text-accent">Mr.Bello</h1>
         </div>
       </header>
       <main className="flex-1 flex flex-col items-center justify-center text-center p-4">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl animate-in fade-in zoom-in-95 duration-700">
           <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-slate-800 leading-tight tracking-tighter">
             Unlock Your Potential with{' '}
             <span className="text-primary">Mr.Bello</span>
@@ -28,7 +28,7 @@ export default function LandingPage() {
           </div>
         </div>
       </main>
-      <footer className="text-center p-6 text-slate-500">
+      <footer className="text-center p-6 text-slate-500 animate-in fade-in duration-500">
         <p>&copy; {new Date().getFullYear()} Olalekan Codes. All rights reserved.</p>
       </footer>
     </div>
