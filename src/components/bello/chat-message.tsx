@@ -56,6 +56,7 @@ const TableRenderer = ({ markdown }: { markdown: string }) => {
 export default function ChatMessage({ message }: { message: Message }) {
   const isUser = message.role === 'user';
   const diagramRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (message.diagram && diagramRef.current) {
@@ -77,33 +78,36 @@ export default function ChatMessage({ message }: { message: Message }) {
           'max-w-xl rounded-lg px-4 py-3 shadow-md', 
           isUser ? 'bg-primary text-primary-foreground' : 'bg-card'
       )}>
-        <div className="prose prose-p:leading-relaxed prose-p:m-0 prose-headings:m-0 prose-ul:m-0 prose-ol:m-0 prose-li:m-0 max-w-none">
-          <ReactMarkdown>{message.content}</ReactMarkdown>
+        <div ref={contentRef}>
+            <div className="prose prose-p:leading-relaxed prose-p:m-0 prose-headings:m-0 prose-ul:m-0 prose-ol:m-0 prose-li:m-0 max-w-none">
+            <ReactMarkdown>{message.content}</ReactMarkdown>
+            </div>
+
+            {message.table && <TableRenderer markdown={message.table} />}
+
+            {message.diagram && (
+                <div className="mt-4 p-4 bg-gray-100 rounded">
+                    <div ref={diagramRef} className="mermaid">
+                        {message.diagram}
+                    </div>
+                </div>
+            )}
+
+            {message.funnyGesture && (
+                <div className="mt-3 flex items-center gap-2 rounded-lg bg-blue-100 p-2 text-sm text-blue-800">
+                    <Sparkles className="h-4 w-4 flex-shrink-0" />
+                    <p className="italic">{message.funnyGesture}</p>
+                </div>
+            )}
         </div>
 
-        {message.table && <TableRenderer markdown={message.table} />}
-
-        {message.diagram && (
-            <div className="mt-4 p-4 bg-gray-100 rounded">
-                <div ref={diagramRef} className="mermaid">
-                    {message.diagram}
-                </div>
-            </div>
-        )}
-
-        {message.funnyGesture && (
-            <div className="mt-3 flex items-center gap-2 rounded-lg bg-blue-100 p-2 text-sm text-blue-800">
-                <Sparkles className="h-4 w-4 flex-shrink-0" />
-                <p className="italic">{message.funnyGesture}</p>
-            </div>
-        )}
 
         {message.courseTopics && (
             <CourseTopics topics={message.courseTopics} />
         )}
 
         {message.topic && (
-            <ActionButtons topic={message.topic} messageId={message.id}/>
+            <ActionButtons topic={message.topic} contentRef={contentRef} />
         )}
       </div>
       {isUser && (

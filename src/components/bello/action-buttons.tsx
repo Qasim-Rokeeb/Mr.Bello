@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext } from 'react';
+import { useContext, RefObject } from 'react';
 import { AppContext } from '@/context/app-context';
 import { Button } from '@/components/ui/button';
 import { FileDown, Lightbulb, Microscope, BookOpen } from 'lucide-react';
@@ -9,16 +9,15 @@ import ExampleSelector from './example-selector';
 
 interface ActionButtonsProps {
   topic: string;
-  messageId: string;
+  contentRef:  RefObject<HTMLDivElement>;
 }
 
-export default function ActionButtons({ topic, messageId }: ActionButtonsProps) {
+export default function ActionButtons({ topic, contentRef }: ActionButtonsProps) {
   const { refineExplanation, isLoading } = useContext(AppContext);
 
   const handleDownload = () => {
-    const messageElement = document.getElementById(messageId);
-    if (messageElement) {
-        const printableContent = messageElement.innerHTML;
+    if (contentRef.current) {
+        const printableContent = contentRef.current.innerHTML;
         const printWindow = window.open('', '_blank');
         if (printWindow) {
             printWindow.document.write(`
@@ -57,7 +56,7 @@ export default function ActionButtons({ topic, messageId }: ActionButtonsProps) 
   ];
 
   return (
-    <div id={messageId} className="mt-4 flex flex-wrap gap-2 border-t pt-3">
+    <div className="mt-4 flex flex-wrap gap-2 border-t pt-3">
       {actions.map(action => (
         <Button 
             key={action.label} 
