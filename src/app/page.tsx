@@ -29,7 +29,7 @@ export default function LandingPage() {
         </div>
       </main>
       <footer className="text-center p-6 text-slate-500">
-        <p>&copy; {new Date().getFullYear()} Mr.Bello. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Olalekan Codes. All rights reserved.</p>
       </footer>
     </div>
   );
