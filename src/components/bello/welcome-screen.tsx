@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext } from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { AppContext } from '@/context/app-context';
@@ -24,14 +24,14 @@ const formSchema = z.object({
 });
 
 export default function WelcomeScreen() {
-  const { saveSettings } = useContext(AppContext);
+  const { saveSettings, settings } = useContext(AppContext);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: '',
-      tone: 'Gentle',
-      humor: true,
+      name: settings.name || '',
+      tone: settings.tone || 'Gentle',
+      humor: settings.humor,
     },
   });
 

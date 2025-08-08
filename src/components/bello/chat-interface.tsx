@@ -6,6 +6,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import ChatMessage from './chat-message';
 import ChatInput from './chat-input';
 import { BrainCircuit } from 'lucide-react';
+import { SidebarTrigger } from '../ui/sidebar';
 
 export default function ChatInterface() {
   const { messages } = useContext(AppContext);
@@ -22,8 +23,9 @@ export default function ChatInterface() {
 
   return (
     <div className="flex flex-col h-full max-h-screen w-full bg-card rounded-lg shadow-2xl border-2 border-primary/10">
-       <header className="flex items-center p-3 sm:p-4 border-b">
+       <header className="flex items-center justify-between p-3 sm:p-4 border-b">
         <div className="flex items-center gap-3">
+          <SidebarTrigger className="md:hidden" />
           <div className="bg-primary text-primary-foreground rounded-full p-2">
             <BrainCircuit className="h-5 w-5 sm:h-6 sm:w-6" />
           </div>
