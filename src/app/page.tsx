@@ -98,7 +98,7 @@ export default function LandingPage() {
 
         {/* Features Section */}
         <section id="features" className="py-20 bg-white">
-            <div className="container mx-auto text-center">
+            <div className="container mx-auto text-center animate-in fade-in zoom-in-95 duration-500">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">A Smarter Way to Learn</h2>
                 <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">Everything you need to conquer complex topics and accelerate your learning.</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -121,7 +121,7 @@ export default function LandingPage() {
 
         {/* How It Works Section */}
         <section id="how-it-works" className="py-20">
-            <div className="container mx-auto text-center">
+            <div className="container mx-auto text-center animate-in fade-in zoom-in-95 duration-500">
                 <h2 className="text-3xl md:text-4xl font-bold mb-12">Get Started in 3 Easy Steps</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 relative">
                     {/* Dashed line connector for desktop */}
@@ -152,7 +152,7 @@ export default function LandingPage() {
 
         {/* Testimonials Section */}
         <section id="testimonials" className="py-20 bg-white">
-            <div className="container mx-auto text-center">
+            <div className="container mx-auto text-center animate-in fade-in zoom-in-95 duration-500">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">Loved by Learners Worldwide</h2>
                 <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">Don't just take our word for it. Here's what our users are saying.</p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -178,7 +178,7 @@ export default function LandingPage() {
 
         {/* Final CTA Section */}
         <section id="cta" className="py-20">
-            <div className="container mx-auto text-center">
+            <div className="container mx-auto text-center animate-in fade-in zoom-in-95 duration-500">
                  <div className="bg-white p-10 md:p-16 rounded-lg shadow-2xl max-w-4xl mx-auto">
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Learning?</h2>
                     <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">Join thousands of learners who are mastering new skills with their AI-powered teacher. It's free to get started!</p>
