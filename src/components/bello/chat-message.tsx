@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useRef } from 'react';
@@ -73,7 +74,7 @@ export default function ChatMessage({ message }: { message: Message }) {
     )}>
       {!isUser && (
         <Avatar className="h-10 w-10 border-2 border-primary">
-          <AvatarImage src="https://placehold.co/100x100/8F72D4/FFFFFF" data-ai-hint="friendly robot" alt="Mr. Bello" />
+          <AvatarImage src="/mr-bello.png" alt="Mr. Bello Avatar" />
           <AvatarFallback>MB</AvatarFallback>
         </Avatar>
       )}
