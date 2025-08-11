@@ -25,15 +25,19 @@ interface ExplanationParams {
   tone: Tone;
   complexity: Complexity;
   humorEnabled: boolean;
-  refinement?: 'resources';
+  refinement?: 'resources' | 'applications';
   exampleDifficulty?: ExampleDifficulty;
 }
 
 export async function handleExplanation({ topic, tone, complexity, humorEnabled, refinement, exampleDifficulty }: ExplanationParams): Promise<ActionResponse> {
   try {
     let finalTopic = topic;
+    let practicalApplications = false;
     if (refinement === 'resources') {
       finalTopic = `Provide a list of credible external online resources, including YouTube videos and PDFs, for: ${topic}`;
+    }
+    if (refinement === 'applications') {
+      practicalApplications = true;
     }
     
     const result = await generateExplanation({ 
@@ -42,6 +46,7 @@ export async function handleExplanation({ topic, tone, complexity, humorEnabled,
       complexity, 
       humorEnabled,
       exampleDifficulty,
+      practicalApplications,
     });
     
     return { success: true, data: result };

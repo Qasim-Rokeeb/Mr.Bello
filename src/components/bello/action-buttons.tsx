@@ -3,7 +3,7 @@
 import { useContext, RefObject } from 'react';
 import { AppContext } from '@/context/app-context';
 import { Button } from '@/components/ui/button';
-import { FileDown, Lightbulb, Microscope, BookOpen } from 'lucide-react';
+import { FileDown, Lightbulb, Microscope, BookOpen, Globe } from 'lucide-react';
 import ExampleSelector from './example-selector';
 
 
@@ -53,6 +53,7 @@ export default function ActionButtons({ topic, contentRef }: ActionButtonsProps)
     { label: 'Simplify', icon: Lightbulb, refinement: 'simplify' as const },
     { label: 'Technical', icon: Microscope, refinement: 'technical' as const },
     { label: 'Resources', icon: BookOpen, refinement: 'resources' as const },
+    { label: 'Applications', icon: Globe, refinement: 'applications' as const },
   ];
 
   return (

@@ -14,7 +14,7 @@ interface AppContextType {
   name: string;
   saveSettings: (settings: Settings) => void;
   sendMessage: (content: string, mode: LearningMode) => Promise<void>;
-  refineExplanation: (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources', exampleDifficulty?: ExampleDifficulty) => Promise<void>;
+  refineExplanation: (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources' | 'applications', exampleDifficulty?: ExampleDifficulty) => Promise<void>;
   startTopicFromCourse: (topic: string) => Promise<void>;
   startNewChat: () => void;
 }
@@ -127,11 +127,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const refineExplanation = async (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources', exampleDifficulty?: ExampleDifficulty) => {
+  const refineExplanation = async (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources' | 'applications', exampleDifficulty?: ExampleDifficulty) => {
     if (isLoading) return;
     
     let complexity: Complexity = 'simplified';
-    let refinementType: 'resources' | undefined = undefined;
+    let refinementType: 'resources' | 'applications' | undefined = undefined;
     let finalExampleDifficulty: ExampleDifficulty | undefined = exampleDifficulty;
     let userMessageContent = '';
     
@@ -144,6 +144,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     } else if (refinement === 'resources') {
         refinementType = 'resources';
         userMessageContent = `Can you give me some resources for "${topic}"?`;
+    } else if (refinement === 'applications') {
+        refinementType = 'applications';
+        userMessageContent = `Can you give me some practical applications for "${topic}"?`;
     } else if (refinement === 'examples') {
         userMessageContent = `Can you give me some ${finalExampleDifficulty} examples for "${topic}"?`;
     }

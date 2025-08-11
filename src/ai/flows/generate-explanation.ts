@@ -21,6 +21,7 @@ const GenerateExplanationInputSchema = z.object({
     z.enum(['simplified', 'technical']).describe('The complexity level.'),
   humorEnabled: z.boolean().describe('Whether funny gestures are enabled.'),
   exampleDifficulty: z.enum(['beginner', 'intermediate', 'advanced']).optional().describe('The difficulty of examples to provide.'),
+  practicalApplications: z.boolean().optional().describe('Whether to provide practical, real-world applications.'),
 });
 export type GenerateExplanationInput = z.infer<
   typeof GenerateExplanationInputSchema
@@ -58,6 +59,8 @@ Topic: {{{topic}}}
 {{#if exampleDifficulty}}
 Please provide examples for the topic with a difficulty level of: {{{exampleDifficulty}}}.
 The explanation should consist only of the examples.
+{{else if practicalApplications}}
+Please provide a list of practical, real-world applications for the following topic.
 {{else}}
 Explanation:  Provide a tailored explanation of the topic.
 - For a 'simplified' complexity, use very basic language and analogies.
