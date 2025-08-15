@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { BrainCircuit, BookOpen, Microscope, Lightbulb, FileDown, GraduationCap, Quote } from 'lucide-react';
+import { BrainCircuit, BookOpen, Microscope, Lightbulb, FileDown, GraduationCap, Quote, Globe } from 'lucide-react';
 import Link from 'next/link';
 
 const features = [
@@ -19,6 +19,11 @@ const features = [
     icon: <Quote className="h-8 w-8 text-primary" />,
     title: 'Real-World Examples',
     description: 'Understand concepts better with practical, relatable examples.',
+  },
+  {
+    icon: <Globe className="h-8 w-8 text-primary" />,
+    title: 'Practical Applications',
+    description: 'Explore how topics are used in the real world to solve actual problems.',
   },
   {
     icon: <GraduationCap className="h-8 w-8 text-primary" />,
@@ -41,21 +46,21 @@ const testimonials = [
   {
     name: "Alex Johnson",
     title: "Computer Science Student",
-    avatar: "https://placehold.co/100x100/E9D5FF/3730A3",
+    avatar: "https://placehold.co/100x100.png",
     dataAiHint: "student avatar",
     quote: "Mr. Bello is a game-changer. It helped me finally understand recursion. The way it breaks down complex topics is just amazing!"
   },
   {
     name: "Maria Garcia",
     title: "Lifelong Learner",
-    avatar: "https://placehold.co/100x100/D1FAE5/065F46",
+    avatar: "https://placehold.co/100x100.png",
     dataAiHint: "woman portrait",
     quote: "I love learning new things, and this app makes it so easy and fun. The 'Simplify' feature is my favorite. Highly recommended!"
   },
   {
     name: "David Chen",
     title: "High School Teacher",
-    avatar: "https://placehold.co/100x100/DBEAFE/1E40AF",
+    avatar: "https://placehold.co/100x100.png",
     dataAiHint: "teacher man",
     quote: "I use Mr. Bello to find new ways to explain difficult concepts to my students. The examples are always on point and very helpful."
   }
@@ -91,9 +96,9 @@ export default function LandingPage() {
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Mr.Bello</span>
             </h2>
             <p className="mt-6 text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
-              Your friendly AI teacher, making complex topics simple and learning an adventure.
-              Whether you want to simplify a tough subject, get technical details, find real-world examples,
-              or break down an entire course into easy modules — Mr. Bello is here to help.
+              Your friendly <span className="font-semibold text-primary">AI teacher</span>, making complex topics <span className='font-semibold text-primary'>simple and learning an adventure</span>. 
+              Whether you want to <span className="font-semibold text-secondary">simplify a tough subject</span>, get <span className="font-semibold text-secondary">technical details</span>, find <span className="font-semibold text-secondary">real-world examples</span>, 
+              or break down an <span className="font-semibold text-secondary">entire course</span> into easy modules — Mr. Bello is here to help.
             </p>
             <div className="mt-10">
               <Button
@@ -108,13 +113,13 @@ export default function LandingPage() {
         </section>
 
         {/* Features */}
-        <section className="py-20 bg-white">
-          <div className="container text-center">
+        <section id="features" className="py-20 bg-white">
+          <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">A Smarter Way to Learn</h2>
             <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
               Everything you need to conquer complex topics and accelerate your learning.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {features.map((feature, i) => (
                 <Card
                   key={i}
@@ -136,8 +141,8 @@ export default function LandingPage() {
         </section>
 
         {/* How It Works */}
-        <section className="py-20 bg-gradient-to-br from-indigo-50 to-blue-50">
-          <div className="container text-center">
+        <section id="how-it-works" className="py-20 bg-gradient-to-br from-indigo-50 to-blue-50">
+          <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
             <h2 className="text-3xl md:text-4xl font-bold mb-12">Get Started in 3 Easy Steps</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
               {['Personalize Your AI', 'Choose Your Path', 'Start Learning'].map((title, i) => (
@@ -158,8 +163,8 @@ export default function LandingPage() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-20 bg-white">
-          <div className="container text-center">
+        <section id="testimonials" className="py-20 bg-white">
+          <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Loved by Learners Worldwide</h2>
             <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
               Don't just take our word for it — here's what our users are saying.
@@ -210,8 +215,10 @@ export default function LandingPage() {
       </main>
 
       <footer className="text-center p-6 text-slate-500 bg-white border-t">
-        <p>&copy; {new Date().getFullYear()} Olalekan Codes. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Mr.Bello. All rights reserved.</p>
       </footer>
     </div>
   );
     }
+
+    
