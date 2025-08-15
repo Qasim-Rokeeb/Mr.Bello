@@ -125,7 +125,7 @@ export default function LandingPage() {
                   key={i}
                   className="text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 rounded-2xl border border-slate-100"
                 >
-                  <CardHeader>
+                  <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 shadow-inner">
                       {feature.icon}
                     </div>
