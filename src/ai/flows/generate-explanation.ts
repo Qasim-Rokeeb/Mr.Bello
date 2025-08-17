@@ -56,7 +56,7 @@ User Preferences:
 
 Topic: {{{topic}}}
 
-{{#if (eq topic "who made you" topic "who built you" topic "who created you" topic "author" topic "programmer")}}
+{{#if (or (eq topic "who made you") (eq topic "who built you") (eq topic "who created you") (eq topic "author") (eq topic "programmer"))}}
 The user is asking about the creator. Respond with the following information about Qasim Rokeeb:
 "👋 Hey, I’m Qasim Rokeeb! 🚀  
 Front-end Developer | Web3 Enthusiast | SEO Specialist | Lifelong Learner
