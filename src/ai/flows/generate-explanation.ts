@@ -56,7 +56,7 @@ User Preferences:
 
 Topic: {{{topic}}}
 
-{{#if (or (eq topic "who made you") (eq topic "who built you") (eq topic "who created you") (eq topic "author") (eq topic "programmer"))}}
+{{#if (eq topic "who made you")}}
 The user is asking about the creator. Respond with the following information about Qasim Rokeeb:
 "👋 Hey, I’m Qasim Rokeeb! 🚀  
 Front-end Developer | Web3 Enthusiast | SEO Specialist | Lifelong Learner
@@ -72,7 +72,70 @@ I build sleek, high-performing web experiences—from decentralized apps to SEO-
 - 💬 Founder of The Scholars Book Club—where learning meets action  
 - 🍫 Fueled by **chocolate**, not coffee!"
 Do not add any other text to this response.
+{{else if (eq topic "who built you")}}
+The user is asking about the creator. Respond with the following information about Qasim Rokeeb:
+"👋 Hey, I’m Qasim Rokeeb! 🚀  
+Front-end Developer | Web3 Enthusiast | SEO Specialist | Lifelong Learner
 
+I build sleek, high-performing web experiences—from decentralized apps to SEO-driven sites that rank and convert. Every project I touch is crafted with purpose, clarity, and performance in mind.
+
+---
+
+ 🌟 Quick Facts  
+- 🔧 Front-end expert exploring Solidity & Web3
+- 🚀 SEO strategist with a focus on visibility & growth  
+- 📚 Lifelong learner into psychology, marketing, and entrepreneurship  
+- 💬 Founder of The Scholars Book Club—where learning meets action  
+- 🍫 Fueled by **chocolate**, not coffee!"
+Do not add any other text to this response.
+{{else if (eq topic "who created you")}}
+The user is asking about the creator. Respond with the following information about Qasim Rokeeb:
+"👋 Hey, I’m Qasim Rokeeb! 🚀  
+Front-end Developer | Web3 Enthusiast | SEO Specialist | Lifelong Learner
+
+I build sleek, high-performing web experiences—from decentralized apps to SEO-driven sites that rank and convert. Every project I touch is crafted with purpose, clarity, and performance in mind.
+
+---
+
+ 🌟 Quick Facts  
+- 🔧 Front-end expert exploring Solidity & Web3
+- 🚀 SEO strategist with a focus on visibility & growth  
+- 📚 Lifelong learner into psychology, marketing, and entrepreneurship  
+- 💬 Founder of The Scholars Book Club—where learning meets action  
+- 🍫 Fueled by **chocolate**, not coffee!"
+Do not add any other text to this response.
+{{else if (eq topic "author")}}
+The user is asking about the creator. Respond with the following information about Qasim Rokeeb:
+"👋 Hey, I’m Qasim Rokeeb! 🚀  
+Front-end Developer | Web3 Enthusiast | SEO Specialist | Lifelong Learner
+
+I build sleek, high-performing web experiences—from decentralized apps to SEO-driven sites that rank and convert. Every project I touch is crafted with purpose, clarity, and performance in mind.
+
+---
+
+ 🌟 Quick Facts  
+- 🔧 Front-end expert exploring Solidity & Web3
+- 🚀 SEO strategist with a focus on visibility & growth  
+- 📚 Lifelong learner into psychology, marketing, and entrepreneurship  
+- 💬 Founder of The Scholars Book Club—where learning meets action  
+- 🍫 Fueled by **chocolate**, not coffee!"
+Do not add any other text to this response.
+{{else if (eq topic "programmer")}}
+The user is asking about the creator. Respond with the following information about Qasim Rokeeb:
+"👋 Hey, I’m Qasim Rokeeb! 🚀  
+Front-end Developer | Web3 Enthusiast | SEO Specialist | Lifelong Learner
+
+I build sleek, high-performing web experiences—from decentralized apps to SEO-driven sites that rank and convert. Every project I touch is crafted with purpose, clarity, and performance in mind.
+
+---
+
+ 🌟 Quick Facts  
+- 🔧 Front-end expert exploring Solidity & Web3
+- 🚀 SEO strategist with a focus on visibility & growth  
+- 📚 Lifelong learner into psychology, marketing, and entrepreneurship  
+- 💬 Founder of The Scholars Book Club—where learning meets action  
+- 🍫 Fueled by **chocolate**, not coffee!"
+Do not add any other text to this response.
 {{else if exampleDifficulty}}
 Please provide examples for the topic with a difficulty level of: {{{exampleDifficulty}}}.
 The explanation should consist only of the examples.
