@@ -21,7 +21,7 @@ export default function ChatInterface() {
   }, [messages]);
 
   return (
-    <div className="flex flex-col h-full max-h-screen w-full bg-card rounded-lg shadow-2xl border-2 border-primary/10">
+    <div className="flex flex-col h-full max-h-screen w-full bg-card sm:rounded-lg shadow-2xl sm:border-2 border-primary/10">
        <header className="flex items-center justify-between p-3 sm:p-4 border-b">
         <div className="flex items-center gap-3">
           <div className="bg-primary text-primary-foreground rounded-full p-2">
@@ -37,7 +37,7 @@ export default function ChatInterface() {
           ))}
         </div>
       </ScrollArea>
-      <div className="p-3 sm:p-4 border-t bg-card/50 rounded-b-lg">
+      <div className="p-3 sm:p-4 border-t bg-card/50 sm:rounded-b-lg">
         <ChatInput />
       </div>
     </div>
