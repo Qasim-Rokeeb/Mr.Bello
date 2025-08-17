@@ -47,7 +47,7 @@ export default function WelcomeScreen() {
                 <BrainCircuit className="h-8 w-8 sm:h-10 sm:w-10" />
             </div>
             <CardTitle className="text-2xl sm:text-3xl font-bold">
-              <span className="text-foreground">Welcome to Mr.</span><span className="text-primary">Bello</span>!
+              <span className="text-foreground">Welcome to Mr.</span><span className="text-secondary">Bello</span>!
             </CardTitle>
             <CardDescription className="text-base sm:text-lg text-muted-foreground">
             I'm Mr. Bello. Let's get you set up for learning.

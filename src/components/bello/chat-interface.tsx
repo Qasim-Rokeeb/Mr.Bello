@@ -28,7 +28,7 @@ export default function ChatInterface() {
             <BrainCircuit className="h-5 w-5 sm:h-6 sm:w-6" />
           </div>
           <h1 className="text-lg sm:text-xl font-bold">
-            <span className="text-foreground">Mr.</span><span className="text-accent">Bello</span>
+            <span className="text-foreground">Mr.</span><span className="text-secondary">Bello</span>
           </h1>
         </div>
       </header>
