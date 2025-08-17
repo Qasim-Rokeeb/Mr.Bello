@@ -27,7 +27,9 @@ export default function ChatInterface() {
           <div className="bg-primary text-primary-foreground rounded-full p-2">
             <BrainCircuit className="h-5 w-5 sm:h-6 sm:w-6" />
           </div>
-          <h1 className="text-lg sm:text-xl font-bold text-accent">Mr.Bello</h1>
+          <h1 className="text-lg sm:text-xl font-bold">
+            <span className="text-foreground">Mr.</span><span className="text-accent">Bello</span>
+          </h1>
         </div>
       </header>
       <ScrollArea className="flex-1 p-3 sm:p-4" viewportRef={viewportRef}>
@@ -43,3 +45,5 @@ export default function ChatInterface() {
     </div>
   );
 }
+
+    

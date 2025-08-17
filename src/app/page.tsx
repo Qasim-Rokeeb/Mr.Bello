@@ -75,7 +75,9 @@ export default function LandingPage() {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-3">
             <BrainCircuit className="h-8 w-8 text-primary drop-shadow-sm" />
-            <h1 className="text-2xl font-extrabold tracking-tight text-primary">Mr.Bello</h1>
+            <h1 className="text-2xl font-extrabold tracking-tight text-primary">
+              <span className="text-slate-800">Mr.</span><span className="text-primary">Bello</span>
+            </h1>
           </div>
           <Button
             asChild
@@ -221,4 +223,5 @@ export default function LandingPage() {
   );
     }
 
+    
     
