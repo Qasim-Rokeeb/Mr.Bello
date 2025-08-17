@@ -8,6 +8,7 @@ With Mr. Bello, you can:
 - Simplify complex concepts
 - Go technical for deep dives
 - Get relatable examples
+- Get creative users
 - Explore credible resources
 - Download explanations as PDFs
 - Add a touch of humor with optional funny gestures
