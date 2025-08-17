@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect, useRef } from 'react';
@@ -69,18 +68,20 @@ export default function ChatMessage({ message }: { message: Message }) {
 
   return (
     <div className={cn(
-      'flex items-start gap-4 animate-in fade-in-0', 
+      'flex items-start gap-3 sm:gap-4 animate-in fade-in-0', 
       isUser ? 'justify-end slide-in-from-right-8' : 'justify-start slide-in-from-left-8'
     )}>
       {!isUser && (
-        <Avatar className="h-10 w-10 border-2 border-primary">
+        <Avatar className="h-10 w-10 border-2 border-white shadow-md">
           <AvatarImage src="/mr-bello.png" alt="Mr. Bello Avatar" />
           <AvatarFallback>MB</AvatarFallback>
         </Avatar>
       )}
       <div className={cn(
-          'max-w-xl rounded-lg px-4 py-3 shadow-md', 
-          isUser ? 'bg-primary text-primary-foreground' : 'bg-card'
+          'max-w-xl rounded-2xl px-4 py-3 shadow-md', 
+          isUser 
+            ? 'bg-secondary text-secondary-foreground rounded-br-lg' 
+            : 'bg-white text-foreground border border-slate-100 rounded-bl-lg'
       )}>
         <div ref={contentRef}>
             <div className="prose prose-p:leading-relaxed prose-p:m-0 prose-headings:m-0 prose-ul:m-0 prose-ol:m-0 prose-li:m-0 max-w-none">
@@ -115,7 +116,7 @@ export default function ChatMessage({ message }: { message: Message }) {
         )}
       </div>
       {isUser && (
-        <Avatar className="h-10 w-10 border-2 border-secondary">
+        <Avatar className="h-10 w-10 border-2 border-white shadow-md">
           <AvatarImage src="" alt="User" />
           <AvatarFallback><User /></AvatarFallback>
         </Avatar>

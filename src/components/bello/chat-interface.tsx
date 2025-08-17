@@ -21,14 +21,14 @@ export default function ChatInterface() {
   }, [messages]);
 
   return (
-    <div className="flex flex-col h-full max-h-screen w-full bg-card sm:rounded-lg shadow-2xl sm:border-2 border-primary/10">
-       <header className="flex items-center justify-between p-3 sm:p-4 border-b">
+    <div className="flex flex-col h-full max-h-screen w-full bg-white/70 backdrop-blur-lg sm:rounded-2xl shadow-2xl sm:border border-slate-200">
+       <header className="flex items-center justify-between p-3 sm:p-4 border-b border-slate-200">
         <div className="flex items-center gap-3">
-          <div className="bg-primary text-primary-foreground rounded-full p-2">
+          <div className="bg-gradient-to-br from-primary to-secondary text-primary-foreground rounded-full p-2 shadow-inner">
             <BrainCircuit className="h-5 w-5 sm:h-6 sm:w-6" />
           </div>
           <h1 className="text-lg sm:text-xl font-bold">
-            <span className="text-foreground">Mr.</span><span className="text-secondary">Bello</span>
+            <span className="text-slate-800">Mr.</span><span className="text-secondary">Bello</span>
           </h1>
         </div>
       </header>
@@ -39,11 +39,9 @@ export default function ChatInterface() {
           ))}
         </div>
       </ScrollArea>
-      <div className="p-3 sm:p-4 border-t bg-card/50 sm:rounded-b-lg">
+      <div className="p-3 sm:p-4 border-t border-slate-200 bg-white/50 sm:rounded-b-2xl">
         <ChatInput />
       </div>
     </div>
   );
 }
-
-    
