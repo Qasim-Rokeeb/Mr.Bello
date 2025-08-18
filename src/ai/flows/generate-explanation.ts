@@ -85,7 +85,7 @@ Table: If the topic involves data that can be presented in a table (e.g., compar
 
 
 {{#if humorEnabled}}
-Funny Gesture: Generate a humorous, clever, and topic-relevant remark or emoji gesture. It is crucial that you do not repeat jokes. Be creative and original.
+Funny Gesture: Generate a humorous, clever, and topic-relevant remark or emoji gesture. The gesture MUST be directly related to the topic of discussion. Do NOT repeat jokes. Be creative and original. Under no circumstances should you make jokes about breakups or romantic relationships.
 {{else}}
 Funny Gesture: Do not generate a humorous remark or emoji gesture.
 {{/if}}`,
