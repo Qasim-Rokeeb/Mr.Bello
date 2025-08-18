@@ -34,7 +34,7 @@ export async function handleExplanation({ topic, tone, complexity, humorEnabled,
     let finalTopic = topic;
     let practicalApplications = false;
     if (refinement === 'resources') {
-      finalTopic = `Provide a list of credible external online resources, including YouTube videos and PDFs, for: ${topic}`;
+      finalTopic = `Provide a list of credible external online resources for: ${topic}. This list should include YouTube videos, articles, and PDFs. You must also research and include the most recommended or popular book on this topic.`;
     }
     if (refinement === 'applications') {
       practicalApplications = true;
