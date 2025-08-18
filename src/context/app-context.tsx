@@ -75,7 +75,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  const processResponse = useCallback(async (content: string, mode: LearningMode) => {
+  const processResponse = useCallback(async (content: string, mode: LearningMode, currentMessages: Message[]) => {
     if (mode === 'course') {
       const response = await handleCourseBreakdown(content);
       if (response.success) {
@@ -94,6 +94,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         tone: settings.tone,
         complexity: 'simplified',
         humorEnabled: settings.humor,
+        history: currentMessages,
       });
       if (response.success) {
         setMessages(prev => [...prev, {
@@ -115,11 +116,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     if (isLoading || !content.trim()) return;
 
     const userMessage: Message = { id: id(), role: 'user', content };
-    setMessages(prev => [...prev, userMessage]);
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
     setIsLoading(true);
 
     try {
-      await processResponse(content, mode);
+      await processResponse(content, mode, newMessages);
     } catch (e) {
       handleError('An unexpected error occurred.');
     } finally {
@@ -152,7 +154,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
 
     const userMessage: Message = { id: id(), role: 'user', content: userMessageContent };
-    setMessages(prev => [...prev, userMessage]);
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
     setIsLoading(true);
 
     try {
@@ -163,6 +166,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         humorEnabled: settings.humor,
         refinement: refinementType,
         exampleDifficulty: finalExampleDifficulty,
+        history: newMessages,
       });
 
       if (response.success) {
@@ -189,7 +193,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     if (isLoading) return;
     
     const userMessage: Message = { id: id(), role: 'user', content: `Please explain: ${topic}` };
-    setMessages(prev => [...prev, userMessage]);
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
     setIsLoading(true);
 
     try {
@@ -198,6 +203,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         tone: settings.tone,
         complexity: 'simplified',
         humorEnabled: settings.humor,
+        history: newMessages,
       });
 
       if (response.success) {

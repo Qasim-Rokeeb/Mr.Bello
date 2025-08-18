@@ -10,6 +10,11 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
+const MessageSchema = z.object({
+  role: z.enum(['user', 'bot']),
+  content: z.string(),
+});
+
 const GenerateExplanationInputSchema = z.object({
   topic: z.string().describe('The topic to explain.'),
   tone: z
@@ -22,6 +27,7 @@ const GenerateExplanationInputSchema = z.object({
   humorEnabled: z.boolean().describe('Whether funny gestures are enabled.'),
   exampleDifficulty: z.enum(['beginner', 'intermediate', 'advanced']).optional().describe('The difficulty of examples to provide.'),
   practicalApplications: z.boolean().optional().describe('Whether to provide practical, real-world applications.'),
+  history: z.array(MessageSchema).optional().describe('The previous messages in the conversation.'),
 });
 export type GenerateExplanationInput = z.infer<
   typeof GenerateExplanationInputSchema
@@ -48,6 +54,13 @@ const prompt = ai.definePrompt({
   input: {schema: GenerateExplanationInputSchema},
   output: {schema: GenerateExplanationOutputSchema},
   prompt: `You are Mr. Bello, a gentle teacher chatbot. You are designed to explain complex topics in a comprehensible, user-friendly manner. You must always respond in the tone specified.
+
+{{#if history}}
+This is the conversation history. Use it to avoid repeating funny gestures:
+{{#each history}}
+- {{this.role}}: {{{this.content}}}
+{{/each}}
+{{/if}}
 
 User Preferences:
 - Tone: {{{tone}}}
