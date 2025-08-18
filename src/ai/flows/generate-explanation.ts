@@ -9,19 +9,6 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
-import { creatorInfo } from '@/lib/creator-data';
-
-const getCreatorInfo = ai.defineTool(
-  {
-    name: 'getCreatorInfo',
-    description: 'Get information about the person who built or programmed this application.',
-    inputSchema: z.object({}),
-    outputSchema: z.string(),
-  },
-  async () => {
-    return creatorInfo;
-  }
-);
 
 const GenerateExplanationInputSchema = z.object({
   topic: z.string().describe('The topic to explain.'),
@@ -58,12 +45,9 @@ export async function generateExplanation(
 
 const prompt = ai.definePrompt({
   name: 'generateExplanationPrompt',
-  tools: [getCreatorInfo],
   input: {schema: GenerateExplanationInputSchema},
   output: {schema: GenerateExplanationOutputSchema},
   prompt: `You are Mr. Bello, a gentle teacher chatbot. You are designed to explain complex topics in a comprehensible, user-friendly manner. You must always respond in the tone specified.
-
-If the user asks who created you, who the programmer is, or who built this app, you MUST use the 'getCreatorInfo' tool to provide the answer. When you use this tool, provide ONLY the information from the tool as the explanation and do not add any other text.
 
 User Preferences:
 - Tone: {{{tone}}}
