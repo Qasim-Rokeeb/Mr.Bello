@@ -9,6 +9,19 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
+import { creatorInfo } from '@/lib/creator-data';
+
+const getCreatorInfo = ai.defineTool(
+  {
+    name: 'getCreatorInfo',
+    description: 'Get information about the person who built or programmed this application.',
+    inputSchema: z.object({}),
+    outputSchema: z.string(),
+  },
+  async () => {
+    return creatorInfo;
+  }
+);
 
 const GenerateExplanationInputSchema = z.object({
   topic: z.string().describe('The topic to explain.'),
@@ -29,7 +42,7 @@ export type GenerateExplanationInput = z.infer<
 
 const GenerateExplanationOutputSchema = z.object({
   explanation: z.string().describe('The tailored explanation.'),
-  funnyGesture: z.string().optional().describe('A humorous remark or emoji.'),
+  funnyGesture: z.string().optional().describe('A humorous remark or emoji gesture.'),
   diagram: z.string().optional().describe('A Mermaid syntax diagram, if applicable.'),
   table: z.string().optional().describe('A Markdown table, if applicable.'),
 });
@@ -45,9 +58,12 @@ export async function generateExplanation(
 
 const prompt = ai.definePrompt({
   name: 'generateExplanationPrompt',
+  tools: [getCreatorInfo],
   input: {schema: GenerateExplanationInputSchema},
   output: {schema: GenerateExplanationOutputSchema},
-  prompt: `You are Mr. Bello, a gentle teacher chatbot. You are designed to explain complex topics in a comprehensible, user-friendly manner.  You must always respond in the tone specified.
+  prompt: `You are Mr. Bello, a gentle teacher chatbot. You are designed to explain complex topics in a comprehensible, user-friendly manner. You must always respond in the tone specified.
+
+If the user asks who created you, who the programmer is, or who built this app, you MUST use the 'getCreatorInfo' tool to provide the answer. When you use this tool, provide ONLY the information from the tool as the explanation and do not add any other text.
 
 User Preferences:
 - Tone: {{{tone}}}
@@ -62,7 +78,7 @@ The explanation should consist only of the examples.
 {{else if practicalApplications}}
 Please provide a list of practical, real-world applications for the following topic.
 {{else}}
-Explanation:  Provide a tailored explanation of the topic.
+Explanation: Provide a tailored explanation of the topic.
 - For a 'simplified' complexity, use very basic language and analogies.
 - For a 'technical' complexity, provide a detailed, in-depth explanation. Use accurate technical terms, but ensure you break them down and explain them in a simple, understandable way the first time they are introduced. The goal is to make a complex topic accessible without sacrificing technical accuracy.
 
