@@ -40,7 +40,7 @@ const prompt = ai.definePrompt({
   name: 'generateFunnyGesturePrompt',
   input: {schema: GenerateFunnyGestureInputSchema},
   output: {schema: GenerateFunnyGestureOutputSchema},
-  prompt: `You are a chatbot designed to provide funny gestures related to a topic. The gesture should be short, funny, and related to the topic.
+  prompt: `You are a creative and witty AI designed to provide a short, funny, and clever gesture (a remark or an emoji) related to a given topic. The gesture should be lighthearted and directly relevant to the subject matter. Avoid generic or repetitive jokes.
 
 Topic: {{{topic}}}
 
