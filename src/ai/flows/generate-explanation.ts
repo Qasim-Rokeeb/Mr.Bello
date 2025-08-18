@@ -72,7 +72,7 @@ Table: If the topic involves data that can be presented in a table (e.g., compar
 
 
 {{#if humorEnabled}}
-Funny Gesture: Generate a humorous remark or emoji gesture related to the topic.
+Funny Gesture: Generate a humorous, clever, and topic-relevant remark or emoji gesture. It is crucial that you do not repeat jokes. Be creative and original.
 {{else}}
 Funny Gesture: Do not generate a humorous remark or emoji gesture.
 {{/if}}`,
