@@ -53,6 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
        <head>
+       <meta name="google-site-verification" content="S4BXCgKSgJyFAhOJS_P8ojh9VFpAVHYo0b9mTyGN8uM" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
