@@ -3,17 +3,18 @@
 import { useContext, RefObject } from 'react';
 import { AppContext } from '@/context/app-context';
 import { Button } from '@/components/ui/button';
-import { FileDown, Lightbulb, Microscope, BookOpen, Globe } from 'lucide-react';
+import { FileDown, Lightbulb, Microscope, BookOpen, Globe, MessageSquareQuote } from 'lucide-react';
 import ExampleSelector from './example-selector';
 
 
 interface ActionButtonsProps {
   topic: string;
+  content: string;
   contentRef:  RefObject<HTMLDivElement>;
 }
 
-export default function ActionButtons({ topic, contentRef }: ActionButtonsProps) {
-  const { refineExplanation, isLoading } = useContext(AppContext);
+export default function ActionButtons({ topic, content, contentRef }: ActionButtonsProps) {
+  const { refineExplanation, simplifyResponse, isLoading } = useContext(AppContext);
 
   const handleDownload = () => {
     if (contentRef.current) {
@@ -71,6 +72,15 @@ export default function ActionButtons({ topic, contentRef }: ActionButtonsProps)
         </Button>
       ))}
       <ExampleSelector topic={topic} />
+      <Button
+          variant="outline"
+          size="sm"
+          onClick={() => simplifyResponse(topic, content)}
+          disabled={isLoading}
+        >
+          <MessageSquareQuote className="mr-2 h-4 w-4" />
+          Explain This Response
+        </Button>
       <Button variant="outline" size="sm" onClick={handleDownload}>
         <FileDown className="mr-2 h-4 w-4" />
         Download PDF

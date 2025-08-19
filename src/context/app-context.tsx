@@ -15,6 +15,7 @@ interface AppContextType {
   saveSettings: (settings: Settings) => void;
   sendMessage: (content: string, mode: LearningMode) => Promise<void>;
   refineExplanation: (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources' | 'applications', exampleDifficulty?: ExampleDifficulty) => Promise<void>;
+  simplifyResponse: (topic: string, responseToSimplify: string) => Promise<void>;
   startTopicFromCourse: (topic: string) => Promise<void>;
   startNewChat: () => void;
 }
@@ -189,6 +190,45 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const simplifyResponse = async (topic: string, responseToSimplify: string) => {
+    if (isLoading) return;
+
+    const userMessageContent = `Can you explain this response in a simpler way?`;
+    const userMessage: Message = { id: id(), role: 'user', content: userMessageContent };
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
+    setIsLoading(true);
+
+    try {
+      const response = await handleExplanation({
+        topic: topic,
+        tone: settings.tone,
+        complexity: 'simplified',
+        humorEnabled: settings.humor,
+        history: newMessages,
+        responseToSimplify: responseToSimplify,
+      });
+
+      if (response.success) {
+        setMessages(prev => [...prev, {
+          id: id(),
+          role: 'bot',
+          topic: topic,
+          content: response.data.explanation,
+          funnyGesture: response.data.funnyGesture,
+          diagram: response.data.diagram,
+          table: response.data.table,
+        }]);
+      } else {
+        handleError(response.error || 'Unknown error');
+      }
+    } catch (e) {
+      handleError('An unexpected error occurred.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const startTopicFromCourse = async (topic: string) => {
     if (isLoading) return;
     
@@ -235,6 +275,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     saveSettings,
     sendMessage,
     refineExplanation,
+    simplifyResponse,
     startTopicFromCourse,
     startNewChat,
   };

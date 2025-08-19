@@ -28,9 +28,10 @@ interface ExplanationParams {
   history?: Message[];
   refinement?: 'resources' | 'applications';
   exampleDifficulty?: ExampleDifficulty;
+  responseToSimplify?: string;
 }
 
-export async function handleExplanation({ topic, tone, complexity, humorEnabled, history, refinement, exampleDifficulty }: ExplanationParams): Promise<ActionResponse> {
+export async function handleExplanation({ topic, tone, complexity, humorEnabled, history, refinement, exampleDifficulty, responseToSimplify }: ExplanationParams): Promise<ActionResponse> {
   try {
     let finalTopic = topic;
     let practicalApplications = false;
@@ -49,6 +50,7 @@ export async function handleExplanation({ topic, tone, complexity, humorEnabled,
       history: history?.map(m => ({ role: m.role, content: m.content })),
       exampleDifficulty,
       practicalApplications,
+      responseToSimplify,
     });
     
     return { success: true, data: result };

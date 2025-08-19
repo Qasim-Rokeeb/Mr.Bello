@@ -28,6 +28,7 @@ const GenerateExplanationInputSchema = z.object({
   exampleDifficulty: z.enum(['beginner', 'intermediate', 'advanced']).optional().describe('The difficulty of examples to provide.'),
   practicalApplications: z.boolean().optional().describe('Whether to provide practical, real-world applications.'),
   history: z.array(MessageSchema).optional().describe('The previous messages in the conversation.'),
+  responseToSimplify: z.string().optional().describe('A specific response to simplify further.'),
 });
 export type GenerateExplanationInput = z.infer<
   typeof GenerateExplanationInputSchema
@@ -67,6 +68,10 @@ User Preferences:
 - Complexity: {{{complexity}}}
 - Humor Enabled: {{#if humorEnabled}}Yes{{else}}No{{/if}}
 
+{{#if responseToSimplify}}
+The user wants a simpler explanation of the following text. Break it down for them in a very basic way.
+Text to simplify: {{{responseToSimplify}}}
+{{else}}
 Topic: {{{topic}}}
 
 {{#if exampleDifficulty}}
@@ -81,6 +86,7 @@ Explanation: Provide a tailored explanation of the topic.
 
 Diagram: If the topic can be visualized with a flowchart, sequence, or relationship diagram, provide a Mermaid syntax diagram for it. Otherwise, leave it empty.
 Table: If the topic involves data that can be presented in a table (e.g., comparisons, classifications), provide a Markdown table for it. Otherwise, leave it empty.
+{{/if}}
 {{/if}}
 
 

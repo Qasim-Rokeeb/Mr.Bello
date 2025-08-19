@@ -134,7 +134,7 @@ export default function ChatMessage({ message }: { message: Message }) {
             )}
 
             {message.funnyGesture && (
-                <div className="mt-3 flex items-center gap-2 rounded-lg bg-blue-100 p-2 text-sm text-blue-800">
+                <div className="mt-3 flex items-center gap-2 rounded-lg bg-primary/10 p-2 text-sm text-primary/80">
                     <Sparkles className="h-4 w-4 flex-shrink-0" />
                     <p className="italic">{message.funnyGesture}</p>
                 </div>
@@ -147,7 +147,7 @@ export default function ChatMessage({ message }: { message: Message }) {
         )}
 
         {message.topic && (
-            <ActionButtons topic={message.topic} contentRef={contentRef} />
+            <ActionButtons topic={message.topic} content={message.content} contentRef={contentRef} />
         )}
       </div>
       {isUser && (
