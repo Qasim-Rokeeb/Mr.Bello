@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: 'Mr. Bello',
     images: [
       {
-        url: 'https://placehold.co/1200x630.png', // Replace with your actual OG image URL
+        url: '/og-image.png', // Replace with your actual OG image URL
         width: 1200,
         height: 630,
         alt: 'Mr. Bello - AI Teacher on a friendly background',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mr. Bello – Your Personal AI Teacher for Any Topic',
     description: 'Unlock your potential with a friendly AI guide. Simplify complex topics, get real-world examples, and learn at your own pace.',
-    images: ['https://placehold.co/1200x630.png'], // Replace with your actual OG image URL
+    images: ['/og-image.png'], // Replace with your actual OG image URL
   },
   robots: {
     index: true,
