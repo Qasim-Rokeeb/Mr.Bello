@@ -84,7 +84,7 @@ export default function ChatMessage({ message }: { message: Message }) {
             : 'bg-white text-foreground border border-slate-100 rounded-bl-lg'
       )}>
         <div ref={contentRef}>
-            <div className="prose prose-p:leading-relaxed prose-p:m-0 prose-headings:m-0 prose-ul:m-0 prose-ol:m-0 prose-li:m-0 max-w-none">
+            <div className="prose prose-p:leading-relaxed prose-p:m-0 prose-headings:m-0 prose-ul:m-0 prose-ol:m-0 prose-li:m-0 max-w-none text-base">
             <ReactMarkdown>{message.content}</ReactMarkdown>
             </div>
 
