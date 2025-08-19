@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Message } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import ActionButtons from './action-buttons';
 import CourseTopics from './course-topics';
-import { Sparkles, User } from 'lucide-react';
+import { Sparkles, User, Copy, Check } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import mermaid from 'mermaid';
 import {
@@ -17,6 +17,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from '../ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 
 mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
@@ -57,6 +59,8 @@ export default function ChatMessage({ message }: { message: Message }) {
   const isUser = message.role === 'user';
   const diagramRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const [isCopied, setIsCopied] = useState(false);
+  const { toast } = useToast();
 
   useEffect(() => {
     if (message.diagram && diagramRef.current) {
@@ -66,9 +70,27 @@ export default function ChatMessage({ message }: { message: Message }) {
     }
   }, [message.diagram]);
 
+  const handleCopy = () => {
+    let textToCopy = message.content;
+    if (message.table) {
+      textToCopy += `\n\n${message.table}`;
+    }
+    if (message.diagram) {
+        textToCopy += `\n\nDiagram (Mermaid Syntax):\n${message.diagram}`;
+    }
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      setIsCopied(true);
+      toast({ title: "Copied to clipboard!" });
+      setTimeout(() => setIsCopied(false), 2000);
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+      toast({ variant: 'destructive', title: "Failed to copy" });
+    });
+  };
+
   return (
     <div className={cn(
-      'flex items-start gap-3 sm:gap-4 animate-in fade-in-0', 
+      'group/message flex items-start gap-3 sm:gap-4 animate-in fade-in-0', 
       isUser ? 'justify-end slide-in-from-right-8' : 'justify-start slide-in-from-left-8'
     )}>
       {!isUser && (
@@ -78,11 +100,24 @@ export default function ChatMessage({ message }: { message: Message }) {
         </Avatar>
       )}
       <div className={cn(
-          'max-w-xl rounded-2xl px-4 py-3 shadow-md', 
+          'relative max-w-xl rounded-2xl px-4 py-3 shadow-md', 
           isUser 
             ? 'bg-secondary text-secondary-foreground rounded-br-lg' 
             : 'bg-white text-foreground border border-slate-100 rounded-bl-lg'
       )}>
+
+        {!isUser && (
+             <Button
+                variant="ghost"
+                size="icon"
+                className="absolute top-2 right-2 h-7 w-7 text-muted-foreground opacity-0 transition-opacity group-hover/message:opacity-100"
+                onClick={handleCopy}
+            >
+                {isCopied ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+                <span className="sr-only">Copy</span>
+            </Button>
+        )}
+       
         <div ref={contentRef}>
             <div className="prose prose-p:leading-relaxed prose-p:m-0 prose-headings:m-0 prose-ul:m-0 prose-ol:m-0 prose-li:m-0 max-w-none text-base">
             <ReactMarkdown>{message.content}</ReactMarkdown>
