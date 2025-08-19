@@ -117,7 +117,7 @@ export default function LandingPage() {
         {/* Features */}
         <section id="features" className="py-20 bg-white">
           <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">A Smarter Way to Learn</h2>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">A Smarter Way to Learn</h3>
             <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
               Everything you need to conquer complex topics and accelerate your learning.
             </p>
@@ -145,14 +145,14 @@ export default function LandingPage() {
         {/* How It Works */}
         <section id="how-it-works" className="py-20 bg-gradient-to-br from-indigo-50 to-blue-50">
           <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12">Get Started in 3 Easy Steps</h2>
+            <h3 className="text-3xl md:text-4xl font-bold mb-12">Get Started in 3 Easy Steps</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
               {['Personalize Your AI', 'Choose Your Path', 'Start Learning'].map((title, i) => (
                 <div key={i} className="flex flex-col items-center gap-4">
                   <div className="flex items-center justify-center h-16 w-16 bg-primary text-white rounded-full text-2xl font-bold shadow-lg border-4 border-white">
                     {i + 1}
                   </div>
-                  <h3 className="text-xl font-semibold">{title}</h3>
+                  <h4 className="text-xl font-semibold">{title}</h4>
                   <p className="text-slate-600 max-w-xs">
                     {i === 0 && 'Choose a tone and tell Mr. Bello your name for a personalized learning experience.'}
                     {i === 1 && 'Ask about a specific topic or have Mr. Bello break down an entire course.'}
@@ -167,7 +167,7 @@ export default function LandingPage() {
         {/* Testimonials */}
         <section id="testimonials" className="py-20 bg-white">
           <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Loved by Learners Worldwide</h2>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">Loved by Learners Worldwide</h3>
             <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
               Don't just take our word for it — here's what our users are saying.
             </p>
@@ -181,7 +181,7 @@ export default function LandingPage() {
                   <p className="text-slate-600 flex-1 mb-6">"{t.quote}"</p>
                   <div className="flex items-center gap-4">
                     <Avatar>
-                      <AvatarImage src={t.avatar} alt={t.name} data-ai-hint={t.dataAiHint} />
+                      <AvatarImage src={t.avatar} alt={`${t.name} - ${t.title}`} data-ai-hint={t.dataAiHint} />
                       <AvatarFallback>{t.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <div>
@@ -199,7 +199,7 @@ export default function LandingPage() {
         <section className="py-20">
           <div className="container text-center">
             <div className="bg-gradient-to-br from-white to-indigo-50 p-10 md:p-16 rounded-2xl shadow-2xl max-w-4xl mx-auto border border-slate-100">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Learning?</h2>
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Learning?</h3>
               <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
                 Join thousands of learners mastering new skills with their AI-powered teacher. It's free to get started!
               </p>
@@ -217,11 +217,10 @@ export default function LandingPage() {
       </main>
 
       <footer className="text-center p-6 text-slate-500 bg-white border-t">
-        <p>&copy; {new Date().getFullYear()} Mr.Bello. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Mr.Bello. All rights reserved. Made with ❤️ for lifelong learners.</p>
       </footer>
     </div>
   );
-    }
+}
 
-    
     

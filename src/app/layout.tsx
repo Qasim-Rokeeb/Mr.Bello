@@ -7,8 +7,9 @@ import { AppProvider } from '@/context/app-context';
 const inter = Inter({subsets: ['latin'], variable: '--font-sans'});
 
 export const metadata: Metadata = {
-  title: 'Mr. Bello – Your Personal AI Teacher',
-  description: 'Mr. Bello is an AI-powered teacher that explains complex topics in a simple, personalized, and engaging way. Learn anything, from science to economics, step-by-step.',
+  title: 'Mr. Bello – Your Personal AI Teacher for Any Topic',
+  description: 'Mr. Bello is a friendly AI-powered teacher that makes learning easy. Get simple explanations, technical details, course breakdowns, and real-world examples for any subject.',
+  keywords: ['AI teacher', 'learn anything', 'education app', 'complex topics simplified', 'course breakdown', 'AI learning assistant'],
   openGraph: {
     title: 'Mr. Bello – Your Personal AI Teacher',
     description: 'Unlock your potential with a friendly AI guide. Simplify complex topics, get real-world examples, and learn at your own pace.',
@@ -27,9 +28,20 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mr. Bello – Your Personal AI Teacher',
+    title: 'Mr. Bello – Your Personal AI Teacher for Any Topic',
     description: 'Unlock your potential with a friendly AI guide. Simplify complex topics, get real-world examples, and learn at your own pace.',
     images: ['https://placehold.co/1200x630.png'], // Replace with your actual OG image URL
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
@@ -57,3 +69,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+    
