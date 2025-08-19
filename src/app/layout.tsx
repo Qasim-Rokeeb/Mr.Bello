@@ -7,8 +7,30 @@ import { AppProvider } from '@/context/app-context';
 const inter = Inter({subsets: ['latin'], variable: '--font-sans'});
 
 export const metadata: Metadata = {
-  title: 'Mr.Bello',
-  description: 'An AI-powered, gentle teacher chatbot that explains complex topics in a comprehensible, user-friendly manner.',
+  title: 'Mr. Bello – Your Personal AI Teacher',
+  description: 'Mr. Bello is an AI-powered teacher that explains complex topics in a simple, personalized, and engaging way. Learn anything, from science to economics, step-by-step.',
+  openGraph: {
+    title: 'Mr. Bello – Your Personal AI Teacher',
+    description: 'Unlock your potential with a friendly AI guide. Simplify complex topics, get real-world examples, and learn at your own pace.',
+    url: 'https://mr-bello.ai', // Replace with your actual domain
+    siteName: 'Mr. Bello',
+    images: [
+      {
+        url: 'https://placehold.co/1200x630.png', // Replace with your actual OG image URL
+        width: 1200,
+        height: 630,
+        alt: 'Mr. Bello - AI Teacher on a friendly background',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Mr. Bello – Your Personal AI Teacher',
+    description: 'Unlock your potential with a friendly AI guide. Simplify complex topics, get real-world examples, and learn at your own pace.',
+    images: ['https://placehold.co/1200x630.png'], // Replace with your actual OG image URL
+  },
 };
 
 export default function RootLayout({
