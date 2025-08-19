@@ -44,18 +44,18 @@ const features = [
 
 const testimonials = [
   {
-    name: "Alex Johnson",
-    title: "Computer Science Student",
+    name: "Khadija",
+    title: "Physiology Student",
     avatar: "https://placehold.co/100x100.png",
     dataAiHint: "student avatar",
-    quote: "Mr. Bello is a game-changer. It helped me finally understand recursion. The way it breaks down complex topics is just amazing!"
+    quote: "Mr. Bello is a game-changer. A very nice application that breaks down complex terms. Really makes learning a lot more easy and fun."
   },
   {
-    name: "Maria Garcia",
-    title: "Lifelong Learner",
+    name: "Abraham",
+    title: "Information System student",
     avatar: "https://placehold.co/100x100.png",
     dataAiHint: "woman portrait",
-    quote: "I love learning new things, and this app makes it so easy and fun. The 'Simplify' feature is my favorite. Highly recommended!"
+    quote: "I find Mr.Bello very useful in explaining and breaking complex topics, 'Simplify' feature is my favorite. Highly recommended!"
   },
   {
     name: "David Chen",
