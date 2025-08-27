@@ -44,26 +44,26 @@ export default function WelcomeScreen() {
         <Card className="w-full max-w-lg shadow-2xl my-4 sm:my-15 border-2 border-primary/10 animate-in fade-in-0 zoom-in-95 duration-500">
         <CardHeader className="text-center">
             <div className="mx-auto bg-primary text-primary-foreground rounded-full p-3 w-fit mb-4">
-                <BrainCircuit className="h-8 w-8 sm:h-10 sm:w-10" />
+                <BrainCircuit className="h-8 w-8" />
             </div>
             <CardTitle className="text-2xl sm:text-3xl font-bold">
               <span className="text-foreground">Welcome to Mr.</span><span className="text-secondary">Bello</span>!
             </CardTitle>
-            <CardDescription className="text-base sm:text-lg text-muted-foreground">
+            <CardDescription className="text-base text-muted-foreground">
             I'm Mr. Bello. Let's get you set up for learning.
             </CardDescription>
         </CardHeader>
         <CardContent>
             <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
                 control={form.control}
                 name="name"
                 render={({ field }) => (
                     <FormItem>
-                    <FormLabel className="text-base sm:text-lg">What should I call you?</FormLabel>
+                    <FormLabel className="text-base">What should I call you?</FormLabel>
                     <FormControl>
-                        <Input placeholder="e.g., Alex" {...field} className="text-base sm:text-lg py-5 sm:py-6" />
+                        <Input placeholder="e.g., Alex" {...field} className="text-base py-5" />
                     </FormControl>
                     <FormMessage />
                     </FormItem>
@@ -75,17 +75,17 @@ export default function WelcomeScreen() {
                 name="tone"
                 render={({ field }) => (
                     <FormItem className="space-y-3">
-                    <FormLabel className="text-base sm:text-lg">Choose my tone:</FormLabel>
+                    <FormLabel className="text-base">Choose my tone:</FormLabel>
                     <FormControl>
                         <RadioGroup
                         onValueChange={field.onChange}
                         defaultValue={field.value}
-                        className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4"
+                        className="grid grid-cols-2 sm:grid-cols-3 gap-2"
                         >
                         {tones.map((tone) => (
                             <FormItem key={tone} className="flex-1">
                             <RadioGroupItem value={tone} className="sr-only peer" id={`tone-${tone}`} />
-                            <Label htmlFor={`tone-${tone}`} className="block w-full cursor-pointer rounded-lg border-2 border-muted bg-popover p-3 sm:p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary peer-data-[state=checked]:shadow-lg transition-all text-center text-sm sm:text-base font-medium">
+                            <Label htmlFor={`tone-${tone}`} className="block w-full cursor-pointer rounded-lg border-2 border-muted bg-popover p-3 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary peer-data-[state=checked]:shadow-lg transition-all text-center text-sm font-medium">
                                 {tone}
                             </Label>
                             </FormItem>
@@ -101,9 +101,9 @@ export default function WelcomeScreen() {
                 control={form.control}
                 name="humor"
                 render={({ field }) => (
-                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 sm:p-4 shadow-sm">
+                    <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
                     <div className="space-y-0.5">
-                        <FormLabel className="text-base sm:text-lg">Enable Funny Gestures?</FormLabel>
+                        <FormLabel className="text-base">Enable Funny Gestures?</FormLabel>
                     </div>
                     <FormControl>
                         <Switch
@@ -114,7 +114,7 @@ export default function WelcomeScreen() {
                     </FormItem>
                 )}
                 />
-                <Button type="submit" size="lg" className="w-full text-base sm:text-lg py-6 sm:py-7 bg-secondary hover:bg-secondary/90">
+                <Button type="submit" size="lg" className="w-full text-base py-6 bg-secondary hover:bg-secondary/90">
                 Start Learning
                 </Button>
             </form>
@@ -124,5 +124,3 @@ export default function WelcomeScreen() {
     </div>
   );
 }
-
-    

@@ -27,7 +27,7 @@ export default function ChatInput() {
     : "e.g., 'Introduction to Psychology'";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4">
       <RadioGroup
         value={mode}
         onValueChange={(value: LearningMode) => setMode(value)}
@@ -36,11 +36,11 @@ export default function ChatInput() {
       >
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="topic" id="r1" />
-          <Label htmlFor="r1" className="text-sm sm:text-base">Explain a Topic</Label>
+          <Label htmlFor="r1" className="text-sm">Explain a Topic</Label>
         </div>
         <div className="flex items-center space-x-2">
           <RadioGroupItem value="course" id="r2" />
-          <Label htmlFor="r2" className="text-sm sm:text-base">Breakdown a Course</Label>
+          <Label htmlFor="r2" className="text-sm">Breakdown a Course</Label>
         </div>
       </RadioGroup>
       <div className="flex items-start gap-2 sm:gap-4">
@@ -58,7 +58,7 @@ export default function ChatInput() {
           }}
           disabled={isLoading}
         />
-        <Button type="submit" size="icon" disabled={isLoading || !inputValue.trim()} className="h-10 w-10 sm:h-12 sm:w-12 bg-secondary hover:bg-secondary/80">
+        <Button type="submit" size="icon" disabled={isLoading || !inputValue.trim()} className="h-10 w-10 shrink-0 bg-secondary hover:bg-secondary/80">
           {isLoading ? <LoaderCircle className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
           <span className="sr-only">Send</span>
         </Button>

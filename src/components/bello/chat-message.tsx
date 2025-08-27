@@ -91,10 +91,10 @@ export default function ChatMessage({ message }: { message: Message }) {
   return (
     <div className={cn(
       'group/message flex items-start gap-3 sm:gap-4 animate-in fade-in-0', 
-      isUser ? 'justify-end slide-in-from-right-8' : 'justify-start slide-in-from-left-8'
+      isUser ? 'justify-end' : 'justify-start'
     )}>
       {!isUser && (
-        <Avatar className="h-10 w-10 border-2 border-white shadow-md">
+        <Avatar className="h-8 w-8 sm:h-10 sm:w-10 border-2 border-white shadow-md">
           <AvatarImage src="/mr-bello.png" alt="Mr. Bello Avatar" />
           <AvatarFallback>MB</AvatarFallback>
         </Avatar>
@@ -151,7 +151,7 @@ export default function ChatMessage({ message }: { message: Message }) {
         )}
       </div>
       {isUser && (
-        <Avatar className="h-10 w-10 border-2 border-white shadow-md">
+        <Avatar className="h-8 w-8 sm:h-10 sm:w-10 border-2 border-white shadow-md">
           <AvatarImage src="" alt="User" />
           <AvatarFallback><User /></AvatarFallback>
         </Avatar>

@@ -22,12 +22,12 @@ export default function ChatInterface() {
 
   return (
     <div className="flex flex-col h-full max-h-screen w-full bg-white/70 backdrop-blur-xl sm:rounded-2xl shadow-2xl sm:border border-slate-200/50">
-       <header className="flex items-center justify-between p-3 sm:p-4 border-b border-slate-200/80">
+       <header className="flex items-center justify-between p-4 border-b border-slate-200/80">
         <div className="flex items-center gap-3">
           <div className="bg-gradient-to-br from-primary to-secondary text-primary-foreground rounded-full p-2 shadow-inner">
-            <BrainCircuit className="h-5 w-5 sm:h-6 sm:w-6" />
+            <BrainCircuit className="h-6 w-6" />
           </div>
-          <h1 className="text-lg sm:text-xl font-bold">
+          <h1 className="text-xl font-bold">
             <span className="text-slate-800">Mr.</span><span className="text-secondary">Bello</span>
           </h1>
         </div>
@@ -39,7 +39,7 @@ export default function ChatInterface() {
           ))}
         </div>
       </ScrollArea>
-      <div className="p-3 sm:p-4 border-t border-slate-200/80 bg-white/50 sm:rounded-b-2xl">
+      <div className="p-4 border-t border-slate-200/80 bg-white/50 sm:rounded-b-2xl">
         <ChatInput />
       </div>
     </div>
