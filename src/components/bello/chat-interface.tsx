@@ -41,6 +41,9 @@ export default function ChatInterface() {
       </ScrollArea>
       <div className="p-4 border-t border-slate-200/80 bg-white/50 sm:rounded-b-2xl z-10">
         <ChatInput />
+        <p className="text-xs text-center text-muted-foreground mt-2 px-2">
+            Mr. Bello can make mistakes. Consider checking important information.
+        </p>
       </div>
     </div>
   );
