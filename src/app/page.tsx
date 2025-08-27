@@ -71,7 +71,7 @@ export default function LandingPage() {
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 text-slate-800">
       
       {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur-lg shadow-sm">
+      <header className="fixed top-0 z-50 w-full border-b bg-white/80 backdrop-blur-lg shadow-sm">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-3">
             <BrainCircuit className="h-8 w-8 text-secondary drop-shadow-sm" />
@@ -88,7 +88,7 @@ export default function LandingPage() {
         </div>
       </header>
 
-      <main className="flex-1">
+      <main className="flex-1 pt-16">
         
         {/* Hero */}
         <section className="container flex flex-col items-center text-center py-24 md:py-32">
@@ -222,5 +222,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
-    
