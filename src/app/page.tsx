@@ -117,7 +117,7 @@ export default function LandingPage() {
         {/* Features */}
         <section id="features" className="py-20 bg-white">
           <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">A Smarter Way to Learn</h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">A Smarter Way to <span className="text-secondary">Learn</span></h3>
             <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
               Everything you need to conquer complex topics and accelerate your learning.
             </p>
