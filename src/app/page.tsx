@@ -106,7 +106,7 @@ export default function LandingPage() {
               <Button
                 asChild
                 size="lg"
-                className="text-lg px-8 py-6 bg-gradient-to-r from-secondary to-primary text-white shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                className="text-lg px-8 py-6 bg-gradient-to-r from-secondary to-primary text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-in fade-in-0 slide-in-from-bottom-8 duration-1000"
               >
                 <Link href="/chat">Start Learning Now</Link>
               </Button>
@@ -125,7 +125,8 @@ export default function LandingPage() {
               {features.map((feature, i) => (
                 <Card
                   key={i}
-                  className="text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 rounded-2xl border border-slate-100"
+                  className="text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 rounded-2xl border border-slate-100 animate-in fade-in-0 slide-in-from-bottom-12"
+                  style={{ animationDelay: `${i * 100}ms` }}
                 >
                   <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 shadow-inner">
@@ -148,7 +149,7 @@ export default function LandingPage() {
             <h3 className="text-3xl md:text-4xl font-bold mb-12">Get Started in 3 Easy Steps</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
               {['Personalize Your AI', 'Choose Your Path', 'Start Learning'].map((title, i) => (
-                <div key={i} className="flex flex-col items-center gap-4">
+                <div key={i} className="flex flex-col items-center gap-4 animate-in fade-in-0 slide-in-from-bottom-12" style={{ animationDelay: `${i * 150}ms` }}>
                   <div className="flex items-center justify-center h-16 w-16 bg-primary text-white rounded-full text-2xl font-bold shadow-lg border-4 border-white">
                     {i + 1}
                   </div>
@@ -175,7 +176,8 @@ export default function LandingPage() {
               {testimonials.map((t, i) => (
                 <Card
                   key={i}
-                  className="flex flex-col justify-between p-6 shadow-lg hover:shadow-2xl rounded-2xl border border-slate-100 transition-all"
+                  className="flex flex-col justify-between p-6 shadow-lg hover:shadow-2xl rounded-2xl border border-slate-100 transition-all animate-in fade-in-0 slide-in-from-bottom-12"
+                  style={{ animationDelay: `${i * 150}ms` }}
                 >
                   <Quote className="h-8 w-8 text-primary/30 mb-4" />
                   <p className="text-slate-600 flex-1 mb-6">"{t.quote}"</p>
@@ -198,7 +200,7 @@ export default function LandingPage() {
         {/* Final CTA */}
         <section className="py-20">
           <div className="container text-center">
-            <div className="bg-gradient-to-br from-white to-indigo-50 p-10 md:p-16 rounded-2xl shadow-2xl max-w-4xl mx-auto border border-slate-100">
+            <div className="bg-gradient-to-br from-white to-indigo-50 p-10 md:p-16 rounded-2xl shadow-2xl max-w-4xl mx-auto border border-slate-100 animate-in fade-in zoom-in-95 duration-500">
               <h3 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Learning?</h3>
               <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
                 Join thousands of learners mastering new skills with their AI-powered teacher. It's free to get started!
