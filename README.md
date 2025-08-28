@@ -57,7 +57,7 @@ With Mr. Bello, you can:
 - **Styling:** Tailwind CSS / Chakra UI
 - **AI Engine:** OpenAI API or equivalent NLP service
 - **PDF Export:** jsPDF
-
+-
 ---
 
 
