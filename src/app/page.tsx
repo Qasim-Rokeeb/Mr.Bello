@@ -217,7 +217,7 @@ export default function LandingPage() {
       </main>
 
       <footer className="text-center p-6 text-slate-500 bg-white border-t">
-        <p>&copy; {new Date().getFullYear()} Mr.Bello. All rights reserved. Made with ❤️ for lifelong learners.</p>
+        <p>&copy; {new Date().getFullYear()} <span className="font-bold">Mr.Bello</span>. All rights reserved. Made with ❤️ for lifelong learners.</p>
       </footer>
     </div>
   );
