@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { BrainCircuit, BookOpen, Microscope, Lightbulb, FileDown, GraduationCap, Quote, Globe, Twitter, Github } from 'lucide-react';
+import { GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Quote, Globe, Twitter, Github } from 'lucide-react';
 import Link from 'next/link';
 
 const features = [
@@ -74,7 +74,7 @@ export default function LandingPage() {
       <header className="fixed top-0 z-50 w-full border-b bg-white/80 backdrop-blur-lg shadow-sm">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-3">
-            <BrainCircuit className="h-8 w-8 text-secondary drop-shadow-sm" />
+            <GraduationCap className="h-8 w-8 text-secondary drop-shadow-sm" />
             <h1 className="text-2xl font-extrabold tracking-tight text-primary">
               <span className="text-slate-800">Mr.</span><span className="text-secondary">Bello</span>
             </h1>

@@ -13,7 +13,7 @@ import { Switch } from '@/components/ui/switch';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { BrainCircuit } from 'lucide-react';
+import { GraduationCap } from 'lucide-react';
 
 const tones: Tone[] = ['Gentle', 'Encouraging', 'Formal', 'Fun', 'Sarcastic', 'Creative'];
 
@@ -44,7 +44,7 @@ export default function WelcomeScreen() {
         <Card className="w-full max-w-lg shadow-2xl my-4 sm:my-15 border-2 border-primary/10 animate-in fade-in-0 zoom-in-95 duration-500">
         <CardHeader className="text-center">
             <div className="mx-auto bg-primary text-primary-foreground rounded-full p-3 w-fit mb-4">
-                <BrainCircuit className="h-8 w-8" />
+                <GraduationCap className="h-8 w-8" />
             </div>
             <CardTitle className="text-2xl sm:text-3xl font-bold">
               <span className="text-foreground">Welcome to Mr.</span><span className="text-secondary">Bello</span>!
