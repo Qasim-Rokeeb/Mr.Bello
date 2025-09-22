@@ -219,7 +219,8 @@ export default function LandingPage() {
       </main>
 
       <footer className="text-center p-6 text-slate-500 bg-white border-t">
-        <div className="flex justify-center items-center flex-col gap-4">
+        <div className="flex justify-center items-center gap-4">
+          <p>Connect with the developer</p>
           <div className="flex justify-center gap-6">
             <Link href="#" className="hover:text-primary transition-colors">
                 <svg
@@ -233,7 +234,6 @@ export default function LandingPage() {
             </Link>
             <Link href="#" className="hover:text-primary transition-colors"><Github className="h-6 w-6" /></Link>
           </div>
-          <p>Connect with the developer</p>
         </div>
       </footer>
     </div>
