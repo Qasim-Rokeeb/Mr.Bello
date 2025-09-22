@@ -219,7 +219,8 @@ export default function LandingPage() {
       </main>
 
       <footer className="text-center p-6 text-slate-500 bg-white border-t">
-        <div className="flex justify-center gap-6 mb-4">
+        <div className="flex justify-center items-center flex-col gap-4">
+          <div className="flex justify-center gap-6">
             <Link href="#" className="hover:text-primary transition-colors">
                 <svg
                     className="h-6 w-6"
@@ -231,8 +232,9 @@ export default function LandingPage() {
                 </svg>
             </Link>
             <Link href="#" className="hover:text-primary transition-colors"><Github className="h-6 w-6" /></Link>
+          </div>
+          <p>Connect with the developer</p>
         </div>
-        <p>&copy; {new Date().getFullYear()} <span className="font-bold">Mr.Bello</span>. All rights reserved. Made with ❤️ for lifelong learners.</p>
       </footer>
     </div>
   );
