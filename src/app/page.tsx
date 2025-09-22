@@ -1,7 +1,7 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Quote, Globe, Github } from 'lucide-react';
+import { Quote, GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Globe, Github } from 'lucide-react';
 import Link from 'next/link';
 
 const features = [
