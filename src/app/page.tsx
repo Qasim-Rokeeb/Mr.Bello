@@ -46,22 +46,16 @@ const testimonials = [
   {
     name: "Khadija",
     title: "Physiology Student",
-    avatar: "https://placehold.co/100x100.png",
-    dataAiHint: "student avatar",
     quote: "Mr. Bello is a game-changer. A very nice application that breaks down complex terms. Really makes learning a lot more easy and fun."
   },
   {
     name: "Abraham",
     title: "Information System student",
-    avatar: "https://placehold.co/100x100.png",
-    dataAiHint: "woman portrait",
     quote: "I find Mr.Bello very useful in explaining and breaking complex topics, 'Simplify' feature is my favorite. Highly recommended!"
   },
   {
     name: "David Chen",
     title: "High School Teacher",
-    avatar: "https://placehold.co/100x100.png",
-    dataAiHint: "teacher man",
     quote: "I use Mr. Bello to find new ways to explain difficult concepts to my students. The examples are always on point and very helpful."
   }
 ];
@@ -183,7 +177,7 @@ export default function LandingPage() {
                   <p className="text-slate-600 flex-1 mb-6">"{t.quote}"</p>
                   <div className="flex items-center gap-4">
                     <Avatar>
-                      <AvatarImage src={t.avatar} alt={`${t.name} - ${t.title}`} data-ai-hint={t.dataAiHint} />
+                      <AvatarImage src="" alt={`${t.name} - ${t.title}`} />
                       <AvatarFallback>{t.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <div>
