@@ -220,12 +220,12 @@ export default function LandingPage() {
 
       <footer className="text-center p-6 text-slate-500 bg-white border-t">
         <div className="flex flex-col items-center gap-4">
-            <div className="flex items-center gap-4">
-                <p className="text-sm">Connect with the developer</p>
-                <div className="flex justify-center gap-6">
+            <div className="flex items-center gap-2">
+                <p className="text-xs">Connect with the developer</p>
+                <div className="flex justify-center gap-3">
                     <Link href="#" className="hover:text-primary transition-colors">
                         <svg
-                            className="h-6 w-6"
+                            className="h-5 w-5"
                             fill="currentColor"
                             viewBox="0 0 24 24"
                             aria-hidden="true"
@@ -233,7 +233,7 @@ export default function LandingPage() {
                             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                         </svg>
                     </Link>
-                    <Link href="#" className="hover:text-primary transition-colors"><Github className="h-6 w-6" /></Link>
+                    <Link href="#" className="hover:text-primary transition-colors"><Github className="h-5 w-5" /></Link>
                 </div>
             </div>
              <div className="flex items-center gap-2">
