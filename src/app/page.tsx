@@ -221,7 +221,7 @@ export default function LandingPage() {
       <footer className="text-center p-6 text-slate-500 bg-white border-t">
         <div className="flex flex-col items-center gap-4">
             <div className="flex items-center gap-4">
-                <p>Connect with the developer</p>
+                <p className="text-sm">Connect with the developer</p>
                 <div className="flex justify-center gap-6">
                     <Link href="#" className="hover:text-primary transition-colors">
                         <svg
