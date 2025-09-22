@@ -236,8 +236,11 @@ export default function LandingPage() {
                     <Link href="#" className="hover:text-primary transition-colors"><Github className="h-6 w-6" /></Link>
                 </div>
             </div>
-            <p className="text-sm text-slate-500 mt-2">Built with ❤️ for lifelong learners</p>
-            <p className="text-sm text-slate-500">© 2024 Mr. Bello. All rights reserved.</p>
+             <div className="flex items-center gap-2">
+                <p className="text-sm text-slate-500">Built with ❤️ for lifelong learners</p>
+                <span className="text-slate-400">|</span>
+                <p className="text-sm text-slate-500">© 2024 <span className="font-bold">Mr.Bello</span>. All rights reserved.</p>
+            </div>
         </div>
       </footer>
     </div>
