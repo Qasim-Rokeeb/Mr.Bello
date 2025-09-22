@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Quote, Globe, Twitter, Github } from 'lucide-react';
+import { GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Quote, Globe, X, Github } from 'lucide-react';
 import Link from 'next/link';
 
 const features = [
@@ -220,7 +220,7 @@ export default function LandingPage() {
 
       <footer className="text-center p-6 text-slate-500 bg-white border-t">
         <div className="flex justify-center gap-6 mb-4">
-            <Link href="#" className="hover:text-primary transition-colors"><Twitter className="h-6 w-6" /></Link>
+            <Link href="#" className="hover:text-primary transition-colors"><X className="h-6 w-6" /></Link>
             <Link href="#" className="hover:text-primary transition-colors"><Github className="h-6 w-6" /></Link>
         </div>
         <p>&copy; {new Date().getFullYear()} <span className="font-bold">Mr.Bello</span>. All rights reserved. Made with ❤️ for lifelong learners.</p>
