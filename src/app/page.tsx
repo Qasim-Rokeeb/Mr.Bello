@@ -237,6 +237,7 @@ export default function LandingPage() {
                 </div>
             </div>
             <p className="text-sm text-slate-500 mt-2">Built with ❤️ for lifelong learners</p>
+            <p className="text-sm text-slate-500">© 2024 Mr. Bello. All rights reserved.</p>
         </div>
       </footer>
     </div>
