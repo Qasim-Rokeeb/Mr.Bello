@@ -175,15 +175,9 @@ export default function LandingPage() {
                 >
                   <Quote className="h-8 w-8 text-primary/30 mb-4" />
                   <p className="text-slate-600 flex-1 mb-6">"{t.quote}"</p>
-                  <div className="flex items-center gap-4">
-                    <Avatar>
-                      <AvatarImage src="" alt={`${t.name} - ${t.title}`} />
-                      <AvatarFallback>{t.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="font-semibold">{t.name}</p>
-                      <p className="text-sm text-slate-500">{t.title}</p>
-                    </div>
+                  <div>
+                    <p className="font-semibold">{t.name}</p>
+                    <p className="text-sm text-slate-500">{t.title}</p>
                   </div>
                 </Card>
               ))}
