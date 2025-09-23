@@ -92,7 +92,7 @@ export default function LandingPage() {
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Mr.Bello</span>
             </h2>
             <p className="mt-6 text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
-              Your friendly <span className="font-semibold text-primary">AI teacher</span>, making complex topics <span className='font-semibold text-primary'>simple and learning an adventure</span>. 
+              Your friendly <span className="font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">AI teacher</span>, making complex topics <span className='font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>simple and learning an adventure</span>. 
               Whether you want to <span className="font-semibold text-secondary">simplify a tough subject</span>, get <span className="font-semibold text-secondary">technical details</span>, find <span className="font-semibold text-secondary">real-world examples</span>, 
               or break down an <span className="font-semibold text-secondary">entire course</span> into easy modules — Mr. Bello is here to help.
             </p>
@@ -140,7 +140,7 @@ export default function LandingPage() {
         {/* How It Works */}
         <section id="how-it-works" className="py-20 bg-gradient-to-br from-indigo-50 to-blue-50">
           <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
-            <h3 className="text-3xl md:text-4xl font-bold mb-12">Get Started in 3 Easy Steps</h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-12"><span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Get Started in 3 Easy Steps</span></h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
               {['Personalize Your AI', 'Choose Your Path', 'Start Learning'].map((title, i) => (
                 <div key={i} className="flex flex-col items-center gap-4 animate-in fade-in-0 slide-in-from-bottom-12" style={{ animationDelay: `${'i * 150'}ms` }}>
@@ -162,7 +162,7 @@ export default function LandingPage() {
         {/* Testimonials */}
         <section id="testimonials" className="py-20 bg-white">
           <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">Loved by Learners Worldwide</h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-4"><span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Loved by Learners Worldwide</span></h3>
             <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
               Don't just take our word for it — here's what our users are saying.
             </p>
@@ -189,7 +189,7 @@ export default function LandingPage() {
         <section className="py-20">
           <div className="container text-center">
             <div className="bg-gradient-to-br from-white to-indigo-50 p-10 md:p-16 rounded-2xl shadow-2xl max-w-4xl mx-auto border border-slate-100 animate-in fade-in zoom-in-95 duration-500">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Learning?</h3>
+              <h3 className="text-3xl md:text-4xl font-bold mb-4"><span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Ready to Transform Your Learning?</span></h3>
               <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
                 Join thousands of learners mastering new skills with their AI-powered teacher. It's free to get started!
               </p>
