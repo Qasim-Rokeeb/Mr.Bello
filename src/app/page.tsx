@@ -215,6 +215,7 @@ export default function LandingPage() {
                 className="text-lg px-8 py-6 bg-gradient-to-r from-secondary to-primary text-white shadow-lg hover:shadow-xl transition-all hover:scale-105"
               >
                 <Link href="/chat">Start Learning</Link>
+              {/* I removed 'now' here */}
               </Button>
             </div>
           </div>
