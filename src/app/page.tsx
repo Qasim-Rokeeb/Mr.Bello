@@ -214,7 +214,7 @@ export default function LandingPage() {
                 size="lg"
                 className="text-lg px-8 py-6 bg-gradient-to-r from-secondary to-primary text-white shadow-lg hover:shadow-xl transition-all hover:scale-105"
               >
-                <Link href="/chat">Start Learning Now</Link>
+                <Link href="/chat">Start Learning</Link>
               </Button>
             </div>
           </div>
