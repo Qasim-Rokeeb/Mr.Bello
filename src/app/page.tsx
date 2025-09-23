@@ -109,9 +109,8 @@ export default function LandingPage() {
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Mr.Bello</span>
             </h2>
             <p className="mt-6 text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
-              Your friendly <span className="font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">AI teacher</span>, making complex topics <span className='font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent'>simple and learning an adventure</span>. 
-              Whether you want to <span className="font-semibold text-secondary">simplify a tough subject</span>, get <span className="font-semibold text-secondary">technical details</span>, find <span className="font-semibold text-secondary">real-world examples</span>, 
-              or break down an <span className="font-semibold text-secondary">entire course</span> into easy modules — Mr. Bello is here to help.
+              Your friendly <span className="font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">AI teacher</span> for any topic.
+              Simplify tough subjects, get real-world examples, or break down an entire course.
             </p>
             <div className="mt-10">
               <Button
@@ -251,3 +250,5 @@ export default function LandingPage() {
     </div>
   );
 }
+
+    
