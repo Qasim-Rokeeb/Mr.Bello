@@ -1,8 +1,12 @@
 
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Quote, GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Globe, Github } from 'lucide-react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 const features = [
   {
@@ -61,11 +65,24 @@ const testimonials = [
 ];
 
 export default function LandingPage() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 text-slate-800">
       
       {/* Header */}
-      <header className="fixed top-0 z-50 w-full border-b bg-white/80 backdrop-blur-lg shadow-sm">
+      <header className={cn("fixed top-0 z-50 w-full border-b bg-white/80 backdrop-blur-lg transition-all duration-300", scrolled ? "shadow-md" : "shadow-none")}>
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-3">
             <GraduationCap className="h-8 w-8 text-secondary drop-shadow-sm" />
@@ -234,3 +251,5 @@ export default function LandingPage() {
     </div>
   );
 }
+
+    
