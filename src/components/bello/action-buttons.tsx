@@ -5,6 +5,8 @@ import { AppContext } from '@/context/app-context';
 import { Button } from '@/components/ui/button';
 import { FileDown, Lightbulb, Microscope, BookOpen, Globe, MessageSquareQuote } from 'lucide-react';
 import ExampleSelector from './example-selector';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 
 interface ActionButtonsProps {
@@ -18,35 +20,23 @@ export default function ActionButtons({ topic, content, contentRef }: ActionButt
 
   const handleDownload = () => {
     if (contentRef.current) {
-        const printableContent = contentRef.current.innerHTML;
-        const printWindow = window.open('', '_blank');
-        if (printWindow) {
-            printWindow.document.write(`
-                <html>
-                    <head>
-                        <title>Mr.Bello Explanation</title>
-                        <script src="https://cdn.tailwindcss.com"></script>
-                        <style>
-                            @media print {
-                                body { font-family: sans-serif; }
-                                .no-print { display: none; }
-                            }
-                        </style>
-                    </head>
-                    <body class="p-8">
-                        <h1 class="text-2xl font-bold mb-4">Topic: ${topic}</h1>
-                        <div>${printableContent}</div>
-                    </body>
-                </html>
-            `);
-            printWindow.document.close();
-            printWindow.focus();
-            // Timeout to allow content to load before printing
-            setTimeout(() => {
-                printWindow.print();
-                printWindow.close();
-            }, 500);
-        }
+      const input = contentRef.current;
+      html2canvas(input, {
+        scale: 2, // Increase resolution
+        useCORS: true, 
+        backgroundColor: '#ffffff' // Set a white background to avoid transparent areas
+      }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF({
+          orientation: 'portrait',
+          unit: 'px',
+          format: [canvas.width, canvas.height]
+        });
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save(`${topic.replace(/ /g, '_')}.pdf`);
+      });
     }
   };
 
@@ -81,7 +71,7 @@ export default function ActionButtons({ topic, content, contentRef }: ActionButt
           <MessageSquareQuote className="mr-2 h-4 w-4" />
           Explain This Response
         </Button>
-      <Button variant="outline" size="sm" onClick={handleDownload}>
+      <Button variant="outline" size="sm" onClick={handleDownload} disabled={isLoading}>
         <FileDown className="mr-2 h-4 w-4" />
         Download PDF
       </Button>
