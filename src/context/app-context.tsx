@@ -2,7 +2,7 @@
 
 import React, { createContext, useState, useCallback, ReactNode, useEffect } from 'react';
 import type { Settings, Message, Tone, Complexity, LearningMode, ExampleDifficulty } from '@/lib/types';
-import { handleCourseBreakdown, handleExplanation } from '@/app/actions';
+import { handleCourseBreakdown, handleExplanation, handleQuizGeneration } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
 import { id } from '@/lib/utils';
 
@@ -16,6 +16,7 @@ interface AppContextType {
   sendMessage: (content: string, mode: LearningMode) => Promise<void>;
   refineExplanation: (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources' | 'applications', exampleDifficulty?: ExampleDifficulty) => Promise<void>;
   simplifyResponse: (topic: string, responseToSimplify: string) => Promise<void>;
+  generateQuiz: (topic: string) => Promise<void>;
   startTopicFromCourse: (topic: string) => Promise<void>;
   startNewChat: () => void;
 }
@@ -229,6 +230,34 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const generateQuiz = async (topic: string) => {
+    if (isLoading) return;
+    
+    const userMessage: Message = { id: id(), role: 'user', content: `Quiz me on "${topic}"` };
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
+    setIsLoading(true);
+
+    try {
+      const response = await handleQuizGeneration(topic);
+
+      if (response.success) {
+        setMessages(prev => [...prev, {
+          id: id(),
+          role: 'bot',
+          content: `Here is a quiz for you on "${topic}". Good luck!`,
+          quizQuestions: response.data,
+        }]);
+      } else {
+        handleError(response.error || 'Unknown error');
+      }
+    } catch (e) {
+      handleError('An unexpected error occurred while generating the quiz.');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
   const startTopicFromCourse = async (topic: string) => {
     if (isLoading) return;
     
@@ -276,6 +305,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     sendMessage,
     refineExplanation,
     simplifyResponse,
+    generateQuiz,
     startTopicFromCourse,
     startNewChat,
   };

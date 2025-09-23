@@ -3,7 +3,7 @@
 import { useContext, RefObject, useState } from 'react';
 import { AppContext } from '@/context/app-context';
 import { Button } from '@/components/ui/button';
-import { FileDown, Lightbulb, Microscope, BookOpen, Globe, MessageSquareQuote, LoaderCircle } from 'lucide-react';
+import { FileDown, Lightbulb, Microscope, BookOpen, Globe, MessageSquareQuote, LoaderCircle, HelpCircle } from 'lucide-react';
 import ExampleSelector from './example-selector';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -16,7 +16,7 @@ interface ActionButtonsProps {
 }
 
 export default function ActionButtons({ topic, content, contentRef }: ActionButtonsProps) {
-  const { refineExplanation, simplifyResponse, isLoading } = useContext(AppContext);
+  const { refineExplanation, simplifyResponse, generateQuiz, isLoading } = useContext(AppContext);
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownload = () => {
@@ -74,6 +74,15 @@ export default function ActionButtons({ topic, content, contentRef }: ActionButt
         >
           <MessageSquareQuote className="mr-2 h-4 w-4" />
           Explain This Response
+        </Button>
+        <Button 
+            variant="outline" 
+            size="sm" 
+            onClick={() => generateQuiz(topic)}
+            disabled={isLoading || isDownloading}
+        >
+            <HelpCircle className="mr-2 h-4 w-4" />
+            Quiz Me
         </Button>
       <Button variant="outline" size="sm" onClick={handleDownload} disabled={isLoading || isDownloading}>
         {isDownloading ? (

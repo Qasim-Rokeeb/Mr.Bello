@@ -2,6 +2,7 @@
 
 import { courseTopicBreakdown } from '@/ai/flows/breakdown-course';
 import { generateExplanation } from '@/ai/flows/generate-explanation';
+import { generateQuiz } from '@/ai/flows/generate-quiz';
 import type { Complexity, Tone, ExampleDifficulty, Message } from '@/lib/types';
 
 interface ActionResponse {
@@ -57,5 +58,15 @@ export async function handleExplanation({ topic, tone, complexity, humorEnabled,
   } catch (error) {
     console.error('Error generating explanation:', error);
     return { success: false, error: 'Failed to generate explanation. Please try again.' };
+  }
+}
+
+export async function handleQuizGeneration(topic: string): Promise<ActionResponse> {
+  try {
+    const result = await generateQuiz({ topic });
+    return { success: true, data: result.questions };
+  } catch (error) {
+    console.error('Error generating quiz:', error);
+    return { success: false, error: 'Failed to generate the quiz. Please try again.' };
   }
 }

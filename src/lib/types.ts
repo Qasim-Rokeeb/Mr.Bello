@@ -11,6 +11,13 @@ export interface Settings {
 
 export type MessageRole = 'user' | 'bot';
 
+export interface QuizQuestion {
+  questionText: string;
+  options: string[];
+  correctAnswer: string;
+  explanation: string;
+}
+
 export interface Message {
   id: string;
   role: MessageRole;
@@ -20,4 +27,5 @@ export interface Message {
   courseTopics?: string[];
   diagram?: string;
   table?: string;
+  quizQuestions?: QuizQuestion[];
 }

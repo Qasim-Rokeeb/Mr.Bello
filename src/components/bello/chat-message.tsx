@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import ActionButtons from './action-buttons';
 import CourseTopics from './course-topics';
+import QuizDisplay from './quiz-display';
 import { Sparkles, User, Copy, Check } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import mermaid from 'mermaid';
@@ -132,6 +133,8 @@ export default function ChatMessage({ message }: { message: Message }) {
                     </div>
                 </div>
             )}
+            
+            {message.quizQuestions && <QuizDisplay questions={message.quizQuestions} />}
 
             {message.funnyGesture && (
                 <div className="mt-3 flex items-center gap-2 rounded-lg bg-primary/10 p-2 text-sm text-primary/80">
