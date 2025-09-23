@@ -137,7 +137,7 @@ export default function LandingPage() {
                 <Card
                   key={i}
                   className="text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 rounded-2xl border border-slate-100 animate-in fade-in-0 slide-in-from-bottom-12"
-                  style={{ animationDelay: `${'i * 100'}ms` }}
+                  style={{ animationDelay: `${i * 100}ms` }}
                 >
                   <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 shadow-inner">
@@ -160,7 +160,7 @@ export default function LandingPage() {
             <h3 className="text-3xl md:text-4xl font-bold mb-12"><span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Get Started in 3 Easy Steps</span></h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
               {['Personalize Your AI', 'Choose Your Path', 'Start Learning'].map((title, i) => (
-                <div key={i} className="flex flex-col items-center gap-4 animate-in fade-in-0 slide-in-from-bottom-12" style={{ animationDelay: `${'i * 150'}ms` }}>
+                <div key={i} className="flex flex-col items-center gap-4 animate-in fade-in-0 slide-in-from-bottom-12" style={{ animationDelay: `${i * 150}ms` }}>
                   <div className="flex items-center justify-center h-16 w-16 bg-primary text-white rounded-full text-2xl font-bold shadow-lg border-4 border-white">
                     {i + 1}
                   </div>
@@ -188,7 +188,7 @@ export default function LandingPage() {
                 <Card
                   key={i}
                   className="flex flex-col justify-between p-6 shadow-lg hover:shadow-2xl rounded-2xl border border-slate-100 transition-all animate-in fade-in-0 slide-in-from-bottom-12"
-                  style={{ animationDelay: `${'i * 150'}ms` }}
+                  style={{ animationDelay: `${i * 150}ms` }}
                 >
                   <Quote className="h-8 w-8 text-primary/30 mb-4" />
                   <p className="text-slate-600 flex-1 mb-6">"{t.quote}"</p>
@@ -251,5 +251,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
-    
