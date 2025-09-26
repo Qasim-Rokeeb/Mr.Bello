@@ -64,6 +64,45 @@ const testimonials = [
   }
 ];
 
+const howItWorksSteps = [
+    {
+      title: 'Personalize Your AI',
+      description: 'Choose a tone and tell Mr. Bello your name for a personalized learning experience.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 2a5 5 0 0 1 5 5c0 1.84-.98 3.46-2.43 4.39" />
+          <path d="M20.57 16.32a9 9 0 0 0-17.14 0" />
+          <path d="M2.43 12.61C1 11.53 0 9.89 0 8a5 5 0 0 1 10 0c0 1.84-.98 3.46-2.43 4.39" />
+          <path d="m16.89 12.6 1.77 1.77" />
+          <path d="m6.11 12.6-1.77 1.77" />
+          <path d="M12 12.6V16" />
+        </svg>
+      )
+    },
+    {
+      title: 'Choose Your Path',
+      description: 'Ask about a specific topic or have Mr. Bello break down an entire course.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M14.5 18H8a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1" />
+          <path d="M9 18V6" />
+          <path d="m14 13 3 3 3-3" />
+          <path d="M17 16V9" />
+        </svg>
+      )
+    },
+    {
+      title: 'Start Learning',
+      description: 'Refine explanations, get examples, and keep learning at your pace.',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="m12 6 6 6-6 6" />
+          <path d="m6 6 6 6-6 6" />
+        </svg>
+      )
+    }
+  ];
+
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -157,16 +196,14 @@ export default function LandingPage() {
           <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
             <h3 className="text-3xl md:text-4xl font-bold mb-12"><span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Get Started in 3 Easy Steps</span></h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
-              {['Personalize Your AI', 'Choose Your Path', 'Start Learning'].map((title, i) => (
+              {howItWorksSteps.map((step, i) => (
                 <div key={i} className="flex flex-col items-center gap-4 animate-in fade-in-0 slide-in-from-bottom-12" style={{ animationDelay: `${i * 150}ms` }}>
-                  <div className="flex items-center justify-center h-16 w-16 bg-primary text-primary-foreground rounded-full text-2xl font-bold shadow-lg border-4 border-white">
-                    {i + 1}
+                   <div className="flex items-center justify-center h-16 w-16 bg-primary/10 rounded-full shadow-inner">
+                    {step.icon}
                   </div>
-                  <h4 className="text-xl font-semibold text-foreground">{title}</h4>
+                  <h4 className="text-xl font-semibold text-foreground">{step.title}</h4>
                   <p className="text-muted-foreground max-w-xs">
-                    {i === 0 && 'Choose a tone and tell Mr. Bello your name for a personalized learning experience.'}
-                    {i === 1 && 'Ask about a specific topic or have Mr. Bello break down an entire course.'}
-                    {i === 2 && 'Refine explanations, get examples, and keep learning at your pace.'}
+                    {step.description}
                   </p>
                 </div>
               ))}
