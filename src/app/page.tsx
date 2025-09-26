@@ -82,7 +82,7 @@ export default function LandingPage() {
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       
       {/* Header */}
-      <header className={cn("fixed top-0 z-50 w-full border-b bg-background/80 backdrop-blur-lg transition-all duration-300", scrolled ? "shadow-md border-border" : "border-transparent")}>
+      <header className={cn("fixed top-0 z-50 w-full border-b transition-all duration-300", scrolled ? "border-border bg-background/80 shadow-md backdrop-blur-lg" : "border-transparent")}>
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-3">
             <GraduationCap className="h-8 w-8 text-primary drop-shadow-sm" />
@@ -109,7 +109,7 @@ export default function LandingPage() {
               <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Mr.Bello</span>
             </h2>
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              Your friendly AI teacher for any topic. Making learning simple and an adventure.
+              Your friendly AI teacher for any topic. Ask a question, or break down an entire course. Learning has never been this simple.
             </p>
             <div className="mt-10">
               <Button
@@ -254,3 +254,6 @@ export default function LandingPage() {
 
     
 
+
+
+    
