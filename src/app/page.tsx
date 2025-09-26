@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Progress } from '@/components/ui/progress';
+import { FancySeparator } from '@/components/ui/fancy-separator';
 
 const features = [
   {
@@ -181,6 +182,8 @@ export default function LandingPage() {
           </div>
         </section>
 
+        <FancySeparator />
+
         {/* How It Works */}
         <section id="how-it-works" className="py-20 bg-background">
             <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
@@ -225,6 +228,8 @@ export default function LandingPage() {
             </div>
         </section>
 
+        <FancySeparator />
+
         {/* Testimonials */}
         <section id="testimonials" className="py-20 bg-background">
           <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
@@ -254,6 +259,8 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+
+        <FancySeparator />
 
         {/* Newsletter CTA */}
         <section className="py-20">
