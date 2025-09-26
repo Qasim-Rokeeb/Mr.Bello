@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Progress } from '@/components/ui/progress';
 import { FancySeparator } from '@/components/ui/fancy-separator';
+import { SpotlightButton } from '@/components/ui/spotlight-button';
 
 const features = [
   {
@@ -142,13 +143,9 @@ export default function LandingPage() {
               Your friendly AI teacher for any topic. Ask a question, or break down an entire course. Learning has never been this simple.
             </p>
             <div className="mt-10 animate-in fade-in-0 slide-in-from-bottom-8 duration-700" style={{ animationDelay: '400ms' }}>
-              <Button
-                asChild
-                size="lg"
-                className="text-lg px-8 py-6 bg-gradient-to-br from-primary to-blue-400 text-primary-foreground shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-200 ease-out hover:-translate-y-1"
-              >
+              <SpotlightButton asChild>
                 <Link href="/chat">Start Learning Now</Link>
-              </Button>
+              </SpotlightButton>
             </div>
           </div>
         </section>
@@ -388,6 +385,8 @@ export default function LandingPage() {
 
     
 
+
+    
 
     
 
