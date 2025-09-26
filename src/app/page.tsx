@@ -209,7 +209,11 @@ export default function LandingPage() {
                   <Quote className="h-8 w-8 text-primary/30 mb-4" />
                   <p className="text-muted-foreground flex-1 mb-6">"{t.quote}"</p>
                   <div>
-                    <p className="font-semibold text-foreground">{t.name}</p>
+                    <p className="font-semibold text-foreground">
+                        <span className="animate-shimmer bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400 to-primary bg-[length:200%_100%]">
+                            {t.name}
+                        </span>
+                    </p>
                     <p className="text-sm text-muted-foreground">{t.title}</p>
                   </div>
                 </Card>
