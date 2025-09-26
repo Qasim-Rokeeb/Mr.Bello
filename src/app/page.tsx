@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
+import { Progress } from '@/components/ui/progress';
 
 const features = [
   {
@@ -70,22 +71,23 @@ const howItWorksSteps = [
     {
       title: 'Personalize Your AI',
       description: 'Choose a tone and tell Mr. Bello your name for a personalized learning experience.',
-      icon: <Settings className="h-10 w-10 text-primary" />
+      icon: <Settings className="h-10 w-10" />
     },
     {
       title: 'Choose Your Path',
       description: 'Ask about a specific topic or have Mr. Bello break down an entire course.',
-      icon: <Route className="h-10 w-10 text-primary" />
+      icon: <Route className="h-10 w-10" />
     },
     {
       title: 'Start Learning',
       description: 'Refine explanations, get examples, and keep learning at your pace.',
-      icon: <Rocket className="h-10 w-10 text-primary" />
+      icon: <Rocket className="h-10 w-10" />
     }
   ];
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -93,8 +95,15 @@ export default function LandingPage() {
     };
 
     window.addEventListener('scroll', handleScroll);
+
+    const stepInterval = setInterval(() => {
+        setActiveStep(prev => (prev + 1) % (howItWorksSteps.length + 1));
+    }, 2000);
+
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      clearInterval(stepInterval);
     };
   }, []);
 
@@ -174,22 +183,46 @@ export default function LandingPage() {
 
         {/* How It Works */}
         <section id="how-it-works" className="py-20 bg-background">
-          <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
-            <h3 className="text-3xl md:text-4xl font-bold mb-12"><span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Get Started in 3 Easy Steps</span></h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
-              {howItWorksSteps.map((step, i) => (
-                <div key={i} className="flex flex-col items-center gap-4 animate-in fade-in-0 slide-in-from-bottom-12" style={{ animationDelay: `${i * 150}ms` }}>
-                   <div className="flex items-center justify-center h-16 w-16 bg-primary/10 rounded-full shadow-inner">
-                    {step.icon}
-                  </div>
-                  <h4 className="text-xl font-semibold text-foreground">{step.title}</h4>
-                  <p className="text-muted-foreground max-w-xs">
-                    {step.description}
-                  </p>
+            <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
+                <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Get Started in 3 Easy Steps</span>
+                </h3>
+                <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+                    Follow these simple steps to start your personalized learning journey.
+                </p>
+                <div className="relative max-w-2xl mx-auto mb-12">
+                    <Progress value={(activeStep / (howItWorksSteps.length -1)) * 100} className="h-2"/>
+                    <div className="absolute inset-0 flex justify-between">
+                        {howItWorksSteps.map((_, i) => (
+                            <div key={i} className={cn(
+                                "w-6 h-6 rounded-full transition-all duration-500",
+                                i < activeStep ? "bg-primary" : "bg-muted border-2 border-border",
+                                i === activeStep && "bg-primary ring-4 ring-primary/30"
+                            )}></div>
+                        ))}
+                    </div>
                 </div>
-              ))}
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    {howItWorksSteps.map((step, i) => (
+                        <div key={i} className={cn(
+                            "flex flex-col items-center gap-4 p-4 rounded-lg transition-all duration-500",
+                            i === activeStep ? "transform scale-105" : "opacity-70"
+                        )}>
+                            <div className={cn(
+                                "flex items-center justify-center h-16 w-16 rounded-full shadow-inner transition-colors duration-500",
+                                i <= activeStep ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
+                            )}>
+                                {step.icon}
+                            </div>
+                            <h4 className="text-xl font-semibold text-foreground">{step.title}</h4>
+                            <p className="text-muted-foreground max-w-xs">
+                                {step.description}
+                            </p>
+                        </div>
+                    ))}
+                </div>
             </div>
-          </div>
         </section>
 
         {/* Testimonials */}
