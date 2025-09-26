@@ -21,7 +21,7 @@ export default function ChatInterface() {
   }, [messages]);
 
   return (
-    <div className="relative flex flex-col h-full max-h-screen w-full bg-white/70 backdrop-blur-xl sm:rounded-2xl shadow-2xl sm:border border-slate-200/50 overflow-hidden">
+    <div className="relative flex flex-col h-full max-h-screen w-full bg-white/70 backdrop-blur-xl sm:rounded-[1rem] shadow-2xl sm:border border-slate-200/50 overflow-hidden">
        <header className="flex items-center justify-between p-4 border-b z-10">
         <div className="flex items-center gap-3">
           <div className="bg-primary text-primary-foreground rounded-full p-2 shadow-inner">
@@ -39,7 +39,7 @@ export default function ChatInterface() {
           ))}
         </div>
       </ScrollArea>
-      <div className="p-4 border-t bg-white/50 sm:rounded-b-2xl z-10">
+      <div className="p-4 border-t bg-white/50 sm:rounded-b-[1rem] z-10">
         <ChatInput />
         <p className="text-xs text-center text-muted-foreground mt-2 px-2">
             Mr. Bello can make mistakes. Consider checking important information.
@@ -48,3 +48,5 @@ export default function ChatInterface() {
     </div>
   );
 }
+
+    
