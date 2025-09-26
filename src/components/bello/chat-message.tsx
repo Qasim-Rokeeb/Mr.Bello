@@ -98,7 +98,7 @@ export default function ChatMessage({ message }: { message: Message }) {
       isUser ? 'justify-end' : 'justify-start'
     )}>
       {!isUser && (
-        <Avatar className="h-8 w-8 sm:h-10 sm:w-10 border-2 border-white shadow-md">
+        <Avatar className="h-8 w-8 sm:h-10 sm:w-10">
           <AvatarImage src="/mr-bello.png" alt="Mr. Bello Avatar" />
           <AvatarFallback>MB</AvatarFallback>
         </Avatar>
@@ -157,7 +157,7 @@ export default function ChatMessage({ message }: { message: Message }) {
         )}
       </div>
       {isUser && (
-        <Avatar className="h-8 w-8 sm:h-10 sm:w-10 border-2 border-white shadow-md">
+        <Avatar className="h-8 w-8 sm:h-10 sm:w-10">
           <AvatarImage src="" alt="User" />
           <AvatarFallback><User /></AvatarFallback>
         </Avatar>
