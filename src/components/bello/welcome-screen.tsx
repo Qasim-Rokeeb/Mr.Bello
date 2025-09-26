@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import confetti from 'canvas-confetti';
 import { AppContext } from '@/context/app-context';
 import type { Settings, Tone } from '@/lib/types';
 import { Button } from '@/components/ui/button';
@@ -39,6 +40,12 @@ export default function WelcomeScreen() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     saveSettings(values as Settings);
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 },
+      zIndex: 9999,
+    });
   }
 
   return (
