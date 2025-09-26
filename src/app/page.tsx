@@ -92,7 +92,7 @@ export default function LandingPage() {
           </div>
           <Button
             asChild
-            className="hidden sm:inline-flex bg-primary text-primary-foreground shadow-md hover:shadow-lg transition-all hover:scale-105 hover:bg-primary/90"
+            className="hidden sm:inline-flex bg-gradient-to-br from-primary to-blue-400 text-primary-foreground shadow-lg hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-0.5"
           >
             <Link href="/chat">Get Started</Link>
           </Button>
@@ -116,7 +116,7 @@ export default function LandingPage() {
               <Button
                 asChild
                 size="lg"
-                className="text-lg px-8 py-6 bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-in fade-in-0 slide-in-from-bottom-8 duration-1000"
+                className="text-lg px-8 py-6 bg-gradient-to-br from-primary to-blue-400 text-primary-foreground shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-1 animate-in fade-in-0 slide-in-from-bottom-8 duration-1000"
               >
                 <Link href="/chat">Start Learning Now</Link>
               </Button>
@@ -212,7 +212,7 @@ export default function LandingPage() {
               <Button
                 asChild
                 size="lg"
-                className="text-lg px-8 py-6 bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                className="text-lg px-8 py-6 bg-gradient-to-br from-primary to-blue-400 text-primary-foreground shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-1"
               >
                 <Link href="/chat">Start Learning</Link>
               </Button>
