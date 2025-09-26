@@ -4,7 +4,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Quote, GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Globe, Github, MessageSquare } from 'lucide-react';
+import { Quote, GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Globe, Github, MessageSquare, Settings, Route, Rocket } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -70,38 +70,17 @@ const howItWorksSteps = [
     {
       title: 'Personalize Your AI',
       description: 'Choose a tone and tell Mr. Bello your name for a personalized learning experience.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2a5 5 0 0 1 5 5c0 1.84-.98 3.46-2.43 4.39" />
-          <path d="M20.57 16.32a9 9 0 0 0-17.14 0" />
-          <path d="M2.43 12.61C1 11.53 0 9.89 0 8a5 5 0 0 1 10 0c0 1.84-.98 3.46-2.43 4.39" />
-          <path d="m16.89 12.6 1.77 1.77" />
-          <path d="m6.11 12.6-1.77 1.77" />
-          <path d="M12 12.6V16" />
-        </svg>
-      )
+      icon: <Settings className="h-10 w-10 text-primary" />
     },
     {
       title: 'Choose Your Path',
       description: 'Ask about a specific topic or have Mr. Bello break down an entire course.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M14.5 18H8a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1" />
-          <path d="M9 18V6" />
-          <path d="m14 13 3 3 3-3" />
-          <path d="M17 16V9" />
-        </svg>
-      )
+      icon: <Route className="h-10 w-10 text-primary" />
     },
     {
       title: 'Start Learning',
       description: 'Refine explanations, get examples, and keep learning at your pace.',
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="m12 6 6 6-6 6" />
-          <path d="m6 6 6 6-6 6" />
-        </svg>
-      )
+      icon: <Rocket className="h-10 w-10 text-primary" />
     }
   ];
 
@@ -352,5 +331,7 @@ export default function LandingPage() {
 
     
 
+
+    
 
     
