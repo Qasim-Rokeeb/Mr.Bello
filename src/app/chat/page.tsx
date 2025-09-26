@@ -15,8 +15,8 @@ export default function Home() {
   }, [isConfigured, name, startNewChat]);
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-background p-2 sm:p-4">
-      <main className="h-full w-full max-w-4xl mx-auto sm:mt-4">
+    <div className="flex h-screen w-screen items-center justify-center bg-background p-0 sm:p-4">
+      <main className="h-full w-full max-w-4xl mx-auto sm:mt-0">
         {isConfigured ? <ChatInterface /> : <WelcomeScreen />}
       </main>
     </div>

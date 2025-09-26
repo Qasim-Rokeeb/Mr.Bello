@@ -3,6 +3,7 @@ import {Inter} from 'next/font/google';
 import './globals.css';
 import {Toaster} from '@/components/ui/toaster';
 import { AppProvider } from '@/context/app-context';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const inter = Inter({subsets: ['latin'], variable: '--font-sans'});
 
@@ -62,10 +63,17 @@ export default function RootLayout({
         />
       </head>
       <body className={`font-body antialiased ${inter.variable}`}>
-        <AppProvider>
-          {children}
-        </AppProvider>
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AppProvider>
+            {children}
+          </AppProvider>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

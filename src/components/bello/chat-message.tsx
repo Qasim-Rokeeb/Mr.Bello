@@ -20,9 +20,10 @@ import {
 } from "@/components/ui/table";
 import { Button } from '../ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { useTheme } from 'next-themes';
 
 
-mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
+mermaid.initialize({ startOnLoad: false });
 
 const TableRenderer = ({ markdown }: { markdown: string }) => {
   const tableData = markdown
@@ -57,6 +58,7 @@ const TableRenderer = ({ markdown }: { markdown: string }) => {
 
 
 export default function ChatMessage({ message }: { message: Message }) {
+  const { theme } = useTheme();
   const isUser = message.role === 'user';
   const diagramRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -65,11 +67,12 @@ export default function ChatMessage({ message }: { message: Message }) {
 
   useEffect(() => {
     if (message.diagram && diagramRef.current) {
+        mermaid.initialize({ startOnLoad: false, theme: theme === 'dark' ? 'dark' : 'neutral' });
         mermaid.run({
             nodes: [diagramRef.current],
         });
     }
-  }, [message.diagram]);
+  }, [message.diagram, theme]);
 
   const handleCopy = () => {
     let textToCopy = message.content;
@@ -120,7 +123,7 @@ export default function ChatMessage({ message }: { message: Message }) {
         )}
        
         <div ref={contentRef}>
-            <div className="prose prose-p:leading-relaxed prose-p:m-0 prose-headings:m-0 prose-ul:m-0 prose-ol:m-0 prose-li:m-0 max-w-none text-base">
+            <div className="prose prose-p:leading-relaxed prose-p:m-0 prose-headings:m-0 prose-ul:m-0 prose-ol:m-0 prose-li:m-0 max-w-none text-base dark:prose-invert">
             <ReactMarkdown>{message.content}</ReactMarkdown>
             </div>
 
