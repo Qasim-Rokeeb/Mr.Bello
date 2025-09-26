@@ -4,7 +4,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Quote, GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Globe, Github } from 'lucide-react';
+import { Quote, GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Globe, Github, MessageSquare } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -302,6 +302,17 @@ export default function LandingPage() {
 
       </main>
 
+      {/* Live Chat FAB */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <Button asChild size="icon" className="h-14 w-14 rounded-full shadow-2xl">
+          <Link href="/chat">
+            <span className="absolute h-full w-full rounded-full bg-primary animate-ping opacity-75"></span>
+            <MessageSquare className="h-7 w-7" />
+            <span className="sr-only">Open Chat</span>
+          </Link>
+        </Button>
+      </div>
+
       <footer className="text-center p-6 text-muted-foreground bg-background border-t animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
         <div className="flex flex-col items-center gap-4">
             <div className="flex items-center gap-2">
@@ -338,5 +349,8 @@ export default function LandingPage() {
 
 
     
+
+    
+
 
     
