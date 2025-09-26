@@ -203,7 +203,7 @@ export default function LandingPage() {
               {testimonials.map((t, i) => (
                 <Card
                   key={i}
-                  className="flex flex-col justify-between p-6 shadow-md hover:shadow-xl rounded-[1rem] border bg-card transition-all animate-in fade-in-0 slide-in-from-bottom-12"
+                  className="flex flex-col justify-between p-6 shadow-md hover:shadow-xl rounded-[1rem] border bg-card transition-all hover:-translate-y-1 animate-in fade-in-0 slide-in-from-bottom-12"
                   style={{ animationDelay: `${i * 150}ms` }}
                 >
                   <Quote className="h-8 w-8 text-primary/30 mb-4" />
