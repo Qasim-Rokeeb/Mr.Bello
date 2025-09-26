@@ -173,7 +173,7 @@ export default function LandingPage() {
               {features.map((feature, i) => (
                 <Card
                   key={i}
-                  className="text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 rounded-[1rem] border bg-card animate-in fade-in-0 slide-in-from-bottom-12"
+                  className="text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-[1rem] border bg-card animate-in fade-in-0 slide-in-from-bottom-12"
                   style={{ animationDelay: `${i * 100}ms` }}
                 >
                   <CardHeader className="text-center">
@@ -222,7 +222,7 @@ export default function LandingPage() {
               {testimonials.map((t, i) => (
                 <Card
                   key={i}
-                  className="flex flex-col justify-between p-6 shadow-lg hover:shadow-2xl rounded-[1rem] border bg-card transition-all animate-in fade-in-0 slide-in-from-bottom-12"
+                  className="flex flex-col justify-between p-6 shadow-md hover:shadow-xl rounded-[1rem] border bg-card transition-all animate-in fade-in-0 slide-in-from-bottom-12"
                   style={{ animationDelay: `${i * 150}ms` }}
                 >
                   <Quote className="h-8 w-8 text-primary/30 mb-4" />
@@ -240,7 +240,7 @@ export default function LandingPage() {
         {/* Final CTA */}
         <section className="py-20">
           <div className="container text-center">
-            <div className="bg-card p-10 md:p-16 rounded-[1rem] shadow-2xl max-w-4xl mx-auto border animate-in fade-in zoom-in-95 duration-500">
+            <div className="bg-card p-10 md:p-16 rounded-[1rem] shadow-xl max-w-4xl mx-auto border animate-in fade-in zoom-in-95 duration-500">
               <h3 className="text-3xl md:text-4xl font-bold mb-4"><span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Ready to Transform Your Learning?</span></h3>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Join thousands of learners mastering new skills with their AI-powered teacher. It's free to get started!

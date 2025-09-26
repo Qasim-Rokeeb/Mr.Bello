@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useContext } from 'react';
@@ -41,7 +42,7 @@ export default function WelcomeScreen() {
 
   return (
     <div className=" flex items-center justify-center">
-        <Card className="w-full max-w-lg shadow-2xl my-4 sm:my-15 border animate-in fade-in-0 zoom-in-95 duration-500 rounded-[1rem]">
+        <Card className="w-full max-w-lg shadow-xl my-4 sm:my-15 border animate-in fade-in-0 zoom-in-95 duration-500 rounded-[1rem]">
         <CardHeader className="text-center">
             <div className="mx-auto bg-primary text-primary-foreground rounded-full p-3 w-fit mb-4">
                 <GraduationCap className="h-8 w-8" />
