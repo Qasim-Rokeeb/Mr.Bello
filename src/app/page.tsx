@@ -104,18 +104,18 @@ export default function LandingPage() {
         {/* Hero */}
         <section className="container flex flex-col items-center text-center py-24 md:py-32">
           <div className="max-w-3xl animate-in fade-in zoom-in-95 duration-700">
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter animate-in fade-in-0 slide-in-from-bottom-8 duration-700">
               Unlock Your Potential with{' '}
               <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Mr.Bello</span>
             </h2>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-in fade-in-0 slide-in-from-bottom-8 duration-700" style={{ animationDelay: '200ms' }}>
               Your friendly AI teacher for any topic. Ask a question, or break down an entire course. Learning has never been this simple.
             </p>
-            <div className="mt-10">
+            <div className="mt-10 animate-in fade-in-0 slide-in-from-bottom-8 duration-700" style={{ animationDelay: '400ms' }}>
               <Button
                 asChild
                 size="lg"
-                className="text-lg px-8 py-6 bg-gradient-to-br from-primary to-blue-400 text-primary-foreground shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-200 ease-out hover:-translate-y-1 animate-in fade-in-0 slide-in-from-bottom-8"
+                className="text-lg px-8 py-6 bg-gradient-to-br from-primary to-blue-400 text-primary-foreground shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-200 ease-out hover:-translate-y-1"
               >
                 <Link href="/chat">Start Learning Now</Link>
               </Button>
@@ -255,5 +255,7 @@ export default function LandingPage() {
     
 
 
+
+    
 
     
