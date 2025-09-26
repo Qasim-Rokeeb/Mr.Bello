@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -7,6 +8,7 @@ import { Quote, GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Globe,
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input';
 
 const features = [
   {
@@ -233,6 +235,48 @@ export default function LandingPage() {
                   </div>
                 </Card>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Newsletter CTA */}
+        <section className="py-20">
+          <div className="container">
+            <div className="bg-card p-10 md:p-16 rounded-[1rem] shadow-xl max-w-4xl mx-auto border animate-in fade-in zoom-in-95 duration-500">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="flex-1 text-center md:text-left">
+                    <h3 className="text-3xl md:text-4xl font-bold mb-4"><span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Stay Sharp, Stay Ahead</span></h3>
+                    <p className="text-lg text-muted-foreground max-w-2xl">
+                        Subscribe to our newsletter for learning tips, new features, and exclusive content.
+                    </p>
+                </div>
+                <div className="w-full max-w-md">
+                    <form className="flex flex-col sm:flex-row gap-3">
+                        <div className="relative flex-1">
+                            <Input
+                                id="email"
+                                type="email"
+                                placeholder=" " 
+                                className="peer h-12 text-base"
+                                required
+                            />
+                            <label 
+                                htmlFor="email"
+                                className="absolute left-3 top-3 text-muted-foreground transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary bg-background px-1"
+                            >
+                                Email Address
+                            </label>
+                        </div>
+                        <Button
+                            type="submit"
+                            size="lg"
+                            className="h-12 text-base bg-gradient-to-br from-primary to-blue-400 text-primary-foreground shadow-lg hover:shadow-blue-500/50 transition-all duration-200 ease-out hover:-translate-y-0.5"
+                        >
+                            Subscribe
+                        </Button>
+                    </form>
+                </div>
+              </div>
             </div>
           </div>
         </section>
