@@ -7,10 +7,15 @@ import ChatMessage from './chat-message';
 import ChatInput from './chat-input';
 import { GraduationCap } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
+import TypingIndicator from './typing-indicator';
 
 export default function ChatInterface() {
-  const { messages } = useContext(AppContext);
+  const { messages, isLoading } = useContext(AppContext);
   const viewportRef = useRef<HTMLDivElement>(null);
+
+  const lastMessage = messages[messages.length - 1];
+  const showTypingIndicator = isLoading && lastMessage?.role === 'user';
+
 
   useEffect(() => {
     if (viewportRef.current) {
@@ -19,7 +24,7 @@ export default function ChatInterface() {
         behavior: 'smooth',
       });
     }
-  }, [messages]);
+  }, [messages, showTypingIndicator]);
 
   return (
     <div className="relative flex flex-col h-full max-h-screen w-full bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl sm:rounded-[1rem] shadow-2xl sm:border border-slate-200/50 dark:border-zinc-800 overflow-hidden">
@@ -39,6 +44,7 @@ export default function ChatInterface() {
           {messages.map((message) => (
             <ChatMessage key={message.id} message={message} />
           ))}
+          {showTypingIndicator && <TypingIndicator />}
         </div>
       </ScrollArea>
       <div className="p-4 border-t bg-white/50 dark:bg-zinc-900/50 sm:rounded-b-[1rem] z-10 dark:border-zinc-800">

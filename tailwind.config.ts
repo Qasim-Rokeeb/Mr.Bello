@@ -104,11 +104,16 @@ export default {
               'background-position': '200% 0',
             },
           },
+        'bouncy-dot': {
+          '0%, 100%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)' },
+          '50%': { transform: 'translateY(-25%)', animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'shimmer': 'shimmer 2s ease-in-out infinite',
+        'bouncy-dot': 'bouncy-dot 1s ease-in-out infinite',
       },
     },
   },
