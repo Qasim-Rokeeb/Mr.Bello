@@ -31,7 +31,7 @@ export default function ExampleSelector({ topic }: ExampleSelectorProps) {
         <Button variant="outline" size="sm" disabled={isLoading}>
           <Quote className="mr-2 h-4 w-4" />
           Examples
-          <ChevronDown className="ml-2 h-4 w-4" />
+          <ChevronDown className="ml-2 h-4 w-4 animate-bounce-subtle" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
