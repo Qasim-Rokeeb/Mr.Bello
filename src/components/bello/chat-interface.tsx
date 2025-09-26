@@ -8,9 +8,10 @@ import ChatInput from './chat-input';
 import { GraduationCap } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import TypingIndicator from './typing-indicator';
+import CourseStatus from './course-status';
 
 export default function ChatInterface() {
-  const { messages, isLoading } = useContext(AppContext);
+  const { messages, isLoading, activeCourse } = useContext(AppContext);
   const viewportRef = useRef<HTMLDivElement>(null);
 
   const lastMessage = messages[messages.length - 1];
@@ -37,7 +38,10 @@ export default function ChatInterface() {
             <span className="text-foreground">Mr.</span><span className="text-primary">Bello</span>
           </h1>
         </div>
-        <ThemeToggle />
+        <div className="flex items-center gap-2">
+            {activeCourse && <CourseStatus course={activeCourse} />}
+            <ThemeToggle />
+        </div>
       </header>
       <ScrollArea className="flex-1" viewportRef={viewportRef}>
         <div className="p-4 sm:p-6 flex flex-col gap-4 sm:gap-6">

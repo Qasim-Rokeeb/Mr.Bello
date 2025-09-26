@@ -18,6 +18,16 @@ export interface QuizQuestion {
   explanation: string;
 }
 
+export interface CourseTopic {
+    title: string;
+    completed: boolean;
+}
+  
+export interface Course {
+    name: string;
+    topics: CourseTopic[];
+}
+
 export interface Message {
   id: string;
   role: MessageRole;

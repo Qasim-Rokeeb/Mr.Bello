@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useState, useCallback, ReactNode, useEffect } from 'react';
-import type { Settings, Message, Tone, Complexity, LearningMode, ExampleDifficulty } from '@/lib/types';
+import type { Settings, Message, Tone, Complexity, LearningMode, ExampleDifficulty, Course } from '@/lib/types';
 import { handleCourseBreakdown, handleExplanation, handleQuizGeneration } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
 import { id } from '@/lib/utils';
@@ -12,6 +12,7 @@ interface AppContextType {
   isConfigured: boolean;
   isLoading: boolean;
   name: string;
+  activeCourse: Course | null;
   saveSettings: (settings: Settings) => void;
   sendMessage: (content: string, mode: LearningMode) => Promise<void>;
   refineExplanation: (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources' | 'applications', exampleDifficulty?: ExampleDifficulty) => Promise<void>;
@@ -35,6 +36,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [isConfigured, setIsConfigured] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState('');
+  const [activeCourse, setActiveCourse] = useState<Course | null>(null);
 
   useEffect(() => {
     try {
@@ -57,6 +59,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     setMessages([
         { id: id(), role: 'bot', content: `Hello ${settings.name}! I'm Mr. Bello. How can I help you learn today? You can ask me to explain a topic or break down a course.` }
     ]);
+    setActiveCourse(null);
   }, [settings.name]);
 
   const saveSettings = (newSettings: Settings) => {
@@ -81,6 +84,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     if (mode === 'course') {
       const response = await handleCourseBreakdown(content);
       if (response.success) {
+        const topics = response.data.map((topic: string) => ({ title: topic, completed: false }));
+        setActiveCourse({ name: content, topics });
         setMessages(prev => [...prev, {
           id: id(),
           role: 'bot',
@@ -123,6 +128,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(true);
 
     try {
+      if (mode === 'course') setActiveCourse(null);
       await processResponse(content, mode, newMessages);
     } catch (e) {
       handleError('An unexpected error occurred.');
@@ -276,6 +282,12 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       });
 
       if (response.success) {
+         if (activeCourse) {
+            const updatedTopics = activeCourse.topics.map(t =>
+                t.title === topic ? { ...t, completed: true } : t
+            );
+            setActiveCourse({ ...activeCourse, topics: updatedTopics });
+        }
         setMessages(prev => [...prev, {
           id: id(),
           role: 'bot',
@@ -301,6 +313,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     isConfigured,
     isLoading,
     name,
+    activeCourse,
     saveSettings,
     sendMessage,
     refineExplanation,
