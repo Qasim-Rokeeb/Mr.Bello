@@ -15,6 +15,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { GraduationCap } from 'lucide-react';
+import { GradientBorder } from '../ui/gradient-border';
 
 const tones: Tone[] = ['Gentle', 'Encouraging', 'Formal', 'Fun', 'Sarcastic', 'Creative'];
 
@@ -85,10 +86,12 @@ export default function WelcomeScreen() {
                         >
                         {tones.map((tone) => (
                             <FormItem key={tone} className="flex-1">
-                            <RadioGroupItem value={tone} className="sr-only peer" id={`tone-${tone}`} />
-                            <Label htmlFor={`tone-${tone}`} className="block w-full cursor-pointer rounded-lg border-2 border-muted bg-popover p-3 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary peer-data-[state=checked]:shadow-lg transition-all text-center text-sm font-medium">
-                                {tone}
-                            </Label>
+                                <RadioGroupItem value={tone} className="sr-only peer" id={`tone-${tone}`} />
+                                <GradientBorder active={field.value === tone} as={Label} htmlFor={`tone-${tone}`}>
+                                    <div className="w-full cursor-pointer rounded-lg bg-popover p-3 peer-data-[state=checked]:shadow-lg transition-all text-center text-sm font-medium hover:bg-accent hover:text-accent-foreground">
+                                        {tone}
+                                    </div>
+                                </GradientBorder>
                             </FormItem>
                         ))}
                         </RadioGroup>
@@ -125,5 +128,3 @@ export default function WelcomeScreen() {
     </div>
   );
 }
-
-    
