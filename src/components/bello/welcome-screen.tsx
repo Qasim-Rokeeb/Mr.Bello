@@ -41,13 +41,13 @@ export default function WelcomeScreen() {
 
   return (
     <div className=" flex items-center justify-center">
-        <Card className="w-full max-w-lg shadow-2xl my-4 sm:my-15 border-2 border-primary/10 animate-in fade-in-0 zoom-in-95 duration-500">
+        <Card className="w-full max-w-lg shadow-2xl my-4 sm:my-15 border animate-in fade-in-0 zoom-in-95 duration-500">
         <CardHeader className="text-center">
             <div className="mx-auto bg-primary text-primary-foreground rounded-full p-3 w-fit mb-4">
                 <GraduationCap className="h-8 w-8" />
             </div>
             <CardTitle className="text-2xl sm:text-3xl font-bold">
-              <span className="text-foreground">Welcome to Mr.</span><span className="text-secondary">Bello</span>!
+              <span className="text-foreground">Welcome to Mr.</span><span className="text-primary">Bello</span>!
             </CardTitle>
             <CardDescription className="text-base text-muted-foreground">
             I'm Mr. Bello. Let's get you set up for learning.
@@ -114,7 +114,7 @@ export default function WelcomeScreen() {
                     </FormItem>
                 )}
                 />
-                <Button type="submit" size="lg" className="w-full text-base py-6 bg-secondary hover:bg-secondary/90">
+                <Button type="submit" size="lg" className="w-full text-base py-6 bg-primary hover:bg-primary/90 text-primary-foreground">
                 Start Learning
                 </Button>
             </form>

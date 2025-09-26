@@ -79,20 +79,20 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 text-slate-800">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       
       {/* Header */}
-      <header className={cn("fixed top-0 z-50 w-full border-b bg-white/80 backdrop-blur-lg transition-all duration-300", scrolled ? "shadow-md" : "shadow-none")}>
+      <header className={cn("fixed top-0 z-50 w-full border-b bg-background/80 backdrop-blur-lg transition-all duration-300", scrolled ? "shadow-md border-border" : "border-transparent")}>
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-3">
-            <GraduationCap className="h-8 w-8 text-secondary drop-shadow-sm" />
-            <h1 className="text-2xl font-extrabold tracking-tight text-primary">
-              <span className="text-slate-800">Mr.</span><span className="text-secondary">Bello</span>
+            <GraduationCap className="h-8 w-8 text-primary drop-shadow-sm" />
+            <h1 className="text-2xl font-extrabold tracking-tight">
+              <span>Mr.</span><span className="text-primary">Bello</span>
             </h1>
           </div>
           <Button
             asChild
-            className="hidden sm:inline-flex bg-gradient-to-r from-secondary to-primary text-white shadow-md hover:shadow-lg transition-all hover:scale-105"
+            className="hidden sm:inline-flex bg-primary text-primary-foreground shadow-md hover:shadow-lg transition-all hover:scale-105 hover:bg-primary/90"
           >
             <Link href="/chat">Get Started</Link>
           </Button>
@@ -104,19 +104,19 @@ export default function LandingPage() {
         {/* Hero */}
         <section className="container flex flex-col items-center text-center py-24 md:py-32">
           <div className="max-w-3xl animate-in fade-in zoom-in-95 duration-700">
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tight text-slate-800">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter">
               Unlock Your Potential with{' '}
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Mr.Bello</span>
+              <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Mr.Bello</span>
             </h2>
-            <p className="mt-6 text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
-              Your friendly <span className="font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">AI teacher</span> for any topic.
-              Simplify tough subjects, get real-world examples, or break down an entire course.
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Your friendly <span className="font-semibold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">AI teacher</span> for any topic.
+              Making learning <span className="font-semibold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">simple and an adventure</span>.
             </p>
             <div className="mt-10">
               <Button
                 asChild
                 size="lg"
-                className="text-lg px-8 py-6 bg-gradient-to-r from-secondary to-primary text-white shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-in fade-in-0 slide-in-from-bottom-8 duration-1000"
+                className="text-lg px-8 py-6 bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-in fade-in-0 slide-in-from-bottom-8 duration-1000"
               >
                 <Link href="/chat">Start Learning Now</Link>
               </Button>
@@ -125,27 +125,27 @@ export default function LandingPage() {
         </section>
 
         {/* Features */}
-        <section id="features" className="py-20 bg-white">
+        <section id="features" className="py-20 bg-background">
           <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">A Smarter Way to <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Learn</span></h3>
-            <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4">A Smarter Way to <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Learn</span></h3>
+            <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
               Everything you need to conquer complex topics and accelerate your learning.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {features.map((feature, i) => (
                 <Card
                   key={i}
-                  className="text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 rounded-2xl border border-slate-100 animate-in fade-in-0 slide-in-from-bottom-12"
+                  className="text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 rounded-2xl border bg-card animate-in fade-in-0 slide-in-from-bottom-12"
                   style={{ animationDelay: `${i * 100}ms` }}
                 >
                   <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 shadow-inner">
                       {feature.icon}
                     </div>
-                    <CardTitle className="text-lg font-semibold">{feature.title}</CardTitle>
+                    <CardTitle className="text-lg font-semibold text-foreground">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-slate-600">{feature.description}</p>
+                    <p className="text-muted-foreground">{feature.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -154,17 +154,17 @@ export default function LandingPage() {
         </section>
 
         {/* How It Works */}
-        <section id="how-it-works" className="py-20 bg-gradient-to-br from-indigo-50 to-blue-50">
+        <section id="how-it-works" className="py-20 bg-background">
           <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
-            <h3 className="text-3xl md:text-4xl font-bold mb-12"><span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Get Started in 3 Easy Steps</span></h3>
+            <h3 className="text-3xl md:text-4xl font-bold mb-12"><span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Get Started in 3 Easy Steps</span></h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10 relative">
               {['Personalize Your AI', 'Choose Your Path', 'Start Learning'].map((title, i) => (
                 <div key={i} className="flex flex-col items-center gap-4 animate-in fade-in-0 slide-in-from-bottom-12" style={{ animationDelay: `${i * 150}ms` }}>
-                  <div className="flex items-center justify-center h-16 w-16 bg-primary text-white rounded-full text-2xl font-bold shadow-lg border-4 border-white">
+                  <div className="flex items-center justify-center h-16 w-16 bg-primary text-primary-foreground rounded-full text-2xl font-bold shadow-lg border-4 border-white">
                     {i + 1}
                   </div>
-                  <h4 className="text-xl font-semibold">{title}</h4>
-                  <p className="text-slate-600 max-w-xs">
+                  <h4 className="text-xl font-semibold text-foreground">{title}</h4>
+                  <p className="text-muted-foreground max-w-xs">
                     {i === 0 && 'Choose a tone and tell Mr. Bello your name for a personalized learning experience.'}
                     {i === 1 && 'Ask about a specific topic or have Mr. Bello break down an entire course.'}
                     {i === 2 && 'Refine explanations, get examples, and keep learning at your pace.'}
@@ -176,24 +176,24 @@ export default function LandingPage() {
         </section>
 
         {/* Testimonials */}
-        <section id="testimonials" className="py-20 bg-white">
+        <section id="testimonials" className="py-20 bg-background">
           <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4"><span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Loved by Learners Worldwide</span></h3>
-            <p className="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4"><span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Loved by Learners Worldwide</span></h3>
+            <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
               Don't just take our word for it — here's what our users are saying.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((t, i) => (
                 <Card
                   key={i}
-                  className="flex flex-col justify-between p-6 shadow-lg hover:shadow-2xl rounded-2xl border border-slate-100 transition-all animate-in fade-in-0 slide-in-from-bottom-12"
+                  className="flex flex-col justify-between p-6 shadow-lg hover:shadow-2xl rounded-2xl border bg-card transition-all animate-in fade-in-0 slide-in-from-bottom-12"
                   style={{ animationDelay: `${i * 150}ms` }}
                 >
                   <Quote className="h-8 w-8 text-primary/30 mb-4" />
-                  <p className="text-slate-600 flex-1 mb-6">"{t.quote}"</p>
+                  <p className="text-muted-foreground flex-1 mb-6">"{t.quote}"</p>
                   <div>
-                    <p className="font-semibold">{t.name}</p>
-                    <p className="text-sm text-slate-500">{t.title}</p>
+                    <p className="font-semibold text-foreground">{t.name}</p>
+                    <p className="text-sm text-muted-foreground">{t.title}</p>
                   </div>
                 </Card>
               ))}
@@ -204,18 +204,17 @@ export default function LandingPage() {
         {/* Final CTA */}
         <section className="py-20">
           <div className="container text-center">
-            <div className="bg-gradient-to-br from-white to-indigo-50 p-10 md:p-16 rounded-2xl shadow-2xl max-w-4xl mx-auto border border-slate-100 animate-in fade-in zoom-in-95 duration-500">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4"><span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Ready to Transform Your Learning?</span></h3>
-              <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
+            <div className="bg-card p-10 md:p-16 rounded-2xl shadow-2xl max-w-4xl mx-auto border animate-in fade-in zoom-in-95 duration-500">
+              <h3 className="text-3xl md:text-4xl font-bold mb-4"><span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Ready to Transform Your Learning?</span></h3>
+              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Join thousands of learners mastering new skills with their AI-powered teacher. It's free to get started!
               </p>
               <Button
                 asChild
                 size="lg"
-                className="text-lg px-8 py-6 bg-gradient-to-r from-secondary to-primary text-white shadow-lg hover:shadow-xl transition-all hover:scale-105"
+                className="text-lg px-8 py-6 bg-primary text-primary-foreground shadow-lg hover:shadow-xl transition-all hover:scale-105"
               >
                 <Link href="/chat">Start Learning</Link>
-              {/* I removed 'now' here */}
               </Button>
             </div>
           </div>
@@ -223,7 +222,7 @@ export default function LandingPage() {
 
       </main>
 
-      <footer className="text-center p-6 text-slate-500 bg-white border-t animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
+      <footer className="text-center p-6 text-muted-foreground bg-background border-t animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
         <div className="flex flex-col items-center gap-4">
             <div className="flex items-center gap-2">
                 <p className="text-xs">Connect with the developer</p>
@@ -242,9 +241,9 @@ export default function LandingPage() {
                 </div>
             </div>
              <div className="flex items-center gap-2">
-                <p className="text-sm text-slate-500">Built with ❤️ for lifelong learners</p>
+                <p className="text-sm">Built with ❤️ for lifelong learners</p>
                 <span className="text-slate-400">|</span>
-                <p className="text-sm text-slate-500">© 2024 <span className="font-bold">Mr.Bello</span>. All rights reserved.</p>
+                <p className="text-sm">© 2024 <span className="font-bold text-foreground">Mr.Bello</span>. All rights reserved.</p>
             </div>
         </div>
       </footer>

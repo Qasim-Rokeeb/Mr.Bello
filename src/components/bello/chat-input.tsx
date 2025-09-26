@@ -58,7 +58,7 @@ export default function ChatInput() {
           }}
           disabled={isLoading}
         />
-        <Button type="submit" size="icon" disabled={isLoading || !inputValue.trim()} className="h-10 w-10 shrink-0 bg-secondary hover:bg-secondary/80">
+        <Button type="submit" size="icon" disabled={isLoading || !inputValue.trim()} className="h-10 w-10 shrink-0 bg-primary hover:bg-primary/90">
           {isLoading ? <LoaderCircle className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
           <span className="sr-only">Send</span>
         </Button>

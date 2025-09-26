@@ -22,13 +22,13 @@ export default function ChatInterface() {
 
   return (
     <div className="relative flex flex-col h-full max-h-screen w-full bg-white/70 backdrop-blur-xl sm:rounded-2xl shadow-2xl sm:border border-slate-200/50 overflow-hidden">
-       <header className="flex items-center justify-between p-4 border-b border-slate-200/80 z-10">
+       <header className="flex items-center justify-between p-4 border-b z-10">
         <div className="flex items-center gap-3">
-          <div className="bg-gradient-to-br from-primary to-secondary text-primary-foreground rounded-full p-2 shadow-inner">
+          <div className="bg-primary text-primary-foreground rounded-full p-2 shadow-inner">
             <GraduationCap className="h-6 w-6" />
           </div>
           <h1 className="text-xl font-bold">
-            <span className="text-slate-800">Mr.</span><span className="text-secondary">Bello</span>
+            <span className="text-foreground">Mr.</span><span className="text-primary">Bello</span>
           </h1>
         </div>
       </header>
@@ -39,7 +39,7 @@ export default function ChatInterface() {
           ))}
         </div>
       </ScrollArea>
-      <div className="p-4 border-t border-slate-200/80 bg-white/50 sm:rounded-b-2xl z-10">
+      <div className="p-4 border-t bg-white/50 sm:rounded-b-2xl z-10">
         <ChatInput />
         <p className="text-xs text-center text-muted-foreground mt-2 px-2">
             Mr. Bello can make mistakes. Consider checking important information.

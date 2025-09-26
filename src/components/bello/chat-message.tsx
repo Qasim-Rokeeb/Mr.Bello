@@ -103,8 +103,8 @@ export default function ChatMessage({ message }: { message: Message }) {
       <div className={cn(
           'relative max-w-xl rounded-2xl px-4 py-3 shadow-md', 
           isUser 
-            ? 'bg-secondary text-secondary-foreground rounded-br-lg' 
-            : 'bg-white text-foreground border border-slate-100 rounded-bl-lg'
+            ? 'bg-primary text-primary-foreground rounded-br-lg' 
+            : 'bg-card text-card-foreground border rounded-bl-lg'
       )}>
 
         {!isUser && (
@@ -127,7 +127,7 @@ export default function ChatMessage({ message }: { message: Message }) {
             {message.table && <TableRenderer markdown={message.table} />}
 
             {message.diagram && (
-                <div className="mt-4 p-4 bg-gray-100 rounded">
+                <div className="mt-4 p-4 bg-muted rounded">
                     <div ref={diagramRef} className="mermaid">
                         {message.diagram}
                     </div>
