@@ -12,6 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Progress } from '@/components/ui/progress';
 import { FancySeparator } from '@/components/ui/fancy-separator';
 import { SpotlightButton } from '@/components/ui/spotlight-button';
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 
 const features = [
   {
@@ -247,7 +248,8 @@ export default function LandingPage() {
             <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
               Don't just take our word for it — here's what our users are saying.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Desktop Grid */}
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((t, i) => (
                 <Card
                   key={i}
@@ -266,6 +268,38 @@ export default function LandingPage() {
                   </div>
                 </Card>
               ))}
+            </div>
+
+            {/* Mobile Carousel */}
+            <div className="md:hidden">
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full max-w-xs mx-auto"
+              >
+                <CarouselContent>
+                  {testimonials.map((t, i) => (
+                    <CarouselItem key={i}>
+                      <div className="p-1">
+                        <Card className="flex flex-col justify-between p-6 shadow-md rounded-[1rem] border bg-card h-full">
+                            <Quote className="h-8 w-8 text-primary/30 mb-4" />
+                            <p className="text-muted-foreground flex-1 mb-6">"{t.quote}"</p>
+                            <div>
+                                <p className="font-semibold text-foreground">
+                                    <span className="animate-shimmer bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400 to-primary bg-[length:200%_100%]">
+                                        {t.name}
+                                    </span>
+                                </p>
+                                <p className="text-sm text-muted-foreground">{t.title}</p>
+                            </div>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
             </div>
           </div>
         </section>
@@ -322,13 +356,9 @@ export default function LandingPage() {
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Join thousands of learners mastering new skills with their AI-powered teacher. It's free to get started!
               </p>
-              <Button
-                asChild
-                size="lg"
-                className="text-lg px-8 py-6 bg-gradient-to-br from-primary to-blue-400 text-primary-foreground shadow-xl shadow-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-200 ease-out hover:-translate-y-1"
-              >
+              <SpotlightButton asChild>
                 <Link href="/chat">Start Learning</Link>
-              </Button>
+              </SpotlightButton>
             </div>
           </div>
         </section>
@@ -385,6 +415,8 @@ export default function LandingPage() {
 
     
 
+
+    
 
     
 
