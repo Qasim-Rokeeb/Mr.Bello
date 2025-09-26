@@ -206,14 +206,27 @@ export default function LandingPage() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div className="relative grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div className="absolute top-1/2 left-0 right-0 -mt-8 hidden md:block">
+                        <svg className="w-full h-auto" viewBox="0 0 800 20">
+                            <path
+                                d="M 0,10 C 150,10 150,-10 300,10 S 450,30 600,10 S 750,-10 800,10"
+                                fill="none"
+                                stroke="hsl(var(--border))"
+                                strokeWidth="2"
+                                strokeDasharray="4 4"
+                                className="opacity-50"
+                            />
+                        </svg>
+                    </div>
+
                     {howItWorksSteps.map((step, i) => (
                         <div key={i} className={cn(
-                            "flex flex-col items-center gap-4 p-4 rounded-lg transition-all duration-500",
+                            "relative flex flex-col items-center gap-4 p-4 rounded-lg transition-all duration-500",
                             i === activeStep ? "transform scale-105" : "opacity-70"
                         )}>
                             <div className={cn(
-                                "flex items-center justify-center h-16 w-16 rounded-full shadow-inner transition-colors duration-500",
+                                "flex items-center justify-center h-16 w-16 rounded-full shadow-inner transition-colors duration-500 bg-background z-10",
                                 i <= activeStep ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
                             )}>
                                 {step.icon}
