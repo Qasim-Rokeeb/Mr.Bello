@@ -16,6 +16,7 @@ import { Marquee } from '@/components/ui/marquee';
 import { GradientBorder } from '@/components/ui/gradient-border';
 import Image from 'next/image';
 import { WaveDivider } from '@/components/ui/wave-divider';
+import { CornerRibbon } from '@/components/ui/corner-ribbon';
 
 const features = [
   {
@@ -52,6 +53,7 @@ const features = [
     icon: <FileDown className="h-8 w-8 text-primary" />,
     title: 'Download as PDF',
     description: 'Save explanations offline so you can learn anytime, anywhere.',
+    isNew: true,
   },
 ];
 
@@ -188,9 +190,10 @@ export default function LandingPage() {
               {features.map((feature, i) => (
                 <Card
                   key={i}
-                  className="group text-center shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 hover:-translate-y-2 rounded-[1rem] border bg-card animate-in fade-in-0 slide-in-from-bottom-12"
+                  className="group relative overflow-hidden text-center shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 hover:-translate-y-2 rounded-[1rem] border bg-card animate-in fade-in-0 slide-in-from-bottom-12"
                   style={{ animationDelay: `${i * 100}ms` }}
                 >
+                  {feature.isNew && <CornerRibbon text="New!" />}
                   <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 shadow-inner transition-transform duration-300 ease-in-out group-hover:rotate-12">
                       {feature.icon}
@@ -454,6 +457,7 @@ export default function LandingPage() {
     
 
     
+
 
 
 
