@@ -160,15 +160,7 @@ export default function LandingPage() {
         </div>
 
         {/* Hero */}
-        <section className="relative h-[60vh] flex items-center justify-center text-center">
-            <Image 
-                src="https://picsum.photos/seed/1/1200/800"
-                alt="Students learning in a classroom"
-                fill
-                className="object-cover"
-                data-ai-hint="classroom students"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-background/50 to-background/90" />
+        <section className="relative py-20 md:py-32 flex items-center justify-center text-center">
             <div className="relative max-w-3xl animate-in fade-in zoom-in-95 duration-700 px-4">
                 <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter text-foreground animate-in fade-in-0 slide-in-from-bottom-8 duration-700">
                 Unlock Your Potential with{' '}
@@ -462,6 +454,7 @@ export default function LandingPage() {
     
 
     
+
 
 
 
