@@ -1,4 +1,5 @@
 
+
 'use client';
 
 import { useContext } from 'react';
@@ -16,7 +17,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { GraduationCap } from 'lucide-react';
-import { GradientBorder } from '../ui/gradient-border';
+import { cn } from '@/lib/utils';
 
 const tones: Tone[] = ['Gentle', 'Encouraging', 'Formal', 'Fun', 'Sarcastic', 'Creative'];
 
@@ -92,13 +93,19 @@ export default function WelcomeScreen() {
                         className="grid grid-cols-2 sm:grid-cols-3 gap-2"
                         >
                         {tones.map((tone) => (
-                            <FormItem key={tone} className="flex-1">
-                                <RadioGroupItem value={tone} className="sr-only peer" id={`tone-${tone}`} />
-                                <GradientBorder active={field.value === tone} as={Label} htmlFor={`tone-${tone}`}>
-                                    <div className="w-full cursor-pointer rounded-lg bg-popover p-3 peer-data-[state=checked]:shadow-lg transition-all text-center text-sm font-medium hover:bg-accent hover:text-accent-foreground">
-                                        {tone}
-                                    </div>
-                                </GradientBorder>
+                             <FormItem key={tone}>
+                                <RadioGroupItem value={tone} id={`tone-${tone}`} className="peer sr-only" />
+                                <Label
+                                htmlFor={`tone-${tone}`}
+                                className={cn(
+                                    "block w-full cursor-pointer rounded-md border bg-popover p-3 text-center text-sm font-medium transition-all",
+                                    "peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2",
+                                    "hover:bg-accent hover:text-accent-foreground",
+                                    "peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground peer-data-[state=checked]:shadow-lg"
+                                )}
+                                >
+                                {tone}
+                                </Label>
                             </FormItem>
                         ))}
                         </RadioGroup>
