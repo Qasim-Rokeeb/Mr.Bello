@@ -114,6 +114,14 @@ export default {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(calc(-100% - var(--gap)))" },
         },
+        'toast-enter': {
+          '0%': { transform: 'translateY(100%) scale(0.9)', opacity: '0' },
+          '100%': { transform: 'translateY(0) scale(1)', opacity: '1' },
+        },
+        'toast-leave': {
+            '0%': { transform: 'translateY(0) scale(1)', opacity: '1' },
+            '100%': { transform: 'translateY(100%) scale(0.9)', opacity: '0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -122,6 +130,8 @@ export default {
         'bouncy-dot': 'bouncy-dot 1s ease-in-out infinite',
         'bounce-subtle': 'bounce-subtle 1.5s ease-in-out infinite',
         marquee: "marquee var(--duration) linear infinite",
+        'toast-enter': 'toast-enter 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
+        'toast-leave': 'toast-leave 0.3s ease-in-out',
       },
     },
   },
