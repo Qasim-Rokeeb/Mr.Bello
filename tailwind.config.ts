@@ -122,6 +122,14 @@ export default {
             '0%': { transform: 'translateY(0) scale(1)', opacity: '1' },
             '100%': { transform: 'translateY(100%) scale(0.9)', opacity: '0' },
         },
+        'fire-pulse': {
+            '0%, 100%': { transform: 'scale(1)', opacity: '0.5' },
+            '50%': { transform: 'scale(1.2)', opacity: '1' },
+        },
+        'fire-flicker': {
+            '0%, 100%': { opacity: '1' },
+            '50%': { opacity: '0.6' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -132,6 +140,8 @@ export default {
         marquee: "marquee var(--duration) linear infinite",
         'toast-enter': 'toast-enter 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)',
         'toast-leave': 'toast-leave 0.3s ease-in-out',
+        'fire-pulse': 'fire-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'fire-flicker': 'fire-flicker 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },

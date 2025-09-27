@@ -9,6 +9,7 @@ import { GraduationCap } from 'lucide-react';
 import { ThemeToggle } from './theme-toggle';
 import TypingIndicator from './typing-indicator';
 import CourseStatus from './course-status';
+import { StreakFire } from '../ui/streak-fire';
 
 export default function ChatInterface() {
   const { messages, isLoading, activeCourse } = useContext(AppContext);
@@ -41,6 +42,7 @@ export default function ChatInterface() {
         </div>
         <div className="flex items-center gap-2">
             {activeCourse && <CourseStatus course={activeCourse} />}
+            <StreakFire streakCount={3} />
             <ThemeToggle />
         </div>
       </header>
