@@ -392,7 +392,7 @@ export default function LandingPage() {
       {/* Live Chat FAB */}
       <div className="fixed bottom-6 right-6 z-50">
         <Button asChild size="icon" className="h-14 w-14 rounded-full shadow-2xl">
-          <Link href="/chat">
+          <Link href="/chat" className="relative flex h-full w-full items-center justify-center">
             <span className="absolute h-full w-full rounded-full bg-primary animate-ping opacity-75"></span>
             <MessageSquare className="h-7 w-7" />
             <span className="sr-only">Open Chat</span>
