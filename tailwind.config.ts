@@ -81,20 +81,12 @@ export default {
       },
       keyframes: {
         'accordion-down': {
-          from: {
-            height: '0',
-          },
-          to: {
-            height: 'var(--radix-accordion-content-height)',
-          },
+          from: { height: '0', opacity: '0' },
+          to: { height: 'var(--radix-accordion-content-height)', opacity: '1' },
         },
         'accordion-up': {
-          from: {
-            height: 'var(--radix-accordion-content-height)',
-          },
-          to: {
-            height: '0',
-          },
+          from: { height: 'var(--radix-accordion-content-height)', opacity: '1' },
+          to: { height: '0', opacity: '0' },
         },
         'shimmer': {
             '0%, 100%': {
@@ -124,8 +116,8 @@ export default {
         },
       },
       animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        'accordion-down': 'accordion-down 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'accordion-up': 'accordion-up 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
         'shimmer': 'shimmer 2s ease-in-out infinite',
         'bouncy-dot': 'bouncy-dot 1s ease-in-out infinite',
         'bounce-subtle': 'bounce-subtle 1.5s ease-in-out infinite',
