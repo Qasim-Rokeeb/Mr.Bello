@@ -15,6 +15,7 @@ export function SpotlightButton({ asChild, children, className, ...props }: Spot
   const [position, setPosition] = useState({ x: '-100%', y: '-100%' });
 
   const handleMouseMove = (e: MouseEvent<HTMLButtonElement>) => {
+    if (!e.currentTarget) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -38,15 +39,15 @@ export function SpotlightButton({ asChild, children, className, ...props }: Spot
       asChild={asChild}
       {...props}
     >
-        <>
-            {children}
-            <div
-            className="pointer-events-none absolute -inset-px rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            style={{
-                background: `radial-gradient(150px at ${position.x} ${position.y}, rgba(255, 255, 255, 0.25), transparent)`,
-            }}
-            />
-        </>
+      <span>
+        {children}
+        <div
+          className="pointer-events-none absolute -inset-px rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            background: `radial-gradient(150px at ${position.x} ${position.y}, rgba(255, 255, 255, 0.25), transparent)`,
+          }}
+        />
+      </span>
     </Button>
   );
 }
