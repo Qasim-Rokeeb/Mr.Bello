@@ -161,4 +161,10 @@ body::before {
     .lg\:col-span-11 { grid-column: span 11 / span 11; }
     .lg\:col-span-12 { grid-column: span 12 / span 12; }
   }
+
+  .radial-dot-pattern {
+    background-image: radial-gradient(hsl(var(--border)) 1px, transparent 1px);
+    background-size: 16px 16px;
+    background-position: center;
+  }
 }

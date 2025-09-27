@@ -28,7 +28,7 @@ export default function ChatInterface() {
   }, [messages, showTypingIndicator]);
 
   return (
-    <div className="relative flex flex-col h-full max-h-screen w-full bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl sm:rounded-[1rem] shadow-2xl sm:border border-slate-200/50 dark:border-zinc-800 overflow-hidden">
+    <div className="relative flex flex-col h-full max-h-screen w-full bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl sm:rounded-[1rem] shadow-2xl sm:border border-slate-200/50 dark:border-zinc-800 overflow-hidden radial-dot-pattern">
        <header className="flex items-center justify-between p-4 border-b dark:border-zinc-800 z-10">
         <div className="flex items-center gap-3 group">
           <div className="bg-primary text-primary-foreground rounded-full p-2 shadow-inner transition-all duration-300 group-hover:shadow-[0_0_10px_hsl(var(--primary))]">
