@@ -18,6 +18,7 @@ import Image from 'next/image';
 import { WaveDivider } from '@/components/ui/wave-divider';
 import { CornerRibbon } from '@/components/ui/corner-ribbon';
 import { CodeSnippet } from '@/components/ui/code-snippet';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const features = [
   {
@@ -62,17 +63,20 @@ const testimonials = [
   {
     name: "Khadija",
     title: "Physiology Student",
-    quote: "Mr. Bello is a game-changer. A very nice application that breaks down complex terms. Really makes learning a lot more easy and fun."
+    quote: "Mr. Bello is a game-changer. A very nice application that breaks down complex terms. Really makes learning a lot more easy and fun.",
+    initials: "K",
   },
   {
     name: "Abraham",
     title: "Information System student",
-    quote: "I find Mr.Bello very useful in explaining and breaking complex topics, 'Simplify' feature is my favorite. Highly recommended!"
+    quote: "I find Mr.Bello very useful in explaining and breaking complex topics, 'Simplify' feature is my favorite. Highly recommended!",
+    initials: "A",
   },
   {
     name: "David Chen",
     title: "High School Teacher",
-    quote: "I use Mr. Bello to find new ways to explain difficult concepts to my students. The examples are always on point and very helpful."
+    quote: "I use Mr. Bello to find new ways to explain difficult concepts to my students. The examples are always on point and very helpful.",
+    initials: "DC",
   }
 ];
 
@@ -302,13 +306,14 @@ export default function LandingPage() {
                   >
                     <Quote className="h-8 w-8 text-primary/30 mb-4" />
                     <p className="text-muted-foreground flex-1 mb-6">"{t.quote}"</p>
-                    <div>
-                      <p className="font-semibold text-foreground">
-                          <span className="animate-shimmer bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400 to-primary bg-[length:200%_100%]">
-                              {t.name}
-                          </span>
-                      </p>
-                      <p className="text-sm text-muted-foreground">{t.title}</p>
+                    <div className="flex items-center gap-4">
+                      <Avatar className="h-12 w-12 animate-shimmer bg-gradient-to-r from-primary via-blue-400 to-primary bg-[length:200%_100%]">
+                        <AvatarFallback>{t.initials}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-semibold text-foreground text-left">{t.name}</p>
+                        <p className="text-sm text-muted-foreground text-left">{t.title}</p>
+                      </div>
                     </div>
                   </Card>
                 </GradientBorder>
@@ -332,13 +337,14 @@ export default function LandingPage() {
                             <Card className="flex flex-col justify-between p-6 bg-transparent h-full border-none shadow-none">
                                 <Quote className="h-8 w-8 text-primary/30 mb-4" />
                                 <p className="text-muted-foreground flex-1 mb-6">"{t.quote}"</p>
-                                <div>
-                                    <p className="font-semibold text-foreground">
-                                        <span className="animate-shimmer bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400 to-primary bg-[length:200%_100%]">
-                                            {t.name}
-                                        </span>
-                                    </p>
-                                    <p className="text-sm text-muted-foreground">{t.title}</p>
+                                <div className="flex items-center gap-4">
+                                  <Avatar className="h-12 w-12 animate-shimmer bg-gradient-to-r from-primary via-blue-400 to-primary bg-[length:200%_100%]">
+                                    <AvatarFallback>{t.initials}</AvatarFallback>
+                                  </Avatar>
+                                  <div>
+                                    <p className="font-semibold text-foreground text-left">{t.name}</p>
+                                    <p className="text-sm text-muted-foreground text-left">{t.title}</p>
+                                  </div>
                                 </div>
                             </Card>
                         </GradientBorder>
@@ -468,6 +474,7 @@ export default function LandingPage() {
     
 
     
+
 
 
 
