@@ -130,6 +130,15 @@ export default {
             '0%, 100%': { opacity: '1' },
             '50%': { opacity: '0.6' },
         },
+        'check-draw-circle': {
+          'from': { 'stroke-dashoffset': '31.4' },
+          'to': { 'stroke-dashoffset': '0' },
+        },
+        'check-draw-path': {
+          '0%': { 'stroke-dashoffset': '9' },
+          '50%': { 'stroke-dashoffset': '9' },
+          '100%': { 'stroke-dashoffset': '0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -142,6 +151,8 @@ export default {
         'toast-leave': 'toast-leave 0.3s ease-in-out',
         'fire-pulse': 'fire-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'fire-flicker': 'fire-flicker 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'check-draw-circle': 'check-draw-circle 0.5s ease-in-out forwards',
+        'check-draw-path': 'check-draw-path 0.5s ease-in-out forwards',
       },
     },
   },

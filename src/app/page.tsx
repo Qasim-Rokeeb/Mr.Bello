@@ -19,6 +19,7 @@ import { WaveDivider } from '@/components/ui/wave-divider';
 import { CornerRibbon } from '@/components/ui/corner-ribbon';
 import { CodeSnippet } from '@/components/ui/code-snippet';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { AnimatedCheck } from '@/components/ui/animated-check';
 
 const features = [
   {
@@ -211,7 +212,7 @@ export default function LandingPage() {
                   {feature.isNew && <CornerRibbon text="New!" />}
                   <CardHeader className="text-center">
                     <div className="mx-auto bg-primary/10 rounded-full p-4 w-fit mb-4 shadow-inner transition-transform duration-300 ease-in-out group-hover:rotate-12">
-                      {feature.icon}
+                      <AnimatedCheck />
                     </div>
                     <CardTitle className="text-lg font-semibold text-foreground">{feature.title}</CardTitle>
                   </CardHeader>
@@ -474,6 +475,7 @@ export default function LandingPage() {
     
 
     
+
 
 
 
