@@ -9,10 +9,10 @@ export default function Home() {
   const { isConfigured, name, startNewChat } = useContext(AppContext);
 
   useEffect(() => {
-    if (isConfigured && !name) {
+    if (isConfigured && name) {
       startNewChat();
     }
-  }, [isConfigured, name, startNewChat]);
+  }, [isConfigured, name]);
 
   return (
     <div className="flex h-screen w-screen items-center justify-center bg-background p-0 sm:p-4">

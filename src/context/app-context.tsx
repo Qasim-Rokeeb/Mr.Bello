@@ -18,7 +18,7 @@ interface AppContextType {
   refineExplanation: (topic: string, refinement: 'simplify' | 'technical' | 'examples' | 'resources' | 'applications', exampleDifficulty?: ExampleDifficulty) => Promise<void>;
   simplifyResponse: (topic: string, responseToSimplify: string) => Promise<void>;
   generateQuiz: (topic: string) => Promise<void>;
-  startTopicFromCourse: (topic: string) => Promise<void>;
+  startTopicFromCourse: (topic: string, silent?: boolean) => Promise<string | void>;
   startNewChat: () => void;
 }
 
@@ -46,9 +46,11 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         setSettings(parsedSettings);
         setName(parsedSettings.name);
         setIsConfigured(true);
-        setMessages([
-            { id: id(), role: 'bot', content: `Hello ${parsedSettings.name}! I'm Mr. Bello. How can I help you learn today? You can ask me to explain a topic or break down a course.` }
-        ]);
+        if (window.location.pathname.includes('/chat')) {
+          setMessages([
+              { id: id(), role: 'bot', content: `Hello ${parsedSettings.name}! I'm Mr. Bello. How can I help you learn today? You can ask me to explain a topic or break down a course.` }
+          ]);
+        }
       }
     } catch (error) {
       console.error("Failed to load from local storage", error);
@@ -264,13 +266,15 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     }
   }
 
-  const startTopicFromCourse = async (topic: string) => {
-    if (isLoading) return;
-    
+  const startTopicFromCourse = async (topic: string, silent = false): Promise<string | void> => {
+    if (isLoading && !silent) return;
+
     const userMessage: Message = { id: id(), role: 'user', content: `Please explain: ${topic}` };
     const newMessages = [...messages, userMessage];
-    setMessages(newMessages);
-    setIsLoading(true);
+    if (!silent) {
+        setMessages(newMessages);
+        setIsLoading(true);
+    }
 
     try {
       const response = await handleExplanation({
@@ -288,6 +292,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
             );
             setActiveCourse({ ...activeCourse, topics: updatedTopics });
         }
+        if (silent) {
+            return response.data.explanation;
+        }
         setMessages(prev => [...prev, {
           id: id(),
           role: 'bot',
@@ -299,11 +306,13 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         }]);
       } else {
         handleError(response.error || 'Unknown error');
+        if (silent) return "Error fetching explanation.";
       }
     } catch (e) {
       handleError('An unexpected error occurred.');
+      if (silent) return "Error fetching explanation.";
     } finally {
-      setIsLoading(false);
+      if (!silent) setIsLoading(false);
     }
   };
 
