@@ -4,7 +4,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Quote, GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Globe, Github, MessageSquare, Settings, Route, Rocket } from 'lucide-react';
+import { Quote, GraduationCap, BookOpen, Microscope, Lightbulb, FileDown, Globe, Github, MessageSquare, Settings, Route, Rocket, User } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
@@ -13,6 +13,7 @@ import { Progress } from '@/components/ui/progress';
 import { FancySeparator } from '@/components/ui/fancy-separator';
 import { SpotlightButton } from '@/components/ui/spotlight-button';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import { Marquee } from '@/components/ui/marquee';
 
 const features = [
   {
@@ -91,6 +92,7 @@ const howItWorksSteps = [
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
+  const [learnerCount, setLearnerCount] = useState(1342);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,10 +105,14 @@ export default function LandingPage() {
         setActiveStep(prev => (prev + 1) % (howItWorksSteps.length + 1));
     }, 2000);
 
+    const countInterval = setInterval(() => {
+        setLearnerCount(prev => prev + Math.floor(Math.random() * 3) + 1);
+    }, 2500);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
       clearInterval(stepInterval);
+      clearInterval(countInterval);
     };
   }, []);
 
@@ -117,7 +123,9 @@ export default function LandingPage() {
       <header className={cn("fixed top-0 z-50 w-full border-b transition-all duration-300", scrolled ? "border-border bg-background/80 shadow-md backdrop-blur-lg" : "border-transparent")}>
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-3 group">
-            <GraduationCap className="h-8 w-8 text-primary drop-shadow-sm transition-all duration-300 group-hover:drop-shadow-[0_0_5px_hsl(var(--primary))] " />
+            <div className="p-1 rounded-full bg-gradient-to-br from-primary to-blue-400 group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-all duration-300">
+                <GraduationCap className="h-6 w-6 text-primary-foreground drop-shadow-sm transition-all duration-300 group-hover:drop-shadow-[0_0_5px_hsl(var(--primary))] " />
+            </div>
             <h1 className="text-2xl font-extrabold tracking-tight">
               <span className="transition-all duration-300 group-hover:text-primary">Mr.</span>
               <span className="text-primary transition-all duration-300 group-hover:drop-shadow-[0_0_2px_hsl(var(--primary))]">Bello</span>
@@ -134,6 +142,21 @@ export default function LandingPage() {
 
       <main className="flex-1 pt-16">
         
+        {/* Live Learner Marquee */}
+        <div className="bg-muted border-b">
+          <Marquee pauseOnHover className="h-10 [--duration:30s]">
+            {Array.from({ length: 10 }).map((_, i) => (
+              <div key={i} className="flex items-center gap-3 mx-4">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <User className="h-4 w-4 text-green-500" />
+                  <span className="font-semibold text-foreground">{learnerCount + (i*7)}</span> learners online now
+                </div>
+                <div className="w-1 h-1 rounded-full bg-border" />
+              </div>
+            ))}
+          </Marquee>
+        </div>
+
         {/* Hero */}
         <section className="container flex flex-col items-center text-center py-24 md:py-32">
           <div className="max-w-3xl animate-in fade-in zoom-in-95 duration-700">

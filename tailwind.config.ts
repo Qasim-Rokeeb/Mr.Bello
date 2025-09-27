@@ -118,6 +118,10 @@ export default {
               animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
             },
           },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -125,6 +129,7 @@ export default {
         'shimmer': 'shimmer 2s ease-in-out infinite',
         'bouncy-dot': 'bouncy-dot 1s ease-in-out infinite',
         'bounce-subtle': 'bounce-subtle 1.5s ease-in-out infinite',
+        marquee: "marquee var(--duration) linear infinite",
       },
     },
   },
