@@ -30,12 +30,13 @@ export default function ChatInterface() {
   return (
     <div className="relative flex flex-col h-full max-h-screen w-full bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl sm:rounded-[1rem] shadow-2xl sm:border border-slate-200/50 dark:border-zinc-800 overflow-hidden">
        <header className="flex items-center justify-between p-4 border-b dark:border-zinc-800 z-10">
-        <div className="flex items-center gap-3">
-          <div className="bg-primary text-primary-foreground rounded-full p-2 shadow-inner">
+        <div className="flex items-center gap-3 group">
+          <div className="bg-primary text-primary-foreground rounded-full p-2 shadow-inner transition-all duration-300 group-hover:shadow-[0_0_10px_hsl(var(--primary))]">
             <GraduationCap className="h-6 w-6" />
           </div>
           <h1 className="text-xl font-bold">
-            <span className="text-foreground">Mr.</span><span className="text-primary">Bello</span>
+            <span className="text-foreground transition-all duration-300 group-hover:text-primary">Mr.</span>
+            <span className="text-primary transition-all duration-300 group-hover:drop-shadow-[0_0_2px_hsl(var(--primary))]">Bello</span>
           </h1>
         </div>
         <div className="flex items-center gap-2">

@@ -116,10 +116,11 @@ export default function LandingPage() {
       {/* Header */}
       <header className={cn("fixed top-0 z-50 w-full border-b transition-all duration-300", scrolled ? "border-border bg-background/80 shadow-md backdrop-blur-lg" : "border-transparent")}>
         <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-3">
-            <GraduationCap className="h-8 w-8 text-primary drop-shadow-sm" />
+          <div className="flex items-center gap-3 group">
+            <GraduationCap className="h-8 w-8 text-primary drop-shadow-sm transition-all duration-300 group-hover:drop-shadow-[0_0_5px_hsl(var(--primary))] " />
             <h1 className="text-2xl font-extrabold tracking-tight">
-              <span>Mr.</span><span className="text-primary">Bello</span>
+              <span className="transition-all duration-300 group-hover:text-primary">Mr.</span>
+              <span className="text-primary transition-all duration-300 group-hover:drop-shadow-[0_0_2px_hsl(var(--primary))]">Bello</span>
             </h1>
           </div>
           <Button
