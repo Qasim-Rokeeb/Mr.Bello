@@ -9,7 +9,7 @@ const Avatar = React.forwardRef<
   React.ElementRef<typeof AvatarPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
 >(({ className, ...props }, ref) => (
-  <div className={cn("relative h-10 w-10 rounded-full bg-gradient-to-tr from-blue-100 to-indigo-200 p-0.5 shadow-md", className)}>
+  <div className={cn("relative h-10 w-10 rounded-full bg-gradient-to-tr from-blue-100 to-indigo-200 p-0.5 shadow-md transition-all duration-300 hover:shadow-[0_0_10px_hsl(var(--primary))]", className)}>
     <AvatarPrimitive.Root
       ref={ref}
       className={cn(
