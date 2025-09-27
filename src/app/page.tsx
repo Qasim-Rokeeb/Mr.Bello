@@ -10,12 +10,12 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Input } from '@/components/ui/input';
 import { Progress } from '@/components/ui/progress';
-import { FancySeparator } from '@/components/ui/fancy-separator';
 import { SpotlightButton } from '@/components/ui/spotlight-button';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import { Marquee } from '@/components/ui/marquee';
 import { GradientBorder } from '@/components/ui/gradient-border';
 import Image from 'next/image';
+import { WaveDivider } from '@/components/ui/wave-divider';
 
 const features = [
   {
@@ -214,10 +214,10 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <FancySeparator />
+        <WaveDivider className="text-background -mb-1" />
 
         {/* How It Works */}
-        <section id="how-it-works" className="py-20 bg-background">
+        <section id="how-it-works" className="py-20 bg-muted">
             <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
                 <h3 className="text-3xl md:text-4xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Get Started in 3 Easy Steps</span>
@@ -231,7 +231,7 @@ export default function LandingPage() {
                         {howItWorksSteps.map((_, i) => (
                             <div key={i} className={cn(
                                 "w-6 h-6 rounded-full transition-all duration-500",
-                                i < activeStep ? "bg-primary" : "bg-muted border-2 border-border",
+                                i < activeStep ? "bg-primary" : "bg-border",
                                 i === activeStep && "bg-primary ring-4 ring-primary/30"
                             )}></div>
                         ))}
@@ -273,7 +273,7 @@ export default function LandingPage() {
             </div>
         </section>
 
-        <FancySeparator />
+        <WaveDivider className="text-muted -mb-1" />
 
         {/* Testimonials */}
         <section id="testimonials" className="py-20 bg-background">
@@ -345,10 +345,8 @@ export default function LandingPage() {
           </div>
         </section>
 
-        <FancySeparator />
-
         {/* Newsletter CTA */}
-        <section className="py-20">
+        <section className="py-20 bg-muted">
           <div className="container">
             <div className="bg-card p-10 md:p-16 rounded-[1rem] shadow-xl max-w-4xl mx-auto border animate-in fade-in zoom-in-95 duration-500">
               <div className="flex flex-col md:flex-row items-center gap-8">
@@ -464,6 +462,7 @@ export default function LandingPage() {
     
 
     
+
 
 
 
