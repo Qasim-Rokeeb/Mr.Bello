@@ -15,6 +15,7 @@ import { SpotlightButton } from '@/components/ui/spotlight-button';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import { Marquee } from '@/components/ui/marquee';
 import { GradientBorder } from '@/components/ui/gradient-border';
+import Image from 'next/image';
 
 const features = [
   {
@@ -124,8 +125,8 @@ export default function LandingPage() {
       <header className={cn("fixed top-0 z-50 w-full border-b transition-all duration-300", scrolled ? "border-border bg-background/80 shadow-md backdrop-blur-lg" : "border-transparent")}>
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-3 group">
-            <div className="p-1 rounded-full bg-gradient-to-br from-primary to-blue-400 group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-all duration-300">
-                <GraduationCap className="h-6 w-6 text-primary-foreground drop-shadow-sm transition-all duration-300 group-hover:drop-shadow-[0_0_5px_hsl(var(--primary))] " />
+            <div className="p-1 rounded-full bg-gradient-to-br from-primary to-blue-400 group-hover:shadow-lg group-hover:shadow-primary/50 transition-all duration-300 group-hover:drop-shadow-[0_0_5px_hsl(var(--primary))]">
+                <GraduationCap className="h-6 w-6 text-primary-foreground drop-shadow-sm transition-all duration-300" />
             </div>
             <h1 className="text-2xl font-extrabold tracking-tight">
               <span className="transition-all duration-300 group-hover:text-primary">Mr.</span>
@@ -159,21 +160,29 @@ export default function LandingPage() {
         </div>
 
         {/* Hero */}
-        <section className="container flex flex-col items-center text-center py-24 md:py-32">
-          <div className="max-w-3xl animate-in fade-in zoom-in-95 duration-700">
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter animate-in fade-in-0 slide-in-from-bottom-8 duration-700">
-              Unlock Your Potential with{' '}
-              <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Mr.Bello</span>
-            </h2>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-in fade-in-0 slide-in-from-bottom-8 duration-700" style={{ animationDelay: '200ms' }}>
-              Your friendly AI teacher for any topic. Ask a question, or break down an entire course. Learning has never been this simple.
-            </p>
-            <div className="mt-10 animate-in fade-in-0 slide-in-from-bottom-8 duration-700" style={{ animationDelay: '400ms' }}>
-              <SpotlightButton asChild>
-                <Link href="/chat">Start Learning Now</Link>
-              </SpotlightButton>
+        <section className="relative h-[60vh] flex items-center justify-center text-center">
+            <Image 
+                src="https://picsum.photos/seed/1/1200/800"
+                alt="Students learning in a classroom"
+                fill
+                className="object-cover"
+                data-ai-hint="classroom students"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-background/50 to-background/90" />
+            <div className="relative max-w-3xl animate-in fade-in zoom-in-95 duration-700 px-4">
+                <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter text-foreground animate-in fade-in-0 slide-in-from-bottom-8 duration-700">
+                Unlock Your Potential with{' '}
+                <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Mr.Bello</span>
+                </h2>
+                <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-in fade-in-0 slide-in-from-bottom-8 duration-700" style={{ animationDelay: '200ms' }}>
+                Your friendly AI teacher for any topic. Ask a question, or break down an entire course. Learning has never been this simple.
+                </p>
+                <div className="mt-10 animate-in fade-in-0 slide-in-from-bottom-8 duration-700" style={{ animationDelay: '400ms' }}>
+                <SpotlightButton asChild>
+                    <Link href="/chat">Start Learning Now</Link>
+                </SpotlightButton>
+                </div>
             </div>
-          </div>
         </section>
 
         {/* Features */}
@@ -455,5 +464,6 @@ export default function LandingPage() {
     
 
     
+
 
 
