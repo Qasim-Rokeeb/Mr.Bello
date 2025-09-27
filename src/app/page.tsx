@@ -17,6 +17,7 @@ import { GradientBorder } from '@/components/ui/gradient-border';
 import Image from 'next/image';
 import { WaveDivider } from '@/components/ui/wave-divider';
 import { CornerRibbon } from '@/components/ui/corner-ribbon';
+import { CodeSnippet } from '@/components/ui/code-snippet';
 
 const features = [
   {
@@ -162,7 +163,16 @@ export default function LandingPage() {
         </div>
 
         {/* Hero */}
-        <section className="relative py-20 md:py-32 flex items-center justify-center text-center">
+        <section className="relative py-20 md:py-32 flex items-center justify-center text-center overflow-hidden">
+             <CodeSnippet
+                className="absolute -top-10 -left-20 -rotate-12 opacity-50 md:opacity-100"
+                style={{ transform: "rotate3d(1, -0.5, 0, 15deg) rotate(-12deg)" }}
+             />
+             <CodeSnippet
+                variant="react"
+                className="absolute -bottom-10 -right-20 rotate-12 opacity-50 md:opacity-100"
+                style={{ transform: "rotate3d(1, 0.5, 0, -15deg) rotate(12deg)" }}
+            />
             <div className="relative max-w-3xl animate-in fade-in zoom-in-95 duration-700 px-4">
                 <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter text-foreground animate-in fade-in-0 slide-in-from-bottom-8 duration-700">
                 <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
@@ -458,6 +468,7 @@ export default function LandingPage() {
     
 
     
+
 
 
 
