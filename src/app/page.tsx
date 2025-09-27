@@ -165,8 +165,9 @@ export default function LandingPage() {
         <section className="relative py-20 md:py-32 flex items-center justify-center text-center">
             <div className="relative max-w-3xl animate-in fade-in zoom-in-95 duration-700 px-4">
                 <h2 className="text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight tracking-tighter text-foreground animate-in fade-in-0 slide-in-from-bottom-8 duration-700">
-                Unlock Your Potential with{' '}
-                <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Mr.Bello</span>
+                <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
+                  Unlock Your Potential with Mr.Bello
+                </span>
                 </h2>
                 <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-in fade-in-0 slide-in-from-bottom-8 duration-700" style={{ animationDelay: '200ms' }}>
                 Your friendly AI teacher for any topic. Ask a question, or break down an entire course. Learning has never been this simple.
@@ -457,6 +458,7 @@ export default function LandingPage() {
     
 
     
+
 
 
 
