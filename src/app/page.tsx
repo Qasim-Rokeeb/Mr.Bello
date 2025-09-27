@@ -187,7 +187,7 @@ export default function LandingPage() {
               {features.map((feature, i) => (
                 <Card
                   key={i}
-                  className="text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-[1rem] border bg-card animate-in fade-in-0 slide-in-from-bottom-12"
+                  className="text-center shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 hover:-translate-y-2 rounded-[1rem] border bg-card animate-in fade-in-0 slide-in-from-bottom-12"
                   style={{ animationDelay: `${i * 100}ms` }}
                 >
                   <CardHeader className="text-center">
@@ -455,4 +455,5 @@ export default function LandingPage() {
     
 
     
+
 
