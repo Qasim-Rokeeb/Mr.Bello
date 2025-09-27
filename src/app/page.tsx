@@ -380,7 +380,7 @@ export default function LandingPage() {
                             />
                             <label 
                                 htmlFor="email"
-                                className="absolute left-3 top-3 text-muted-foreground transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:text-xs peer-[:not(:placeholder-shown)]:text-primary bg-card px-1"
+                                className="absolute left-3 top-3 text-muted-foreground transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-xs peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:text-xs bg-card px-1 peer-focus:bg-gradient-to-r peer-focus:from-primary peer-focus:to-blue-400 peer-focus:bg-clip-text peer-focus:text-transparent peer-[:not(:placeholder-shown)]:text-primary"
                             >
                                 Email Address
                             </label>
@@ -474,6 +474,7 @@ export default function LandingPage() {
     
 
     
+
 
 
 
