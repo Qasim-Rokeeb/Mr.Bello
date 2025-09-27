@@ -14,6 +14,7 @@ import { FancySeparator } from '@/components/ui/fancy-separator';
 import { SpotlightButton } from '@/components/ui/spotlight-button';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import { Marquee } from '@/components/ui/marquee';
+import { GradientBorder } from '@/components/ui/gradient-border';
 
 const features = [
   {
@@ -275,22 +276,27 @@ export default function LandingPage() {
             {/* Desktop Grid */}
             <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
               {testimonials.map((t, i) => (
-                <Card
-                  key={i}
-                  className="flex flex-col justify-between p-6 shadow-md hover:shadow-xl rounded-[1rem] border bg-card transition-all hover:-translate-y-1 animate-in fade-in-0 slide-in-from-bottom-12"
+                <GradientBorder 
+                  key={i} 
+                  active 
+                  className="bg-card h-full animate-in fade-in-0 slide-in-from-bottom-12"
                   style={{ animationDelay: `${i * 150}ms` }}
                 >
-                  <Quote className="h-8 w-8 text-primary/30 mb-4" />
-                  <p className="text-muted-foreground flex-1 mb-6">"{t.quote}"</p>
-                  <div>
-                    <p className="font-semibold text-foreground">
-                        <span className="animate-shimmer bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400 to-primary bg-[length:200%_100%]">
-                            {t.name}
-                        </span>
-                    </p>
-                    <p className="text-sm text-muted-foreground">{t.title}</p>
-                  </div>
-                </Card>
+                  <Card
+                    className="flex flex-col justify-between p-6 bg-transparent h-full border-none shadow-none"
+                  >
+                    <Quote className="h-8 w-8 text-primary/30 mb-4" />
+                    <p className="text-muted-foreground flex-1 mb-6">"{t.quote}"</p>
+                    <div>
+                      <p className="font-semibold text-foreground">
+                          <span className="animate-shimmer bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400 to-primary bg-[length:200%_100%]">
+                              {t.name}
+                          </span>
+                      </p>
+                      <p className="text-sm text-muted-foreground">{t.title}</p>
+                    </div>
+                  </Card>
+                </GradientBorder>
               ))}
             </div>
 
@@ -307,18 +313,20 @@ export default function LandingPage() {
                   {testimonials.map((t, i) => (
                     <CarouselItem key={i}>
                       <div className="p-1">
-                        <Card className="flex flex-col justify-between p-6 shadow-md rounded-[1rem] border bg-card h-full">
-                            <Quote className="h-8 w-8 text-primary/30 mb-4" />
-                            <p className="text-muted-foreground flex-1 mb-6">"{t.quote}"</p>
-                            <div>
-                                <p className="font-semibold text-foreground">
-                                    <span className="animate-shimmer bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400 to-primary bg-[length:200%_100%]">
-                                        {t.name}
-                                    </span>
-                                </p>
-                                <p className="text-sm text-muted-foreground">{t.title}</p>
-                            </div>
-                        </Card>
+                        <GradientBorder active className="bg-card h-full">
+                            <Card className="flex flex-col justify-between p-6 bg-transparent h-full border-none shadow-none">
+                                <Quote className="h-8 w-8 text-primary/30 mb-4" />
+                                <p className="text-muted-foreground flex-1 mb-6">"{t.quote}"</p>
+                                <div>
+                                    <p className="font-semibold text-foreground">
+                                        <span className="animate-shimmer bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-400 to-primary bg-[length:200%_100%]">
+                                            {t.name}
+                                        </span>
+                                    </p>
+                                    <p className="text-sm text-muted-foreground">{t.title}</p>
+                                </div>
+                            </Card>
+                        </GradientBorder>
                       </div>
                     </CarouselItem>
                   ))}
@@ -447,3 +455,4 @@ export default function LandingPage() {
     
 
     
+
