@@ -159,7 +159,7 @@ export default function LandingPage() {
             {Array.from({ length: 10 }).map((_, i) => (
               <div key={i} className="flex items-center gap-3 mx-4">
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <User className="h-4 w-4 text-green-500" />
+                  <User className="h-4 w-4 text-green-500 rounded-full animate-glow-pulse" />
                   <span className="font-semibold text-foreground">{learnerCount + (i*7)}</span> learners online now
                 </div>
                 <div className="w-1 h-1 rounded-full bg-border" />
@@ -493,5 +493,7 @@ export default function LandingPage() {
 
 
 
+
+    
 
     

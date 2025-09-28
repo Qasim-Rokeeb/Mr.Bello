@@ -164,6 +164,10 @@ export default {
             '50%': { transform: 'translateY(-20px)', opacity: '1' },
             '100%': { transform: 'translateY(0px)', opacity: '0.7' },
         },
+        'glow-pulse': {
+          '0%, 100%': { 'box-shadow': '0 0 0px 0px rgba(34, 197, 94, 0.4)' },
+          '50%': { 'box-shadow': '0 0 8px 3px rgba(34, 197, 94, 0.4)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -182,8 +186,11 @@ export default {
         'holographic-sheen': 'holographic-sheen 3s infinite linear',
         heartbeat: 'heartbeat 1.5s ease-in-out infinite',
         float: 'float linear infinite',
+        'glow-pulse': 'glow-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config;
+
+    
