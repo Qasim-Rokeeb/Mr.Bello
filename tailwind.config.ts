@@ -152,6 +152,13 @@ export default {
           '0%': { transform: 'translateX(-100%) rotate(20deg)' },
           '100%': { transform: 'translateX(200%) rotate(20deg)' },
         },
+        heartbeat: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '10%': { transform: 'scale(1.2)' },
+          '20%': { transform: 'scale(1)' },
+          '30%': { transform: 'scale(1.2)' },
+          '40%': { transform: 'scale(1)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -168,6 +175,7 @@ export default {
         'check-draw-path': 'check-draw-path 0.5s ease-in-out forwards',
         'ripple': 'ripple 0.6s linear',
         'holographic-sheen': 'holographic-sheen 3s infinite linear',
+        heartbeat: 'heartbeat 1.5s ease-in-out infinite',
       },
     },
   },

@@ -39,7 +39,7 @@ const Card = React.forwardRef<
     <div
       ref={internalRef}
       className={cn(
-        "relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-lg shadow-primary/10",
+        "relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-lg shadow-primary/10 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20",
         className
       )}
       onClick={onClick ? createRipple : undefined}
