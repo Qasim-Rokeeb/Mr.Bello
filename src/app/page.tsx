@@ -20,6 +20,7 @@ import { CornerRibbon } from '@/components/ui/corner-ribbon';
 import { CodeSnippet } from '@/components/ui/code-snippet';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { AnimatedCheck } from '@/components/ui/animated-check';
+import { FloatingParticles } from '@/components/ui/floating-particles';
 
 const features = [
   {
@@ -169,6 +170,7 @@ export default function LandingPage() {
 
         {/* Hero */}
         <section className="relative py-20 md:py-32 flex items-center justify-center text-center overflow-hidden">
+             <FloatingParticles />
              <CodeSnippet
                 className="absolute -top-10 -left-20 -rotate-12 opacity-50 md:opacity-100"
                 style={{ transform: "rotate3d(1, -0.5, 0, 15deg) rotate(-12deg)" }}

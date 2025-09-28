@@ -159,6 +159,11 @@ export default {
           '30%': { transform: 'scale(1.2)' },
           '40%': { transform: 'scale(1)' },
         },
+        float: {
+            '0%': { transform: 'translateY(0px)', opacity: '0.7' },
+            '50%': { transform: 'translateY(-20px)', opacity: '1' },
+            '100%': { transform: 'translateY(0px)', opacity: '0.7' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -176,6 +181,7 @@ export default {
         'ripple': 'ripple 0.6s linear',
         'holographic-sheen': 'holographic-sheen 3s infinite linear',
         heartbeat: 'heartbeat 1.5s ease-in-out infinite',
+        float: 'float linear infinite',
       },
     },
   },
