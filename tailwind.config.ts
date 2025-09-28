@@ -148,6 +148,10 @@ export default {
               opacity: '0',
             },
           },
+        'holographic-sheen': {
+          '0%': { transform: 'translateX(-100%) rotate(20deg)' },
+          '100%': { transform: 'translateX(200%) rotate(20deg)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -163,6 +167,7 @@ export default {
         'check-draw-circle': 'check-draw-circle 0.5s ease-in-out forwards',
         'check-draw-path': 'check-draw-path 0.5s ease-in-out forwards',
         'ripple': 'ripple 0.6s linear',
+        'holographic-sheen': 'holographic-sheen 3s infinite linear',
       },
     },
   },
