@@ -92,6 +92,17 @@ body::before {
   body {
     @apply bg-background text-foreground;
   }
+  .dark body {
+    background-color: hsl(var(--background));
+    background-image:
+        radial-gradient(at 27% 37%, hsl(var(--primary) / 0.1) 0px, transparent 50%),
+        radial-gradient(at 97% 21%, hsl(242 80% 50% / 0.15) 0px, transparent 50%),
+        radial-gradient(at 52% 99%, hsl(255 90% 60% / 0.1) 0px, transparent 50%),
+        radial-gradient(at 10% 29%, hsl(275 80% 55% / 0.15) 0px, transparent 50%),
+        radial-gradient(at 97% 96%, hsl(345 90% 65% / 0.05) 0px, transparent 50%),
+        radial-gradient(at 33% 50%, hsl(222 80% 50% / 0.1) 0px, transparent 50%),
+        radial-gradient(at 79% 53%, hsl(217 91% 60% / 0.15) 0px, transparent 50%);
+  }
 }
 
 @layer components {
