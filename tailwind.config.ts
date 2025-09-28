@@ -115,12 +115,15 @@ export default {
           to: { transform: "translateX(calc(-100% - var(--gap)))" },
         },
         'toast-enter': {
-          '0%': { transform: 'translateY(100%) scale(0.9)', opacity: '0' },
-          '100%': { transform: 'translateY(0) scale(1)', opacity: '1' },
+          '0%': { transform: 'scale(0.9)', opacity: '0' },
+          '25%': { transform: 'scale(1.1)', opacity: '0.5' },
+          '50%': { transform: 'scale(0.95)', opacity: '0.8' },
+          '75%': { transform: 'scale(1.05)', opacity: '1' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
         },
         'toast-leave': {
-            '0%': { transform: 'translateY(0) scale(1)', opacity: '1' },
-            '100%': { transform: 'translateY(100%) scale(0.9)', opacity: '0' },
+            '0%': { opacity: '1', transform: 'scale(1)' },
+            '100%': { opacity: '0', transform: 'scale(0.9)' },
         },
         'fire-pulse': {
             '0%, 100%': { transform: 'scale(1)', opacity: '0.5' },
@@ -139,6 +142,12 @@ export default {
           '50%': { 'stroke-dashoffset': '9' },
           '100%': { 'stroke-dashoffset': '0' },
         },
+        'ripple': {
+            'to': {
+              transform: 'scale(4)',
+              opacity: '0',
+            },
+          },
       },
       animation: {
         'accordion-down': 'accordion-down 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -153,6 +162,7 @@ export default {
         'fire-flicker': 'fire-flicker 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'check-draw-circle': 'check-draw-circle 0.5s ease-in-out forwards',
         'check-draw-path': 'check-draw-path 0.5s ease-in-out forwards',
+        'ripple': 'ripple 0.6s linear',
       },
     },
   },
