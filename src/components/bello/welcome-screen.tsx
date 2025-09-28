@@ -18,6 +18,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { FileUploadZone } from './file-upload-zone';
 
 const tones: Tone[] = ['Gentle', 'Encouraging', 'Formal', 'Fun', 'Sarcastic', 'Creative'];
 
@@ -137,6 +138,9 @@ export default function WelcomeScreen() {
                 </Button>
             </form>
             </Form>
+            <div className="mt-6">
+              <FileUploadZone />
+            </div>
         </CardContent>
         </Card>
     </div>
