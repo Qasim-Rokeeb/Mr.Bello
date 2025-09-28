@@ -168,6 +168,10 @@ export default {
           '0%, 100%': { 'box-shadow': '0 0 0px 0px rgba(34, 197, 94, 0.4)' },
           '50%': { 'box-shadow': '0 0 8px 3px rgba(34, 197, 94, 0.4)' },
         },
+        'twinkle': {
+            '0%, 100%': { opacity: '0' },
+            '50%': { opacity: '1' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
@@ -187,6 +191,7 @@ export default {
         heartbeat: 'heartbeat 1.5s ease-in-out infinite',
         float: 'float linear infinite',
         'glow-pulse': 'glow-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'twinkle': 'twinkle var(--duration) ease-in-out infinite',
       },
     },
   },

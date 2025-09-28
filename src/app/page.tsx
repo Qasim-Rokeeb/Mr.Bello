@@ -21,6 +21,7 @@ import { CodeSnippet } from '@/components/ui/code-snippet';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { AnimatedCheck } from '@/components/ui/animated-check';
 import { FloatingParticles } from '@/components/ui/floating-particles';
+import { TwinklingStars } from '@/components/ui/twinkling-stars';
 
 const features = [
   {
@@ -154,7 +155,8 @@ export default function LandingPage() {
       <main className="flex-1 pt-16">
         
         {/* Live Learner Marquee */}
-        <div className="bg-muted border-b">
+        <div className="relative bg-muted border-b overflow-hidden">
+          <TwinklingStars />
           <Marquee pauseOnHover className="h-10 [--duration:30s]">
             {Array.from({ length: 10 }).map((_, i) => (
               <div key={i} className="flex items-center gap-3 mx-4">
