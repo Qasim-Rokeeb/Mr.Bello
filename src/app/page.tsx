@@ -197,9 +197,9 @@ export default function LandingPage() {
 
         {/* Features */}
         <section id="features" className="py-20 bg-background">
-          <div className="container text-center animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
-            <h3 className="text-3xl md:text-4xl font-bold mb-4">A Smarter Way to <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Learn</span></h3>
-            <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <div className="container text-center">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">A Smarter Way to <span className="bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">Learn</span></h3>
+            <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto animate-in fade-in-0 slide-in-from-bottom-8 duration-1000" style={{ animationDelay: '200ms' }}>
               Everything you need to conquer complex topics and accelerate your learning.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -207,7 +207,7 @@ export default function LandingPage() {
                 <Card
                   key={i}
                   className="group relative overflow-hidden text-center shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 hover:-translate-y-2 rounded-[1rem] border bg-card animate-in fade-in-0 slide-in-from-bottom-12"
-                  style={{ animationDelay: `${i * 100}ms` }}
+                  style={{ animationDelay: `${300 + i * 100}ms` }}
                 >
                   {feature.isNew && <CornerRibbon text="New!" />}
                   <CardHeader className="text-center">
@@ -428,8 +428,8 @@ export default function LandingPage() {
         </Button>
       </div>
 
-      <footer className="text-center p-6 text-muted-foreground bg-background border-t animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
-        <div className="flex flex-col items-center gap-4">
+      <footer className="text-center p-6 text-muted-foreground bg-background border-t">
+        <div className="flex flex-col items-center gap-4 animate-in fade-in-0 slide-in-from-bottom-8 duration-1000">
             <div className="flex items-center gap-2">
                 <p className="text-xs">Connect with the developer</p>
                 <div className="flex justify-center gap-3">
@@ -488,3 +488,6 @@ export default function LandingPage() {
 
 
 
+
+
+    

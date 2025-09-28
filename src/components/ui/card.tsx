@@ -10,30 +10,29 @@ const Card = React.forwardRef<
     React.useImperativeHandle(ref, () => internalRef.current!);
 
   const createRipple = (event: React.MouseEvent<HTMLDivElement>) => {
-    const card = internalRef.current;
-    if (card) {
-      const circle = document.createElement("span");
-      const diameter = Math.max(card.clientWidth, card.clientHeight);
-      const radius = diameter / 2;
+    if (onClick) {
+      const card = internalRef.current;
+      if (card) {
+        const circle = document.createElement("span");
+        const diameter = Math.max(card.clientWidth, card.clientHeight);
+        const radius = diameter / 2;
 
-      const rect = card.getBoundingClientRect();
-      circle.style.width = circle.style.height = `${diameter}px`;
-      circle.style.left = `${event.clientX - rect.left - radius}px`;
-      circle.style.top = `${event.clientY - rect.top - radius}px`;
-      circle.classList.add("ripple-effect");
+        const rect = card.getBoundingClientRect();
+        circle.style.width = circle.style.height = `${diameter}px`;
+        circle.style.left = `${event.clientX - rect.left - radius}px`;
+        circle.style.top = `${event.clientY - rect.top - radius}px`;
+        circle.classList.add("ripple-effect");
 
-      // Check if a ripple element already exists and remove it
-      const ripple = card.getElementsByClassName("ripple-effect")[0];
-      if (ripple) {
-        ripple.remove();
+        // Check if a ripple element already exists and remove it
+        const ripple = card.getElementsByClassName("ripple-effect")[0];
+        if (ripple) {
+          ripple.remove();
+        }
+
+        card.appendChild(circle);
       }
-
-      card.appendChild(circle);
+      onClick(event);
     }
-     // Propagate the click event
-     if (onClick) {
-        onClick(event);
-      }
   };
 
   return (
@@ -43,7 +42,7 @@ const Card = React.forwardRef<
         "relative overflow-hidden rounded-lg border bg-card text-card-foreground shadow-lg shadow-primary/10",
         className
       )}
-      onClick={createRipple}
+      onClick={onClick ? createRipple : undefined}
       {...props}
     />
   );
@@ -110,3 +109,4 @@ const CardFooter = React.forwardRef<
 CardFooter.displayName = "CardFooter"
 
 export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
+    
