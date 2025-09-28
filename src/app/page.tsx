@@ -246,7 +246,7 @@ export default function LandingPage() {
                             <div key={i} className={cn(
                                 "w-6 h-6 rounded-full transition-all duration-500",
                                 i < activeStep ? "bg-primary" : "bg-border",
-                                i === activeStep && "bg-primary ring-4 ring-primary/30"
+                                i === activeStep && "bg-gradient-to-br from-primary to-blue-400 ring-4 ring-primary/30 shadow-lg shadow-blue-500/50"
                             )}></div>
                         ))}
                     </div>
